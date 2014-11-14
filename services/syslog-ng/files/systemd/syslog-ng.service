@@ -1,0 +1,13 @@
+[Unit]
+Description=System Logger Daemon
+
+[Service]
+Sockets=syslog.socket
+ExecStart=/usr/sbin/syslog-ng -F --user logger --group logger -v -e
+ExecReload=/bin/kill -HUP $MAINPID
+StandardOutput=journal
+StanderError=journal
+
+[Install]
+WantedBy=multi-user.target
+Alias=syslog.service

@@ -1,0 +1,4 @@
+
+# mappings for thumb drive
+SUBSYSTEM=="block", ENV{ID_SERIAL}=="PNY_USB_3.0_FD_3117230113-0:0", SYMLINK+="thumb%n"
+

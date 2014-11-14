@@ -1,0 +1,16 @@
+# To see more examples, please see
+# # /usr/share/doc/sshguard/examples/whitelistfile.example
+#
+# # Address blocks in CIDR notation
+127.0.0.0/8
+10.10.10.0/24
+162.218.233.101/31
+justinhoppensteadt.com
+www.justinhoppensteadt.com
+216.103.134.250
+{% if 'sshguard_whitelist' in grains %}
+{%  for 'white' in grains['sshguard_whitelist'] %}
+{{ white }}
+{%  endfor %}
+{% endif %}
+

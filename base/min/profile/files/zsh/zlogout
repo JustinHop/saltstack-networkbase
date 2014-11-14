@@ -1,0 +1,8 @@
+# /etc/zsh/zlogout: system-wide .zlogout file for zsh(1).
+# #
+# # Global Order: zshenv, zprofile, zshrc, zlogin
+#
+
+if [ -f /etc/Profile/zlogout ]; then
+    source /etc/Profile/zlogout
+fi

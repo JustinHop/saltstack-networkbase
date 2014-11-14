@@ -1,0 +1,4 @@
+Package: check-mk*
+Pin: release a=unstable
+Pin-Priority: 800
+

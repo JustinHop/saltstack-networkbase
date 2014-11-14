@@ -1,0 +1,10 @@
+#export IP=<clientip>:<server-ip>:<gw-ip>:<netmask>:<hostname>:<device>:<autoconf>:<dns0-ip>:<dns1-ip>
+{%- if 'host' and 'hwaddr_interfaces' in grains %}
+{%-   if 'eth1' in grains['hwaddr_interfaces'] %}
+export IP=::::{{ grains['host'] }}:eth1:dhcp
+{%-   else %}
+export IP=::::{{ grains['host'] }}:eth0:dhcp
+{%-   endif %}
+{%- endif %}
+#export IP=::::{{ grains['nodename'] }}-crypto::dhcp
+#export IP=10.0.0.2::10.0.0.1:255.0.0.0:myserver:eth0

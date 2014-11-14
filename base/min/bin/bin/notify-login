@@ -1,0 +1,30 @@
+#!/bin/bash
+NMA=/var/run/nma.out
+HOST=$(hostname -s)
+NOT="$HOST $PAM_SERVICE login: $PAM_USER, Ruser: $PAM_RUSER, Rhost: $PAM_RHOST, Service: $PAM_SERVICE"
+
+if ! [ $(whoami) = "root" ]; then
+    exit 1
+fi
+
+if [ -O $NMA ]; then
+    if cmp $NMA <(echo "$NOT") ; then
+        # messages the same
+        if find $NMA -mmin +1 ; then
+            /usr/local/bin/nma.pl -application='pam.login' \
+                -event='warn' \
+                -notification="$NOT"
+        else
+            echo "Sent same message within last min, supressing"
+        fi
+    else
+        /usr/local/bin/nma.pl -application="$HOST pam.login" \
+            -event='warn' \
+            -notification="$NOT"
+    fi
+else
+    echo "$NOT" | tee $NMA
+    chmod 400 $NMA
+fi
+
+

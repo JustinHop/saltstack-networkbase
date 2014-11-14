@@ -1,0 +1,19 @@
+{% set oscn = 'wheezy' %}
+{% if 'oscodename' in grains %}
+{% set oscn = grains['oscodename'] %}
+{% endif %}
+# {{ oscn }}
+deb http://cdn.debian.net/debian/ {{ oscn }} main non-free contrib
+deb-src http://cdn.debian.net/debian/ {{ oscn }} main non-free contrib
+
+# {{ oscn }} Security
+deb http://security.debian.org/ {{ oscn }}/updates main contrib non-free
+deb-src http://security.debian.org/ {{ oscn }}/updates main contrib non-free
+
+# {{ oscn }}-updates, previously known as 'volatile'
+deb http://cdn.debian.net/debian/ {{ oscn }}-updates main contrib non-free
+deb-src http://cdn.debian.net/debian/ {{ oscn }}-updates main contrib non-free
+
+# {{ oscn }}-backports
+#deb http://cdn.debian.net/debian {{ oscn }}-backports main contrib non-free
+#deb-src http://cdn.debian.net/debian {{ oscn }}-backports main contrib non-free

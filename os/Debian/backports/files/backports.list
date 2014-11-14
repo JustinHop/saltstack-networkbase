@@ -1,0 +1,7 @@
+{% set oscn = 'wheezy' %}
+{% if 'oscodename' in grains %}
+{% set oscn = grains['oscodename'] %}
+{% endif %}
+# {{ oscn }}-backports
+deb http://cdn.debian.net/debian {{ oscn }}-backports main contrib non-free
+deb-src http://cdn.debian.net/debian {{ oscn }}-backports main contrib non-free

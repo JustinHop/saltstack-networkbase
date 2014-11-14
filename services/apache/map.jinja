@@ -1,0 +1,38 @@
+{% set apache = salt['grains.filter_by']({
+    'Debian': {
+        'server': 'apache2',
+        'service': 'apache2',
+
+        'mod_wsgi': 'libapache2-mod-wsgi',
+
+        'vhostdir': '/etc/apache2/sites-available',
+        'confdir': '/etc/apache2/conf.d',
+        'confext': '',
+        'logdir': '/var/log/apache2',
+        'wwwdir': '/srv',
+    },
+    'RedHat': {
+        'server': 'httpd',
+        'service': 'httpd',
+
+        'mod_wsgi': 'mod_wsgi',
+
+        'vhostdir': '/etc/httpd/conf.d',
+        'confdir': '/etc/httpd/conf.d',
+        'confext': '.conf',
+        'logdir': '/var/log/httpd',
+        'wwwdir': '/var/www',
+    },
+    'FreeBSD': {
+        'server': 'apache22',
+        'service': 'apache22',
+
+        'mod_wsgi': 'ap22-mod_wsgi3',
+
+        'vhostdir': '/usr/local/etc/apache22/Includes',
+        'confdir': '/usr/local/etc/apache22/Includes',
+        'confext': '',
+        'logdir': '/var/log/',
+        'wwwdir': '/usr/local/www/apache22/',
+    },
+}, merge=salt['pillar.get']('apache:lookup')) %}
