@@ -1,8 +1,8 @@
 {% from "services/salt/package-map.jinja" import pkgs with context %}
 
 salt-master:
-#  pkg.installed:
-#    - name: {{ pkgs['salt-master'] }}
+  pkg.installed:
+    - name: {{ pkgs['salt-master'] }}
   file.managed:
     - name: /etc/salt/master
     - template: jinja
@@ -10,5 +10,5 @@ salt-master:
   service.running:
     - enable: True
     - watch:
-        #      - pkg: salt-master
+      - pkg: salt-minion
       - file: salt-master
