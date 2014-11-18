@@ -39,26 +39,14 @@ def host_based_info():
 
     try:
         hostparts = re.match(
-            r'^(\D+)(\d+)\.(\w+)\.(\w)(\D+)(\d+)\.(\w+)\.(\w+)$', fqdn)
+            r'^(\D+)(\d+)\.(\w+)\.(\D+)(\d+)\.(\w+)\.(\w+)$', fqdn)
         grains['class'] = hostparts.group(1)
         grains['class_instance'] = hostparts.group(2)
         grains['product'] = hostparts.group(3)
-        if hostparts.group(4) == 'd':
-            grains['grade'] = 'dev'
-        elif hostparts.group(4) == 'q':
-            grains['grade'] = 'qa'
-        elif hostparts.group(4) == 's':
-            grains['grade'] = 'stage'
-        elif hostparts.group(4) == 'c':
-            grains['grade'] = 'cap'
-        elif hostparts.group(4) == 'p':
-            grains['grade'] = 'prod'
-        elif hostparts.group(4) == 'v':
-            grains['grade'] = 'virtual'
-        grains['cluster'] = hostparts.group(5)
-        grains['cluster_instance'] = hostparts.group(6)
-        grains['business'] = hostparts.group(7)
-        grains['tld'] = hostparts.group(8)
+        grains['cluster'] = hostparts.group(4)
+        grains['cluster_instance'] = hostparts.group(5)
+        grains['business'] = hostparts.group(6)
+        grains['tld'] = hostparts.group(7)
         host_based_info_show(grains)
         return grains
     except:
