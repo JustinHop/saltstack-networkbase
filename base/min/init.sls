@@ -1,5 +1,4 @@
 include:
-  - base/min/ca
   - base/min/bin
   - base/min/hostsfile/hostname
   #- base/min/hostsfile/resolv
@@ -18,7 +17,10 @@ base-min-pkgs:
       - curl
       - debsums
       - dialog
+      - etckeeper
       - git
+      - htop
+      - iotop
       - iptables
       - multitail
       - ncurses-term
@@ -28,4 +30,3 @@ base-min-pkgs:
       - tmux
       - vim
       - zsh
-
