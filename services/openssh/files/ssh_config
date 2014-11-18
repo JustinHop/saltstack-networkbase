@@ -15,12 +15,6 @@
 # list of available options, their meanings and defaults, please see the
 # ssh_config(5) man page.
 
-Host gitcore
-   user git
-   hostname core2.justinhoppensteadt.com
-   port 443
-   IdentityFile /etc/id_git_rsa
-
 Host *
    ForwardAgent yes
 #   ForwardX11 no
