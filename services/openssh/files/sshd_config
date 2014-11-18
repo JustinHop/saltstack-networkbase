@@ -8,16 +8,15 @@ Port 22
 #ListenAddress ::
 ListenAddress 0.0.0.0
 Protocol 2
-AllowUsers justin remote tunnel ubuntu root
 # HostKeys for protocol version 2
 HostKey /etc/ssh/ssh_host_rsa_key
 HostKey /etc/ssh/ssh_host_dsa_key
 HostKey /etc/ssh/ssh_host_ecdsa_key
 HostKey /etc/ssh/ssh_host_ed25519_key
-HostCertificate /etc/ssh/ssh_host_dsa_key-cert.pub
-HostCertificate /etc/ssh/ssh_host_ecdsa_key-cert.pub
-HostCertificate /etc/ssh/ssh_host_rsa_key-cert.pub
-HostCertificate /etc/ssh/ssh_host_ed25519_key-cert.pub
+#HostCertificate /etc/ssh/ssh_host_dsa_key-cert.pub
+#HostCertificate /etc/ssh/ssh_host_ecdsa_key-cert.pub
+#HostCertificate /etc/ssh/ssh_host_rsa_key-cert.pub
+#HostCertificate /etc/ssh/ssh_host_ed25519_key-cert.pub
 #Privilege Separation is turned on for security
 UsePrivilegeSeparation yes
 
