@@ -8,6 +8,6 @@
     - template: jinja
     - defaults:
         nameservers: ['10.10.10.1']
-        searchpath: 'dc1.hnh justinhoppensteadt.com'
+        searchpath: 'crowdrise.io'
 
 

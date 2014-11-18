@@ -68,6 +68,11 @@ base:
   product:{{ grains['product'] }}:
     - match: grain
     - product/{{ grains['product'] }}
+  {%      if 'class' in grains %}
+  {%        if ".".join(['product', grains['product'], 'class', grains['class']]) in states %}
+    - product/{{ grains['product'] }}/class/{{ grains['class'] }}
+  {%        endif %}
+  {%      endif %}
   {%    endif %}
   {%  endif %}
 
@@ -79,6 +84,11 @@ base:
   {%      if 'class_instance' in grains %}
   {%        if ".".join(['class', grains['class'], grains['class_instance']]) in states %}
     - class/{{ grains['class'] }}/{{ grains['class_instance'] }}
+  {%        endif %}
+  {%      endif %}
+  {%      if 'product' in grains %}
+  {%        if ".".join(['class', grains['class'], 'product', grains['product']]) in states %}
+    - class/{{ grains['class'] }}/product/{{ grains['product'] }}
   {%        endif %}
   {%      endif %}
   {%    endif %}
