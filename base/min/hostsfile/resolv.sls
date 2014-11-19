@@ -7,7 +7,7 @@
     - source: salt://base/min/hostsfile/files/resolv.conf
     - template: jinja
     - defaults:
-        domains: {{ grains['business'] }}.{{ grains ['tld'] }}
+        domain: {{ grains['business'] }}.{{ grains ['tld'] }}
         nameservers:
           - 173.203.4.9
           - 173.203.4.8
