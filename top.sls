@@ -55,6 +55,14 @@ base:
   {%    endif %}
   {%  endif %}
 
+  {%  if 'business' in grains %}
+  {%    if ".".join(['business', grains['business']]) in states %}
+  business:{{ grains['business'] }}:
+    - match: grain
+    - business/{{ grains['business'] }}
+  {%    endif %}
+  {%  endif %}
+
   {%  if 'cluster' in grains %}
   {%    if ".".join(['cluster', grains['cluster']]) in states %}
   cluster:{{ grains['cluster'] }}:

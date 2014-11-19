@@ -7,7 +7,7 @@
     - source: salt://base/min/hostsfile/files/resolv.conf
     - template: jinja
     - defaults:
-        nameservers: ['10.10.10.1']
+        nameservers: ['173.203.4.9', '173.203.4.8']
         searchpath: 'crowdrise.io'
 
 
