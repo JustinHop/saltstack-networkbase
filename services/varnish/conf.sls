@@ -1,10 +1,13 @@
+{% from "services/varnish/map.jinja" import varnish with context %}
 #
 #   services/varnish/conf.sls
 #   copy over config files for varnish depending on cluster
 #
 
 /etc/default/varnish:
-  file.recurse:
+  file:
+    - managed
+    - makedirs: True
     - source:
       - salt://services/varnish/files/{{ grains['cluster'] }}/etc/default
     - template: jinja
