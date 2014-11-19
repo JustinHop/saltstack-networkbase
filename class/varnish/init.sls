@@ -4,4 +4,4 @@
 #
 
 include:
-  services/varnish
+  - services/varnish
