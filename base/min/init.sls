@@ -1,7 +1,7 @@
 include:
+  - base/min/hostsfile/hostname
   - base/min/bin
   - base/min/autodns
-  - base/min/hostsfile/hostname
   #- base/min/hostsfile/resolv
   #- base/min/pam
 
