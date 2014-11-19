@@ -8,6 +8,7 @@ https://github.com/linickx/rsdns.git:
     - target: /usr/local/rsdns
   cmd.script:
     - source: salt://base/min/autodns/scripts/autodns.sh
+    - cwd: /usr/local/rsdns
     - user: root
     - group: root
     - shell: /bin/bash
