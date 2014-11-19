@@ -3,9 +3,6 @@
 #   copy over config files for varnish depending on cluster
 #
 
-include:
-  - varnish
-
 /etc/default/varnish:
   file.recurse:
     - source:
