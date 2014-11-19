@@ -6,3 +6,6 @@
 include:
   - services/varnish
 
+
+echo varnish > /etc/class:
+  cmd.run
