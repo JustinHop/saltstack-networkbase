@@ -62,19 +62,19 @@ include:
       - group: {{ group }}
       {% endfor %}
 
-#user_keydir_{{ name }}:
-#  file.directory:
-#    - name: {{ user.get('home', '/home/{0}'.format(name)) }}/.ssh
-#    - user: {{ name }}
-#    - group: {{ user_group }}
-#    - makedirs: True
-#    - mode: 700
-#    - require:
-#      - user: {{ name }}
-#      - group: {{ user_group }}
-#      {%- for group in user.get('groups', []) %}
-#      - group: {{ group }}
-#      {%- endfor %}
+user_keydir_{{ name }}:
+  file.directory:
+    - name: {{ user.get('home', '/home/{0}'.format(name)) }}/.ssh
+    - user: {{ name }}
+    - group: {{ user_group }}
+    - makedirs: True
+    - mode: 700
+    - require:
+      - user: {{ name }}
+      - group: {{ user_group }}
+      {%- for group in user.get('groups', []) %}
+      - group: {{ group }}
+      {%- endfor %}
 
   {% if 'ssh_keys' in user %}
   {% set key_type = 'id_' + user.get('ssh_key_type', 'rsa') %}
