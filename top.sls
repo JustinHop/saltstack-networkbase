@@ -56,10 +56,10 @@ base:
   {%  endif %}
 
   {%  if 'business' in grains %}
-  {%    if ".".join(['business', grains['business']]) in states %}
+  {%    if grains['business'] in states %}
   business:{{ grains['business'] }}:
     - match: grain
-    - business/{{ grains['business'] }}
+    - {{ grains['business'] }}
   {%    endif %}
   {%  endif %}
 
