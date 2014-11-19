@@ -7,7 +7,11 @@
     - source: salt://base/min/hostsfile/files/resolv.conf
     - template: jinja
     - defaults:
+        domain: {{ grains['business'] }}.{{ grains ['tld'] }}
         nameservers: ['173.203.4.9', '173.203.4.8']
-        searchpath: 'crowdrise.io'
+        searchpath: 
+          - {{ grains['product'] }}.{{ grains['cluster'] }}{{ grains['cluster_instance'] }}.{{ grains['business'] }}.{{ grains ['tld'] }}
+          - {{ grains['cluster'] }}{{ grains['cluster_instance'] }}.{{ grains['business'] }}.{{ grains ['tld'] }}
+          - {{ grains['business'] }}.{{ grains ['tld'] }}
 
 
