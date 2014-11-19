@@ -25,6 +25,8 @@ python-packages:
       - python-apt
       - pip-tools
       - psutil
+    - requires:
+      - pkg: python-pip
 
 /var/cache/salt-pip:
   file:
