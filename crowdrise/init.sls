@@ -5,3 +5,10 @@
 
 include:
   - base/min/hostsfile/resolv
+
+
+
+crowdrise-nopkg:
+  pkg.removed:
+    - pkgs: ['nano', 'resolvconf']
+
