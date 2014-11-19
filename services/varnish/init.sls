@@ -1,5 +1,7 @@
 {% from "services/varnish/map.jinja" import varnish with context %}
 
+include:
+  - services/varnish/conf
 
 varnish:
   pkg:
@@ -15,3 +17,4 @@ varnish:
     - reload: True
     - require:
       - pkg: varnish
+
