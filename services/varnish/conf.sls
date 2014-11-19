@@ -9,7 +9,7 @@
     - managed
     - makedirs: True
     - source:
-      - salt://services/varnish/files/{{ grains['cluster'] }}/etc/default
+      - salt://services/varnish/files/{{ grains['cluster'] }}/etc/default/varnish
     - template: jinja
     - require:
       - pkg: varnish
