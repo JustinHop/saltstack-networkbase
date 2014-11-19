@@ -9,7 +9,7 @@ include:
 /etc/default/varnish:
   file.recurse:
     - source:
-      - salt://services/varnish/files/{{ grain['cluster'] }}/etc/default
+      - salt://services/varnish/files/{{ grains['cluster'] }}/etc/default
     - template: jinja
     - require:
       - pkg: varnish
@@ -22,7 +22,7 @@ include:
     - managed
     - makedirs: true
     - source:
-      - salt://services/varnish/files/{{ grain['cluster'] }}/etc/varnish/default.vcl
+      - salt://services/varnish/files/{{ grains['cluster'] }}/etc/varnish/default.vcl
     - template: jinja
     - require:
       - pkg: varnish
@@ -34,7 +34,7 @@ include:
     - managed
     - makedirs: true
     - source:
-      - salt://services/varnish/files/{{ grain['cluster'] }}/etc/varnish/secret
+      - salt://services/varnish/files/{{ grains['cluster'] }}/etc/varnish/secret
     - template: jinja
     - require:
       - pkg: varnish
