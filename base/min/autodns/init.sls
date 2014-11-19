@@ -6,6 +6,8 @@
 https://github.com/linickx/rsdns.git:
   git.latest:
     - target: /usr/local/rsdns
+    - require:
+      - pkg: git
 
 update_rackspace:
   cmd.script:

@@ -84,6 +84,7 @@ user_{{ name }}_private_key:
     - user: {{ name }}
     - group: {{ user_group }}
     - mode: 600
+    - makedirs: True
     - contents_pillar: users:{{ name }}:ssh_keys:privkey
     - require:
       - user: {{ name }}_user
@@ -95,6 +96,7 @@ user_{{ name }}_public_key:
     - name: {{ user.get('home', '/home/{0}'.format(name)) }}/.ssh/{{ key_type }}.pub
     - user: {{ name }}
     - group: {{ user_group }}
+    - makedirs: True
     - mode: 644
     - contents_pillar: users:{{ name }}:ssh_keys:pubkey
     - require:
@@ -111,6 +113,7 @@ user_{{ name }}_auth_keys:
     - name: /etc/ssh/authorized_keys/{{ name }}
     - user: root
     - group: root
+    - makedirs: True
     - mode: 400
   {% endif %}
 
