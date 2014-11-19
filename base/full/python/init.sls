@@ -19,7 +19,6 @@ python-packages:
     - pkgs:
       - docopt
       - cookiecutter
-      - cookiecutter-docopt
       - mccabe
       - flake8
       - pexpect
