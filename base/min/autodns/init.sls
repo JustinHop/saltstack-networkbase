@@ -14,5 +14,6 @@ update_rackspace:
     - user: root
     - group: root
     - shell: /bin/bash
-    - require: https://github.com/linickx/rsdns.git
+    - require: 
+      - git.latest: https://github.com/linickx/rsdns.git
 
