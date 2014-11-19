@@ -23,6 +23,7 @@ base-min-pkgs:
       - iotop
       - iptables
       - multitail
+      - mosh
       - ncurses-term
       - python-apt
       - rkhunter
