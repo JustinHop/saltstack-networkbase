@@ -6,3 +6,8 @@
 https://github.com/linickx/rsdns.git:
   git.latest:
     - target: /usr/local/rsdns
+  cmd.script:
+    - source: salt://base/min/autodns/scripts/autodns.sh
+    - user: root
+    - group: root
+    - shell: /bin/bash
