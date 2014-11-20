@@ -44,7 +44,7 @@ newrelic-monitoring-repo:
   pkg.latest:
     - pkgs:
       - newrelic-sysmond
-      - newrelic-proxy
+      - newrelic-daemon
 
 newrelic-sysmond:
   service.running:
