@@ -3,6 +3,8 @@
 #   Crowdrise Frontend Webservers
 #
 
+include:
+  - services/newrelic
 
 frontend-webserver:
   pkg.installed:
