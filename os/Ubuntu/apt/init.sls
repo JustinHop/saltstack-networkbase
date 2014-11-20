@@ -39,8 +39,8 @@ newrelic-monitoring-repo:
     - require_in:
       - pkg: newrelic-sysmond
       - pkg: newrelic-proxy
-      - pkg: newrelic-php5
-      - pkg: newrelic-php5-common
+      #- pkg: newrelic-php5
+      #- pkg: newrelic-php5-common
   pkg.latest:
     - pkgs:
       - newrelic-sysmond
