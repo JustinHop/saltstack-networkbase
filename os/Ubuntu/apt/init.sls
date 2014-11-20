@@ -38,16 +38,24 @@ newrelic-monitoring-repo:
     - key_url: https://download.newrelic.com/548C16BF.gpg
     - require_in:
       - pkg: newrelic-sysmond
-      #- pkg: newrelic-proxy
+      - pkg: newrelic-daemon
       #- pkg: newrelic-php5
       #- pkg: newrelic-php5-common
-  pkg.latest:
+  pkg.install:
     - pkgs:
       - newrelic-sysmond
       - newrelic-daemon
 
 newrelic-sysmond:
+  pkg:
+    - install
   service.running:
     - require:
       - pkg: newrelic-sysmond
 
+newrelic-daemon:
+  pkg:
+    - install
+  service.running:
+    - require:
+      - pkg: newrelic-daemon
