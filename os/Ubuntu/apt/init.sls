@@ -60,7 +60,7 @@ newrelic-daemon:
     - require:
       - pkg: newrelic-daemon
 
-nrsysmond-config --set license_key=847f9a3986c314777e97afe8171bb1d013fe4dff:
+nrsysmond-config --set license_key=847f9a3986c314777e97afe8171bb1d013fe4dff; service newrelic-sysmond start:
   cmd.run:
     - onfail:
       - service: newrelic-sysmond
