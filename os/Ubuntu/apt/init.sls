@@ -30,3 +30,28 @@ rackspace-monitoring-repo:
     - require:
       - pkg: rackspace-monitoring-agent
       - sls: base/min/autodns
+
+
+newrelic-monitoring-repo:
+  pkgrepo.managed:
+    - name: deb http://apt.newrelic.com/debian/ newrelic non-free
+    - key_url: https://download.newrelic.com/548C16BF.gpg
+    - require_in:
+      - pkg: newrelic-sysmond
+      - pkg: newrelic-proxy
+      - pkg: newrelic-php5
+      - pkg: newrelic-php5-common
+  pkg.latest:
+    - pkgs:
+      - newrelic-sysmond
+      - newrelic-proxy
+
+newrelic-sysmond:
+  service.running:
+    - require:
+      - pkg: newrelic-sysmond
+
+newrelic-proxy:
+  service.running:
+    - require:
+      - pkg: newrelic-proxy
