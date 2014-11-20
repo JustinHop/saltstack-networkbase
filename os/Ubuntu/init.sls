@@ -18,7 +18,5 @@ ubuntu-setup:
 
 
 include:
-  - base/min/bin
-  - base/full/python
-  #  - os/Ubuntu/apt
+  - os/Ubuntu/apt
   #  - services/check_mk
