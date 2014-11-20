@@ -51,7 +51,7 @@ newrelic-sysmond:
     - require:
       - pkg: newrelic-sysmond
 
-newrelic-proxy:
+newrelic-daemon:
   service.running:
     - require:
       - pkg: newrelic-proxy
