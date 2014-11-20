@@ -24,3 +24,9 @@ rackspace-monitoring-repo:
 
   pkg.latest:
     - name: rackspace-monitoring-agent
+
+  service.running:
+    - name: rackspace-monitoring-agent
+    - require:
+      - pkg: rackspace-monitoring-agent
+      - sls: base/min/autodns/init.sls

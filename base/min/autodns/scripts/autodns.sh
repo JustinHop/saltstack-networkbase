@@ -35,3 +35,9 @@ else
     -i $(hostname -I | awk '{ print $1 }')
 fi
 
+if [ -f /usr/bin/rackspace-monitoring-agent ]; then
+  if ! [ -f /etc/rackspace-monitoring-agent.cfg ]; then
+    /usr/bin/rackspace-monitoring-agent --setup --username $RSUSER --apikey $RSAPI
+    service rackspace-monitoring-agent start
+  fi
+fi
