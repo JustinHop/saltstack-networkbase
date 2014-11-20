@@ -51,7 +51,3 @@ newrelic-sysmond:
     - require:
       - pkg: newrelic-sysmond
 
-newrelic-daemon:
-  service:
-    - running
-
