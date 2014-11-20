@@ -23,4 +23,4 @@ rackspace-monitoring-repo:
       - pkg: rackspace-monitoring-agent
 
   pkg.latest:
-    - name: rackspace-monitoring-agent:
+    - name: rackspace-monitoring-agent
