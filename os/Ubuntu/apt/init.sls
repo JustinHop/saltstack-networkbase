@@ -22,7 +22,7 @@ rackspace-monitoring-repo:
     - require_in:
       - pkg: rackspace-monitoring-agent
 
-  pkg.install:
+  pkg.installed:
     - name: rackspace-monitoring-agent
 
   service.running:
@@ -41,21 +41,21 @@ newrelic-monitoring-repo:
       - pkg: newrelic-daemon
       #- pkg: newrelic-php5
       #- pkg: newrelic-php5-common
-  pkg.install:
+  pkg.installed:
     - pkgs:
       - newrelic-sysmond
       - newrelic-daemon
 
 newrelic-sysmond:
   pkg:
-    - install
+    - installed
   service.running:
     - require:
       - pkg: newrelic-sysmond
 
 newrelic-daemon:
   pkg:
-    - install
+    - installed
   service.running:
     - require:
       - pkg: newrelic-daemon
