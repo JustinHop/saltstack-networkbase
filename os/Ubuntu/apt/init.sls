@@ -22,7 +22,7 @@ rackspace-monitoring-repo:
     - require_in:
       - pkg: rackspace-monitoring-agent
 
-  pkg.latest:
+  pkg.install:
     - name: rackspace-monitoring-agent
 
   service.running:
