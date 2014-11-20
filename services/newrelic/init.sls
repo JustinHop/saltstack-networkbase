@@ -15,4 +15,3 @@ newrelic-mon-python:
       - pkg: python-pip
 
 
-
