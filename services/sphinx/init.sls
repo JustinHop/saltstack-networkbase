@@ -23,3 +23,9 @@ sphinxsearch:
 /var/log/sphinxsearch:
   file.directory:
     - mode: 755
+
+
+/usr/bin/indexer --all --rotate:
+  cron.present:
+    - user: root
+    - minute: '*/10'
