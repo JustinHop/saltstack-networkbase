@@ -27,5 +27,6 @@ sphinxsearch:
 
 /usr/bin/indexer --all --rotate:
   cron.present:
+    - identifier: sphinxupdate
     - user: root
     - minute: '*/10'
