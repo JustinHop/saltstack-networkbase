@@ -1,0 +1,3 @@
+salt-call state.highstate
+salt-call state.highstate
+salt-call state.highstate
