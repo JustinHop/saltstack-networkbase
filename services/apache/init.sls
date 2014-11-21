@@ -20,3 +20,25 @@ apache-restart:
     - wait
     - name: service.restart
     - m_name: {{ apache.service }}
+
+cr-apache-pkgs:
+  pkg.installed:
+    - pkgs:
+      - apache2
+      - apache2-mpm-prefork
+      - apache2.2-common
+      - apache2.2-bin
+      - php-apc
+      - php5
+      - php5-cli
+      - php5-common
+      - php5-curl
+      - php5-mysql
+
+/etc/apache2:
+  file.recurse:
+    - source: salt://services/apache/files/{{ grains['cluster'] }}/apache2
+    - dir_mode: 755
+    - file_mode: 644
+    - template: jinja
+    - include_empty: true
