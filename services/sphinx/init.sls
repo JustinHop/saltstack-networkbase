@@ -20,3 +20,6 @@ sphinxsearch:
     - user: root
     - group: root
 
+/var/log/sphinxsearch:
+  file.directory:
+    - mode: 755
