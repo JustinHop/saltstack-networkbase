@@ -1,4 +1,4 @@
-{% from "apache/map.jinja" import apache with context %}
+{% from "services/apache/map.jinja" import apache with context %}
 
 apache:
   pkg:
