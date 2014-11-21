@@ -5,6 +5,8 @@
 
 include:
   - services/newrelic
+  - services/apache
+  - services/apache/key
 
 frontend-webserver:
   pkg.installed:
