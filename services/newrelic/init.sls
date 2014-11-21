@@ -15,3 +15,11 @@ newrelic-mon-python:
       - pkg: python-pip
 
 
+/etc/newrelic:
+  file.recurse:
+    - makedirs: True
+    - user: root
+    - group: root
+    - template: jinja
+    - require_in:
+      -pkg: newrelic-plugin-agent
