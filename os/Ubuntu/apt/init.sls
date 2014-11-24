@@ -36,13 +36,4 @@ newrelic-monitoring-repo:
   pkgrepo.managed:
     - name: deb http://apt.newrelic.com/debian/ newrelic non-free
     - key_url: https://download.newrelic.com/548C16BF.gpg
-    - require_in:
-      - pkg: newrelic-sysmond
-      - pkg: newrelic-daemon
-      #- pkg: newrelic-php5
-      #- pkg: newrelic-php5-common
-  pkg.installed:
-    - pkgs:
-      - newrelic-sysmond
-      - newrelic-daemon
 

@@ -4,9 +4,12 @@
 #
 
 
-newrelic-mon-python:
+newrelic:
   pkg.installed:
-    - name: python-pip
+    - pkgs:
+      - newrelic-sysmond
+      - newrelic-daemon
+      - python-pip
   module.run:
     - name: pip.install
     - pkgs:
