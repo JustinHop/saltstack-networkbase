@@ -2,6 +2,7 @@
 
 include:
   - services/varnish/conf
+  - services/varnish/newrelic
 
 varnish:
   pkg:
