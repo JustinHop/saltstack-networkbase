@@ -19,13 +19,26 @@ newrelic:
 
 /etc/newrelic:
   file.recurse:
-    - source: salt://services/newrelic/files
+    - source: salt://services/newrelic/files/newrelic
     - makedirs: True
     - user: root
     - group: root
     - file_mode: 0644
     - dir_mode: 0755
     - template: jinja
+
+/etc/init.d/newrelic-plugin-agent:
+  file.managed:
+    - source: salt://services/newrelic/files/init.d/newrelic-plugin-agent
+    - user: root
+    - group: root
+    - mode: 0755
+    - template: jinja
+
+newrelic-plugin-agent:
+  service.running:
+    - require:
+      - file: /etc/init.d/newrelic-plugin-agent
 
 newrelic-sysmond:
   pkg:
