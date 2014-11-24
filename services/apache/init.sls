@@ -35,13 +35,13 @@ cr-apache-pkgs:
       - php5-curl
       - php5-mysql
 
-/etc/apache2:
-  file.recurse:
-    - source: salt://services/apache/files/{{ grains['oscodename'] }}/{{ grains['cluster'] }}/apache2
-    - dir_mode: 755
-    - file_mode: 644
-    - template: jinja
-    - include_empty: true
+#/etc/apache2:
+#  file.recurse:
+#    - source: salt://services/apache/files/{{ grains['oscodename'] }}/{{ grains['cluster'] }}/apache2
+#    - dir_mode: 755
+#    - file_mode: 644
+#    - template: jinja
+#    - include_empty: true
 
 php5-fpm:
   pkg:
