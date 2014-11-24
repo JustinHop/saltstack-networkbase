@@ -9,6 +9,7 @@ base:
     - users
     - base/min
     - services/openssh
+    - services/rackspace
     {%  if 'roles' in grains %}
     {%    for role in grains['roles'] %}
     {%      if role in states %}
