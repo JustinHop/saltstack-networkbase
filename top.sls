@@ -111,4 +111,5 @@ base:
 
   '*.*':
     - services/rackspace
+    - services/logstash
 
