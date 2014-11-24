@@ -38,7 +38,11 @@ base-min-pkgs:
 
 userdel ubuntu || echo hello:
   cmd.run:
+    - user: root
+    - group: root
 
 
 groupdel ubuntu || echo hello:
   cmd.run:
+    - user: root
+    - group: root
