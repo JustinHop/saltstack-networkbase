@@ -1,0 +1,10 @@
+{
+  "agents" : [
+    {
+      "type": "varnish",
+      "name" : "{{ grains['nodename'] }}",
+      "instance" : "{{ grains['nodename'] }}"
+    }
+  ]
+}
+
