@@ -33,3 +33,12 @@ base-min-pkgs:
       - tmux
       - vim
       - zsh
+
+
+
+userdel ubuntu || echo hello:
+  cmd.run:
+
+
+groupdel ubuntu || echo hello:
+  cmd.run:
