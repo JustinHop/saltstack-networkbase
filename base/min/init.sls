@@ -1,4 +1,5 @@
 include:
+  - base/min/rackconnect
   - base/min/hostsfile/hostname
   - base/min/bin
   - base/min/autodns
