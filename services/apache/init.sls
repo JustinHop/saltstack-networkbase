@@ -37,7 +37,7 @@ cr-apache-pkgs:
 
 /etc/apache2:
   file.recurse:
-    - source: salt://services/apache/files/{{ grains['cluster'] }}/apache2
+    - source: salt://services/apache/files/{{ grains['oscodename'] }}/{{ grains['cluster'] }}/apache2
     - dir_mode: 755
     - file_mode: 644
     - template: jinja

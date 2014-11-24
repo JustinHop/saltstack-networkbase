@@ -1,0 +1,28 @@
+<VirtualHost *:8080>
+        ServerAdmin webmaster@localhost
+	# force https via redirect
+        DocumentRoot /etc/apache2/checks
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+        <Directory /etc/apache2/checks>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order deny,allow
+                deny from all
+		allow from 127.0.0.1
+		allow from 10.181.131.229 
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/status-error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/status-access.log combined
+
+
+</VirtualHost>
+
