@@ -59,3 +59,8 @@ nrsysmond-config --set license_key=847f9a3986c314777e97afe8171bb1d013fe4dff ; se
     - onfail:
       - service: newrelic-sysmond
 
+rackspace-backup:
+  pkg.installed:
+    - sources:
+      - cloudbackup-updater: http://agentrepo.drivesrvr.com/debian/cloudbackup-updater-latest.deb
+
