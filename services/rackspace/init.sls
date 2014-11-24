@@ -19,3 +19,4 @@ rackspace-tools:
       - python-cloudservers
     - requires:
       - pkg: python-pip
+      - pkg: python-dev
