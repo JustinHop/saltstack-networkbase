@@ -17,7 +17,7 @@ newrelic-mon-python:
 
 /etc/newrelic:
   file.recurse:
-    - source://services/newrelic/files
+    - source: salt://services/newrelic/files
     - makedirs: True
     - user: root
     - group: root
