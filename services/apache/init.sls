@@ -42,6 +42,3 @@ cr-apache-pkgs:
     - file_mode: 644
     - template: jinja
     - include_empty: true
-    - require_in:
-      - pkg: php5-mysql
-

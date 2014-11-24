@@ -13,6 +13,7 @@ base-min-pkgs:
       - bash-completion
       - bind9-host
       - bsdmainutils
+      - ca-certificates
       - chkrootkit
       - colortail
       - curl

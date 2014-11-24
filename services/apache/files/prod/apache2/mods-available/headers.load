@@ -1,1 +1,5 @@
 LoadModule headers_module /usr/lib/apache2/modules/mod_headers.so
+<IfModule mod_headers.c>
+# this domain should only be contacted in HTTPS for the next 6 months
+Header add Strict-Transport-Security "max-age=15768000"
+</IfModule> 
