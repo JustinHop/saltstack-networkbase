@@ -5,7 +5,7 @@
 
 git:
   pkg:
-    - install
+    - installed
 
 https://github.com/linickx/rsdns.git:
   git.latest:
