@@ -31,7 +31,7 @@ Host *
    CheckHostIP yes
    AddressFamily inet
    ConnectTimeout 15
-   StrictHostKeyChecking yes
+   StrictHostKeyChecking no
 #   IdentityFile ~/.ssh/identity
 #   IdentityFile ~/.ssh/id_rsa
 #   IdentityFile ~/.ssh/id_dsa
