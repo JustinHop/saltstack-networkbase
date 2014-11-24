@@ -4,6 +4,14 @@
 #
 
 
+python-dev:
+  pkg:
+    - installed
+
+python-pip:
+  pkg:
+    - installed
+
 rackspace-tools:
   module.run:
     - name: pip.install
