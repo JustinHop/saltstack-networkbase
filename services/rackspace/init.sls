@@ -8,7 +8,11 @@ rackspace-tools:
   module.run:
     - name: pip.install
     - pkgs:
+      - rackspace-monitoring-cli
+      - rackspace-monitoring
       - python-clouddns
+      - cloud_dns_cli
+      - agent.http
       - ptrcreate
       - rack
       - python-cloudlb
