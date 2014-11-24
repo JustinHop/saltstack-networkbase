@@ -109,6 +109,6 @@ base:
   {%  endif %}
 
 
-  '*':
+  '*.*':
     - services/rackspace
 
