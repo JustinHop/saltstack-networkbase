@@ -3,6 +3,7 @@
 include:
   - services/varnish/conf
   - services/varnish/newrelic
+  - services/varnish/stunnel
 
 varnish:
   pkg:
