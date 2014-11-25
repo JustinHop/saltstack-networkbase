@@ -4,4 +4,6 @@
 #
 
 include:
-  services/rabbitmq/server
+  - services/rabbitmq/server
+  - services/newrelic
+
