@@ -17,6 +17,19 @@
       - pkg: varnish
     - require_in:
       - service: varnish
+
+/etc/varnish/secret:
+  file:
+    - managed
+    - makedirs: true
+    - source:
+      - salt://services/varnish/files/{{ grains['cluster'] }}/etc/varnish/secret
+    - template: jinja
+    - require:
+      - pkg: varnish
+    - watch_in:
+      - service: varnish
+
 {%    for cluster in grains['cluster'] %}
 {%      if cluster == 'prod' %}
 
@@ -55,8 +68,7 @@ touch /tmp/test:
     - require:
       - pkg: git
       - user: beanstalk
-{%      endif %}
-{%    endfor %}
+{%      else %}
 # Below we deploy the vcl files and we trigger a reload of varnish
 /etc/varnish/default.vcl:
   file:
@@ -70,16 +82,7 @@ touch /tmp/test:
     - watch_in:
       - service: varnish
 
-/etc/varnish/secret:
-  file:
-    - managed
-    - makedirs: true
-    - source:
-      - salt://services/varnish/files/{{ grains['cluster'] }}/etc/varnish/secret
-    - template: jinja
-    - require:
-      - pkg: varnish
-    - watch_in:
-      - service: varnish
+{%      endif %}
+{%    endfor %}
 {%  endif %}
 
