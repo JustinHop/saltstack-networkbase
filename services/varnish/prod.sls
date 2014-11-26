@@ -17,8 +17,7 @@
 
 /etc/varnish:
   file.directory:
-    - root: beanstalk
-    - group: beanstalk
+    - user: beanstalk
     - mode: 0775
     - require:
       - user: beanstalk
