@@ -5,85 +5,50 @@
 #
 
 
+
 {%  if 'cluster' in grains %}
-/etc/default/varnish:
-  file:
-    - managed
-    - makedirs: True
-    - source:
-      - salt://services/varnish/files/{{ grains['cluster'] }}/etc/default/varnish
-    - template: jinja
-    - require:
-      - pkg: varnish
-    - require_in:
-      - service: varnish
+include:
+  - services/varnish/{{ grains['cluster'] }}
 
-/etc/varnish/secret:
-  file:
-    - managed
-    - makedirs: true
-    - source:
-      - salt://services/varnish/files/{{ grains['cluster'] }}/etc/varnish/secret
-    - template: jinja
-    - require:
-      - pkg: varnish
-    - watch_in:
-      - service: varnish
-
-{%    for cluster in grains['cluster'] %}
-{%      if cluster == 'prod' %}
-
-echo {{ grains['cluster'] }} >> /tmp/test:
-  cmd:
-    - run
-
-/etc/varnish:
-  file.directory:
-    - root: beanstalk
-    - group: beanstalk
-    - mode: 0775
-    - require:
-      - user: beanstalk
-  git.latest:
-    - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
-    - target: master
-    - user: beanstalk
-    - identity: /home/beanstalk/.ssh/id_rsa
-    - require:
-      - pkg: git
-      - user: beanstalk
-{%      elif cluster == 'load' %}
-/etc/varnish:
-  file.directory:
-    - root: beanstalk
-    - group: beanstalk
-    - mode: 0775
-    - require:
-      - user: beanstalk
-# Below we deploy the vcl files and we trigger a reload of varnish
-/etc/varnish/default.vcl-{{ grains['cluster'] }}:
-  file:
-    - managed
-    - name: /etc/varnish/default.vcl
-    - makedirs: true
-    - source:
-      - salt://services/varnish/files/{{ grains['cluster'] }}/etc/varnish/default.vcl
-    - template: jinja
-    - require:
-      - pkg: varnish
-    - watch_in:
-      - service: varnish
+#{%    for cluster in grains['cluster'] %}
+#{%      if cluster == 'prod' %}
 #
-#  git.latest:
-#    - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
-#    - target: loadtest
-#    - user: beanstalk
-#    - identity: /home/beanstalk/.ssh/id_rsa
+#echo {{ grains['cluster'] }} >> /tmp/test:
+#  cmd:
+#    - run
+#
+#{%      elif cluster == 'load' %}
+#/etc/varnish:
+#  file.directory:
+#    - root: beanstalk
+#    - group: beanstalk
+#    - mode: 0775
 #    - require:
-#      - pkg: git
 #      - user: beanstalk
-{%      else %}
-{%      endif %}
-{%    endfor %}
-{%  endif %}
-
+## Below we deploy the vcl files and we trigger a reload of varnish
+#/etc/varnish/default.vcl-{{ grains['cluster'] }}:
+#  file:
+#    - managed
+#    - name: /etc/varnish/default.vcl
+#    - makedirs: true
+#    - source:
+#      - salt://services/varnish/files/{{ grains['cluster'] }}/etc/varnish/default.vcl
+#    - template: jinja
+#    - require:
+#      - pkg: varnish
+#    - watch_in:
+#      - service: varnish
+##
+##  git.latest:
+##    - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
+##    - target: loadtest
+##    - user: beanstalk
+##    - identity: /home/beanstalk/.ssh/id_rsa
+##    - require:
+##      - pkg: git
+##      - user: beanstalk
+#{%      else %}
+#{%      endif %}
+#{%    endfor %}
+#{%  endif %}
+#
