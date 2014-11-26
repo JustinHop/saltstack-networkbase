@@ -70,9 +70,10 @@ touch /tmp/test:
       - user: beanstalk
 {%      else %}
 # Below we deploy the vcl files and we trigger a reload of varnish
-/etc/varnish/default.vcl:
+/etc/varnish/default.vcl-{{ grains['cluster'] }}:
   file:
     - managed
+    - name: /etc/varnish/default.vcl
     - makedirs: true
     - source:
       - salt://services/varnish/files/{{ grains['cluster'] }}/etc/varnish/default.vcl
