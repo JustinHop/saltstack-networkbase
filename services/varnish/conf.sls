@@ -33,7 +33,7 @@
 {%    for cluster in grains['cluster'] %}
 {%      if cluster == 'prod' %}
 
-touch /tmp/test:
+echo {{ grains['cluster'] }} >> /tmp/test:
   cmd:
     - run
 
@@ -60,17 +60,6 @@ touch /tmp/test:
     - mode: 0775
     - require:
       - user: beanstalk
-  git.latest:
-    - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
-    - target: loadtest
-    - user: beanstalk
-    - identity: /home/beanstalk/.ssh/id_rsa
-    - require:
-      - pkg: git
-      - user: beanstalk
-{%      else %}
-{%      endif %}
-{%    endfor %}
 # Below we deploy the vcl files and we trigger a reload of varnish
 /etc/varnish/default.vcl-{{ grains['cluster'] }}:
   file:
@@ -84,6 +73,17 @@ touch /tmp/test:
       - pkg: varnish
     - watch_in:
       - service: varnish
-
+#
+#  git.latest:
+#    - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
+#    - target: loadtest
+#    - user: beanstalk
+#    - identity: /home/beanstalk/.ssh/id_rsa
+#    - require:
+#      - pkg: git
+#      - user: beanstalk
+{%      else %}
+{%      endif %}
+{%    endfor %}
 {%  endif %}
 
