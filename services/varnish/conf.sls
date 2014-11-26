@@ -4,6 +4,9 @@
 #   copy over config files for varnish depending on cluster
 #
 
+
+{%  if 'cluster' in grains %}
+{%    for cluster in grains['cluster'] %}
 /etc/default/varnish:
   file:
     - managed
@@ -15,7 +18,40 @@
       - pkg: varnish
     - require_in:
       - service: varnish
-
+{%      if cluster == 'prod' %}
+/etc/varnish:
+  file.directory:
+    - root: beanstalk
+    - group: beanstalk
+    - mode: 0775
+    - require:
+      - user: beanstalk
+  git.latest:
+    - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
+    - target: master
+    - user: beanstalk
+    - identity: /home/beanstalk/.ssh/id_rsa
+    - require:
+      - pkg: git
+      - user: beanstalk
+{%      elif cluster == 'load' %}
+/etc/varnish:
+  file.directory:
+    - root: beanstalk
+    - group: beanstalk
+    - mode: 0775
+    - require:
+      - user: beanstalk
+  git.latest:
+    - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
+    - target: loadtest
+    - user: beanstalk
+    - identity: /home/beanstalk/.ssh/id_rsa
+    - require:
+      - pkg: git
+      - user: beanstalk
+{%      endif %}
+{%    endfor %}
 # Below we deploy the vcl files and we trigger a reload of varnish
 /etc/varnish/default.vcl:
   file:
@@ -40,4 +76,5 @@
       - pkg: varnish
     - watch_in:
       - service: varnish
+{%  endif %}
 
