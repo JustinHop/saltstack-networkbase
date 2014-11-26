@@ -4,7 +4,7 @@
 #
 
 include:
-  services/ssl
+  - services/ssl
 
 stunnel4:
   pkg:
