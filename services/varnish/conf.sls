@@ -6,7 +6,6 @@
 
 
 {%  if 'cluster' in grains %}
-{%    for cluster in grains['cluster'] %}
 /etc/default/varnish:
   file:
     - managed
@@ -18,6 +17,7 @@
       - pkg: varnish
     - require_in:
       - service: varnish
+{%    for cluster in grains['cluster'] %}
 {%      if cluster == 'prod' %}
 /etc/varnish:
   file.directory:
