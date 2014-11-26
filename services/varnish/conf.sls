@@ -69,6 +69,8 @@ touch /tmp/test:
       - pkg: git
       - user: beanstalk
 {%      else %}
+{%      endif %}
+{%    endfor %}
 # Below we deploy the vcl files and we trigger a reload of varnish
 /etc/varnish/default.vcl-{{ grains['cluster'] }}:
   file:
@@ -83,7 +85,5 @@ touch /tmp/test:
     - watch_in:
       - service: varnish
 
-{%      endif %}
-{%    endfor %}
 {%  endif %}
 
