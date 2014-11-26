@@ -21,6 +21,8 @@
     - mode: 0775
     - require:
       - user: beanstalk
+
+varnish-git:
   git.latest:
     - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
     - rev: master
@@ -31,6 +33,7 @@
     - require:
       - pkg: git
       - user: beanstalk
+      - file: /etc/varnish
 
 /etc/varnish/secret:
   file:
