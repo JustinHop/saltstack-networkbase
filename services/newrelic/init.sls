@@ -39,6 +39,8 @@ newrelic-plugin-agent:
   service.running:
     - require:
       - file: /etc/init.d/newrelic-plugin-agent
+    - watch:
+      - file: /etc/init.d/newrelic-plugin-agent
 
 newrelic-sysmond:
   pkg:

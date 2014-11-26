@@ -112,5 +112,4 @@ base:
   '*.*':
     - services/rackspace
     - services/salt/minion
-    - services/logstash
 
