@@ -19,6 +19,11 @@
       - service: varnish
 {%    for cluster in grains['cluster'] %}
 {%      if cluster == 'prod' %}
+
+touch /tmp/test:
+  cmd:
+    - run
+
 /etc/varnish:
   file.directory:
     - root: beanstalk
