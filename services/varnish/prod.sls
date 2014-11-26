@@ -21,6 +21,8 @@
     - mode: 0775
     - require:
       - user: beanstalk
+    - require_in:
+      - varnish-git
 
 varnish-git:
   git.latest:
