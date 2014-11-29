@@ -15,7 +15,7 @@ sphinxsearch:
       - pkg: sphinxsearch
 
 /etc/sphinxsearch:
-  file.dir:
+  file.directory:
     - user: root
     - group: root
 
