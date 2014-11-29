@@ -24,3 +24,9 @@ rackspace-tools:
     - requires:
       - pkg: python-pip
       - pkg: python-dev
+
+six:
+  module.run:
+    - name: pip.latest
+    - pkgs:
+      - six
