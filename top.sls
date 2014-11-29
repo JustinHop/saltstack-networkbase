@@ -113,4 +113,5 @@ base:
   '*.*':
     - services/rackspace
     - services/salt/minion
+    - last
 
