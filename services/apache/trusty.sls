@@ -39,7 +39,12 @@ trusty-packages:
     - pkgs:
       - libapache2-mod-php5
       - newrelic-php5
-
+      - libgd3
+      - libjbig0
+      - libtiff5
+      - libvpx1
+      - libxpm4
+      - php5-gd
 
 /var/www/vhosts/www.crowdrise.com:
   file.directory:
