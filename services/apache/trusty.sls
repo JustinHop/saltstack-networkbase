@@ -14,7 +14,7 @@
 
 fix-apache-config-trusty:
   cmd.script:
-    - source: salt://services/apache2/scripts/fixit.sh
+    - source: salt://services/apache/scripts/fixit.sh
     - user: root
     - group: root
     - cwd: /root
