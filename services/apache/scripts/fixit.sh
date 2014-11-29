@@ -50,6 +50,7 @@ for MOD in \
   autoindex \
   deflate \
   dir \
+  ssl \
   env \
   filter \
   headers \
