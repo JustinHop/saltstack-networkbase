@@ -30,12 +30,11 @@ varnish-git:
     - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
     - rev: loadtest
     - target: /etc/varnish
-    - user: beanstalk
+    - user: root
     - identity: /home/beanstalk/.ssh/id_rsa
     - force: true
     - require:
       - pkg: git
-      - user: beanstalk
       - file: /etc/varnish
 
 /etc/varnish/secret:

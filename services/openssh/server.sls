@@ -11,8 +11,20 @@ openssh-server:
     - group: root
     - mode: 644
     - source: salt://services/openssh/files/banner
-    - require:
-      - pkg: openssh-server
+
+/etc/ssh/ssh_config:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 644
+    - source: salt://services/openssh/files/ssh_config
+
+/etc/ssh/sshd_config:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 644
+    - source: salt://services/openssh/files/sshd_config
 
 /etc/ssh/authorized_keys:
   file.recurse:
