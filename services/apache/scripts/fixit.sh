@@ -18,6 +18,12 @@ for CONF in /etc/apache2/conf-enabled/* ; do
   fi
 done
 
+for CONF in charset  localized-error-pages  other-vhosts-access-log  security  serve-cgi-bin ; do
+  a2enconf $CONF
+done
+
+
+
 #
 # Mods
 #
@@ -31,6 +37,31 @@ for MOD in /etc/apache2/mods-enabled/* ; do
     a2enmod $(basename $MOD .conf)
   fi
 done
+
+for MOD in \
+  access_compat \
+  alias \
+  auth_basic \
+  authn_core \
+  authn_file \
+  authz_core \
+  authz_host \
+  authz_user \
+  autoindex \
+  deflate \
+  dir \
+  env \
+  filter \
+  headers \
+  mime \
+  mpm_prefork \
+  negotiation \
+  php5 \
+  setenvif \
+  status ; do
+  a2enmod $MOD
+done
+
 
 #
 # Sites
@@ -46,6 +77,12 @@ for SITE in /etc/apache2/sites-enabled/* ; do
   fi
 done
 
+for SITE in \
+  010-http-crowdrise.com \
+  100-https-crowdrise.com \
+  900-http-localhost-monitoring ; do
+  a2ensite $SITE
+done
 
 if [ $RESTART==1 ]; then
   service apache2 restart
