@@ -3,8 +3,6 @@
 #   Apache config for ubuntu 14.04
 #
 
-
-
 /etc/apache2:
   file.recurse:
     - source: salt://services/apache/files/{{ grains['oscodename'] }}/{{ grains['cluster'] }}/apache2
@@ -14,3 +12,8 @@
     - include_empty: true
     - keep_symlinks: true
 
+fix-apache-config-trusty:
+  cmd.script:
+    - source: salt://services/apache2/scripts/fixit.sh
+    - user: root
+    - group: root
