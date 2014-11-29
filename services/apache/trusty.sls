@@ -21,6 +21,10 @@
     - include_empty: true
     - keep_symlinks: true
 
+php5enmod newrelic:
+  cmd.run:
+    - user: root
+    - group: root
 
 fix-apache-config-trusty:
   cmd.script:
