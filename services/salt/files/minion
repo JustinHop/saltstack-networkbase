@@ -82,6 +82,13 @@ id: {{ minion['id'] }}
 #  cab_u: 14-15
 {{ get_config('grains', '{}') }}
 
+
+
+mine_functions:
+  network.ip_addrs:
+    - eth1
+  mine_interval: 2
+
 # Where cache data goes
 {{ get_config('cachedir', '/var/cache/salt/minion') }}
 
