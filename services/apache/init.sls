@@ -33,6 +33,9 @@ cr-apache-pkgs:
       - php5-curl
       - php5-mysql
 
+include:
+  - services/apache/{{ grains['oscodename'] }}
+
 #/etc/apache2:
 #  file.recurse:
 #    - source: salt://services/apache/files/{{ grains['oscodename'] }}/{{ grains['cluster'] }}/apache2
