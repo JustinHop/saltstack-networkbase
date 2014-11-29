@@ -41,9 +41,9 @@ cr-apache-pkgs:
 #    - template: jinja
 #    - include_empty: true
 
-php5-fpm:
-  pkg:
-    - installed
-  service:
-    - running
+#php5-fpm:
+#  pkg:
+#    - installed
+#  service:
+#    - running
 
