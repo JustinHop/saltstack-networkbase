@@ -25,7 +25,7 @@ sphinxsearch-git:
     - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/sphinx.git
     - rev: master
     - target: /etc/sphinxsearch
-    - identity: /home/beanstalk/.ssh/id_rsa
+    - identity: /home/beanstalk-pull/.ssh/id_rsa
     - force: true
     - require:
       - pkg: git
