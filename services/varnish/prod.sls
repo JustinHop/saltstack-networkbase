@@ -29,7 +29,6 @@ varnish-git:
     - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
     - rev: master
     - target: /etc/varnish
-    - user: beanstalk
     - identity: /home/beanstalk/.ssh/id_rsa
     - force: true
     - require:
