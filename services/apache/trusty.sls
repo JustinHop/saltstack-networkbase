@@ -12,6 +12,5 @@
     - file_mode: 644
     - template: jinja
     - include_empty: true
-    - follow_symlinks: false
-    - force_symlinks: true
+    - keep_symlinks: true
 
