@@ -38,7 +38,7 @@ net.core.rmem_default:
 
 net.core.tcp_rmem:
     sysctl.present:
-          - value: '4096 87380 8388608'
+          - value: 4096 87380 8388608
 
 
 
@@ -52,13 +52,13 @@ net.core.wmem_default:
 
 net.core.tcp_wmem:
     sysctl.present:
-          - value: '4096 87380 8388608'
+          - value: 4096 87380 8388608
 
 
 
 net.core.tcp_mem:
     sysctl.present:
-          - value: '8388608 8388608 8388608'
+          - value: 8388608 8388608 8388608
 
 net.ipv4.route.flush:
   sysctl.present:
