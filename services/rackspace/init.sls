@@ -27,6 +27,7 @@ rackspace-tools:
 
 six:
   module.run:
-    - name: pip.latest
+    - name: pip.install
+    - upgrade: True
     - pkgs:
       - six
