@@ -47,3 +47,8 @@ cr-apache-pkgs:
 #  service:
 #    - running
 
+/var/www/:
+  file.directory:
+    - user: crowdrise
+    - mode: 755
+    - makedirs: True
