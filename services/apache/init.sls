@@ -55,3 +55,49 @@ include:
     - user: crowdrise
     - mode: 755
     - makedirs: True
+
+/var/www/vhosts/www.crowdrise.com:
+  file.directory:
+    - user: root
+    - group: root
+    - makedirs: true
+    - mode: 755
+
+/var/www/vhosts/www.crowdrise.com/htdocs:
+  file.symlink:
+    - target: /var/www/trunk
+
+/var/www/vhosts/www.crowdrise.com/htdocs/content/photos/bin1/original:
+  file.directory:
+    - user: www-data
+    - group: www-data
+    - mode: 755
+    - makedirs: true
+
+/var/www/vhosts/www.crowdrise.com/htdocs/content/photos/original:
+  file.directory:
+    - user: www-data
+    - group: www-data
+    - mode: 755
+    - makedirs: true
+
+/var/www/vhosts/www.crowdrise.com/htdocs/content/photos:
+  file.directory:
+    - user: www-data
+    - group: www-data
+    - mode: 755
+    - makedirs: true
+
+/var/www/vhosts/www.crowdrise.com/htdocs/content/uploads:
+  file.directory:
+    - user: www-data
+    - group: www-data
+    - mode: 755
+    - makedirs: true
+
+/var/www/vhosts/www.crowdrise.com/htdocs/content/reports:
+  file.directory:
+    - user: www-data
+    - group: www-data
+    - mode: 755
+    - makedirs: true

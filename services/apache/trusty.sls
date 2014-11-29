@@ -46,14 +46,3 @@ trusty-packages:
       - libxpm4
       - php5-gd
 
-/var/www/vhosts/www.crowdrise.com:
-  file.directory:
-    - user: root
-    - group: root
-    - makedirs: true
-    - mode: 755
-
-
-/var/www/vhosts/www.crowdrise.com/htdocs:
-  file.symlink:
-    - target: /var/www/trunk
