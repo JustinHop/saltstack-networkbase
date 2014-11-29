@@ -30,7 +30,7 @@ sphinxsearch-git:
     - require:
       - pkg: git
       - user: beanstalk
-      - file: /etc/varnish
+      - file: /etc/sphinxsearch
 
 /var/log/sphinxsearch:
   file.directory:
