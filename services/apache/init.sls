@@ -26,8 +26,6 @@ cr-apache-pkgs:
     - pkgs:
       - apache2
       - apache2-mpm-prefork
-      - apache2.2-common
-      - apache2.2-bin
       - php-apc
       - php5
       - php5-cli
