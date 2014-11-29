@@ -18,3 +18,10 @@ fix-apache-config-trusty:
     - user: root
     - group: root
     - cwd: /root
+
+
+trusty-packages:
+  pkg.installed:
+    - pkgs:
+      - libapache2-mod-php5
+      - newrelic-php5
