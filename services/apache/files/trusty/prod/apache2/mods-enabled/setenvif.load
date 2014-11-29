@@ -1,1 +1,1 @@
-LoadModule setenvif_module /usr/lib/apache2/modules/mod_setenvif.so
+../mods-available/setenvif.load

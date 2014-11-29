@@ -1,1 +1,1 @@
-LoadModule authn_core_module /usr/lib/apache2/modules/mod_authn_core.so
+../mods-available/authn_core.load

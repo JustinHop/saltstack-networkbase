@@ -1,1 +1,1 @@
-LoadModule filter_module /usr/lib/apache2/modules/mod_filter.so
+../mods-available/filter.load
