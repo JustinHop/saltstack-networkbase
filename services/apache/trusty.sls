@@ -34,6 +34,13 @@ fix-apache-config-trusty:
     - cwd: /root
 
 
+/var/www/trunk/content/.htaccess:
+  file.managed:
+    - source: salt://services/apache/files/htaccess
+    - user: root
+    - group: root
+    - mode: 644
+
 trusty-packages:
   pkg.installed:
     - pkgs:

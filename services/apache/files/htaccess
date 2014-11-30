@@ -1,0 +1,57 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /
+RewriteRule /\.svn /error
+
+RewriteRule ^(.*/)?\.svn/ - [F,L]
+ErrorDocument 403 "Access Forbidden"
+#       RewriteCond %{HTTPS} on
+#       RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^crowdrise.com [NC]
+RewriteRule ^(.*)$ http://www.crowdrise.com/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*)$ /index_prod_secure.php [L]
+
+#Rewrites for CDN hosted files for Prod Environment
+## Updated CDN hosted rewrites - 04/29/14
+RewriteRule ^cdn\/static\/(.*)$ https://c0814182.ssl.cf0.rackcdn.com/$1 [L]
+RewriteRule ^cdn\/sponsors\/(.*)$ https://8b06e46ebf87e3f0daf6-e79f3080c1124b03cadb0ae843a3feab.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^cdn\/promos\/(.*)$ https://6fb396b632bdbc1bd03f-f581598f2f311b95632d3e7494a9ef3d.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^cdn\/prizes\/(.*)$ https://519137cdab1efc297ece-6e94e7698a26abecd3321bcd707036d5.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^cdn\/featured\/(.*)$ https://549ffe16bf42da5dfa37-d282f066325cc64e8f932e4861b14966.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^cdn\/board\/(.*)$ https://a47c14658fa200fa52e5-9ae5ba899302e6cc5513ee6bd236c1e1.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^cdn\/apparel\/(.*)$ https://6be7ebca2ff534f24fe1-71fb85c5bf6e61481d7d624b41e2503c.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^cdn\/contests\/(.*)$ https://2c972fdea3ed264bcc5b-fb8b2d7e3319a95d13302e690e5aef1a.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^cdn\/custom\/(.*)$ https://96d13626a21fc74ed99b-abd11c2dea1bf4ad0351000675930b85.ssl.cf1.rackcdn.com/$1 [L]
+
+RewriteRule ^media/small/(.*) https://c676152.ssl.cf0.rackcdn.com/$1 [L]
+RewriteRule ^media/medium/(.*) https://c676142.ssl.cf0.rackcdn.com/$1 [L]
+RewriteRule ^media/large/(.*) https://c676132.ssl.cf0.rackcdn.com/$1 [L]
+RewriteRule ^media/logos/(.*) https://c681462.ssl.cf0.rackcdn.com/$1 [L]
+RewriteRule ^media/static/(.*) https://c0814182.ssl.cf0.rackcdn.com/$1 [L]
+RewriteRule ^media/background/(.*) https://7eb67815dbb144324220-ed99ac55e16439b1728fbf3d4c455727.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^media/original/(.*) https://9c404004ce0d907890fa-fbe50a01167c9238a8e63220e2af5ab8.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^media/featured/(.*) https://f2b69735cebf9fc9980e-d282f066325cc64e8f932e4861b14966.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^media/crlogos/(.*) https://080c438d178bf7907c06-2a295e660b2fbfdd0c7b7d378a0e8cdf.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^media/cdnemail/(.*) https://b7e876b10a4b94db55df-3439004d0b0c9711822a2ba2c500bfc6.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^media/cdncustom/(.*) https://96d13626a21fc74ed99b-abd11c2dea1bf4ad0351000675930b85.ssl.cf1.rackcdn.com/$1 [L]
+RewriteRule ^media/egreetings/(.*) https://73ae88ba8c770fe56aa7-e36d6db4400cea8560b233da2b219f02.ssl.cf1.rackcdn.com/$1 [L]
+
+#Ignore version numbers in file names for busting cache
+RewriteRule (.*)-ver\d+\.(.*)$ $1.$2 [L]
+
+#Checks to see if the user is attempting to access a valid file,
+#such as an image or css document, if this isn't true it sends the
+#request to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index_prod_secure.php?/$1 [L]
+#RewriteRule ^(.*)$ maintenance.php?/$1 [L]
+
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{REQUEST_FILENAME}.jgz -f
+RewriteRule (.*)\.js$ $1\.js.jgz [L]
+AddType "text/javascript" .js.jgz
+AddEncoding gzip .jgz
