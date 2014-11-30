@@ -14,6 +14,16 @@ mysql-npi-install:
     - require:
       - cmd: npi-download
 
+/opt/newrelic-npi/plugins/com.newrelic.plugins.mysql.instance/newrelic_mysql_plugin-2.0.0/config/newrelic.json:
+  file.managed:
+    - makedirs: False
+    - user: root
+    - group: root
+    - template: jinja
+    - source: salt://services/mysql/files/newrelic.json
+    - require:
+      - cmd: mysql-npi-install
+
 /opt/newrelic-npi/plugins/com.newrelic.plugins.mysql.instance/newrelic_mysql_plugin-2.0.0/config/plugin.json:
   file.managed:
     - makedirs: False
@@ -23,7 +33,6 @@ mysql-npi-install:
     - source: salt://services/mysql/files/plugin.json
     - require:
       - cmd: mysql-npi-install
-
 
 newrelic_plugin_com.newrelic.plugins.mysql.instance:
   service.running:
