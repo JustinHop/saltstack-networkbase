@@ -10,8 +10,11 @@ sphinxsearch:
   service:
     - running
     - enable: True
+    - requires:
+      - git: sphinxsearch-git
+      - pkg: sphinxsearch
     - watch:
-      - file: /etc/sphinxsearch/sphinx.conf
+      - git: sphinxsearch-git
       - pkg: sphinxsearch
 
 /etc/sphinxsearch:
