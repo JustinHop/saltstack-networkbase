@@ -48,6 +48,9 @@ for MOD in \
   authz_host \
   authz_user \
   autoindex \
+  proxy \
+  proxy_connect \
+  proxy_http \
   rewrite \
   deflate \
   dir \
