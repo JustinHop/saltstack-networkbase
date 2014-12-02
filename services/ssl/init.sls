@@ -25,15 +25,15 @@
     - user: root
     - makedirs: true
 
-makefullcertchain2016:
-  cmd.script:
-    - source: salt://services/ssl/scripts/fullcert.sh
-    - user: root
-    - cwd: /etc/pki/tls/certs
-#
-#/etc/pki/tls/certs/2016-wildcard.crowdrise.com.certchain:
-#  file.managed:
-#    - source: salt://services/ssl/files/fullcertchain
-#    - template: jinja
+#makefullcertchain2016:
+#  cmd.script:
+#    - source: salt://services/ssl/scripts/fullcert.sh
 #    - user: root
-#    - makedirs: true
+#    - cwd: /etc/pki/tls/certs
+#
+/etc/pki/tls/certs/2016-wildcard.crowdrise.com.certchain:
+  file.managed:
+    - source: salt://services/ssl/files/fullcertchain
+    - template: jinja
+    - user: root
+    - makedirs: true
