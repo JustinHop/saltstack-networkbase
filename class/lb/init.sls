@@ -4,6 +4,7 @@
 #
 
 include:
+  - services/newrelic
   - services/ssl
   - nginx/ng
 
