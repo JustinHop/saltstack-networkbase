@@ -25,3 +25,9 @@
     - user: root
     - makedirs: true
 
+/etc/pki/tls/certs/2016-wildcard.crowdrise.com.certchain:
+  file.managed:
+    - source: salt://services/ssl/files/fullcertchain
+    - template: jinja
+    - user: root
+    - makedirs: true

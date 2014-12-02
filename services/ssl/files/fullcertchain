@@ -1,0 +1,2 @@
+{{ salt['pillar.get']('ssl:cert') }}
+{{ salt['pillar.get']('ssl:certchain') }}
