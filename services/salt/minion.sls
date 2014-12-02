@@ -10,5 +10,5 @@ salt-minion:
   service.running:
     - enable: True
     - watch:
-      - pkg: salt-minion
+#      - pkg: salt-minion
       - file: salt-minion
