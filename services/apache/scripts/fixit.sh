@@ -56,6 +56,7 @@ for MOD in \
   dir \
   ssl \
   env \
+  remoteip \
   filter \
   headers \
   mime \
