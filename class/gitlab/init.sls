@@ -6,3 +6,8 @@
 include:
   - services/ssl
 
+exclude:
+  - users
+  - services/openssh
+  - services/openssh/server
+
