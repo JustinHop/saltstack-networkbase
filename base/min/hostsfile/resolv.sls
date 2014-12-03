@@ -1,4 +1,5 @@
 # Resolver Configuration
+{% if 'nameservers' in pillar %}
 /etc/resolv.conf:
   file.managed:
     - user: root
@@ -9,11 +10,12 @@
     - defaults:
         domain: {{ grains['business'] }}.{{ grains ['tld'] }}
         nameservers:
-          - 173.203.4.9
-          - 173.203.4.8
+{%    for nameserver in pillar['nameservers'] %}
+          - {{ nameserver }}
+{%    endfor %}
         searchpaths:
           - {{ grains['product'] }}.{{ grains['cluster'] }}{{ grains['cluster_instance'] }}.{{ grains['business'] }}.{{ grains ['tld'] }}
           - {{ grains['cluster'] }}{{ grains['cluster_instance'] }}.{{ grains['business'] }}.{{ grains ['tld'] }}
           - {{ grains['business'] }}.{{ grains ['tld'] }}
-
+{% endif %}
 
