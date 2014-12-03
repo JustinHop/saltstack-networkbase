@@ -1,6 +1,0 @@
-[Unit]
-Description=check_mk per connection handling
-
-[Service]
-ExecStart=-/usr/bin/check_mk_agent
-StandardInput=socket
