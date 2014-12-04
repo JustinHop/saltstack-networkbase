@@ -3,7 +3,6 @@ include:
   - base/min/hostsfile
   - base/min/bin
   - base/min/profile
-  - base/min/autodns
   #- base/min/hostsfile/resolv
   #- base/min/pam
 
