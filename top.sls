@@ -10,6 +10,7 @@ base:
     - base/min
     - services/openssh
     - services/openssh/server
+    - excludes
     {%  if 'roles' in grains %}
     {%    for role in grains['roles'] %}
     {%      if role in states %}
@@ -108,6 +109,7 @@ base:
     - match: grain
     - host/{{ grains['host'] }}
   {%  endif %}
+
 
 
   '*.*':
