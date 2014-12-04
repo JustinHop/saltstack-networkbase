@@ -3,6 +3,10 @@
 #   Monitoring for newrelic 
 #
 
+newrelic-monitoring-repo:
+  pkgrepo.managed:
+    - name: deb http://apt.newrelic.com/debian/ newrelic non-free
+    - key_url: https://download.newrelic.com/548C16BF.gpg
 
 newrelic:
   pkg.installed:
@@ -10,11 +14,8 @@ newrelic:
       - newrelic-sysmond
       - newrelic-daemon
       - python-pip
-  module.run:
-    - name: pip.install
-    - pkgs:
-      - newrelic-plugin-agent
     - requires:
+      - pkgrepo: newrelic-monitoring-repo
       - pkg: python-pip
 
 /etc/newrelic:
@@ -27,20 +28,10 @@ newrelic:
     - dir_mode: 0755
     - template: jinja
 
-/etc/init.d/newrelic-plugin-agent:
-  file.managed:
-    - source: salt://services/newrelic/files/init.d/newrelic-plugin-agent
-    - user: root
-    - group: root
-    - mode: 0755
-    - template: jinja
-
-newrelic-plugin-agent:
-  service.running:
+nrsysmond-config --set license_key=847f9a3986c314777e97afe8171bb1d013fe4dff
+  cmd.run:
     - require:
-      - file: /etc/init.d/newrelic-plugin-agent
-    - watch:
-      - file: /etc/init.d/newrelic-plugin-agent
+      - file: /etc/newrelic
 
 newrelic-sysmond:
   pkg:
@@ -55,27 +46,4 @@ newrelic-daemon:
   service.running:
     - require:
       - pkg: newrelic-daemon
-
-nrsysmond-config --set license_key=847f9a3986c314777e97afe8171bb1d013fe4dff ; service newrelic-sysmond start:
-  cmd.run:
-    - onfail:
-      - service: newrelic-sysmond
-
-rackspace-backup:
-  pkg.installed:
-    - sources:
-      - cloudbackup-updater: http://agentrepo.drivesrvr.com/debian/cloudbackup-updater-latest.deb
-
-openjdk-7-jre-headless:
-  pkg:
-    - installed
-
-npi-download:
-  cmd.script:
-    - source: salt://services/newrelic/scripts/download-npi.sh
-    - user: root
-    - group: root
-    - cwd: /root
-    - require:
-      - pkg: openjdk-7-jre-headless
 

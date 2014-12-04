@@ -7,7 +7,6 @@ include:
   #- base/min/hostsfile/resolv
   #- base/min/pam
 
-
 base-min-pkgs:
   pkg.installed:
     - names:
@@ -29,6 +28,7 @@ base-min-pkgs:
       - multitail
       - mosh
       - ncurses-term
+      - pv
       - python-apt
       - rkhunter
       - swig
@@ -36,7 +36,15 @@ base-min-pkgs:
       - vim
       - zsh
 
-
+six:
+  module.run:
+    - name: pip.install
+    - upgrade: True
+    - pkgs:
+      - six
+    - require:
+      - pkg: python-pip
+      - pkg: git
 
 userdel ubuntu || echo hello:
   cmd.run:
