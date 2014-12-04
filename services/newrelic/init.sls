@@ -28,7 +28,7 @@ newrelic:
     - dir_mode: 0755
     - template: jinja
 
-nrsysmond-config --set license_key=847f9a3986c314777e97afe8171bb1d013fe4dff
+nrsysmond-config --set license_key=847f9a3986c314777e97afe8171bb1d013fe4dff:
   cmd.run:
     - require:
       - file: /etc/newrelic
