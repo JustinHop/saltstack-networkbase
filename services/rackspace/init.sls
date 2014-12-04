@@ -9,16 +9,17 @@ rackspace-monitoring-repo:
     - key_url: https://monitoring.api.rackspacecloud.com/pki/agent/linux.asc
     - require_in:
       - pkg: rackspace-monitoring-agent
-
   pkg.installed:
     - name: rackspace-monitoring-agent
-
+  cmd.run:
+    - name: /usr/bin/rackspace-monitoring-agent --setup --username {{ salt['pillar.get']('rackspace:user', 'user') }} --apikey {{ salt['pillar.get']('rackspace:api', 'api') }}
+    - creates:
+      - /etc/rackspace-monitoring-agent.cfg
   service.running:
     - name: rackspace-monitoring-agent
     - require:
       - pkg: rackspace-monitoring-agent
-      - sls: base/min/autodns
-
+      - file: /etc/rackspace-monitoring-agent.cfg
 
 python-dev:
   pkg:

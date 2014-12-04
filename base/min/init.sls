@@ -44,6 +44,7 @@ six:
     - require:
       - pkg: python-pip
       - pkg: git
+    - reload_modules: True
 
 userdel ubuntu || echo hello:
   cmd.run:

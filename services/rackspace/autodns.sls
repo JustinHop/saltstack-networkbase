@@ -15,11 +15,12 @@ https://github.com/linickx/rsdns.git:
 
 update_rackspace:
   cmd.script:
-    - source: salt://base/min/autodns/scripts/autodns.sh
+    - source: salt://services/rackspace/autodns/scripts/autodns.sh
     - cwd: /usr/local/rsdns
     - user: root
     - group: root
     - shell: /bin/bash
+    - template: jinja
     - require: 
       - git: https://github.com/linickx/rsdns.git
 
