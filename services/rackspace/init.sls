@@ -41,12 +41,16 @@ rackspace-tools:
       - pkg: python-pip
       - pkg: python-dev
 
+cloudbackup-updater -v:
+  cmd.run:
+    - creates: /usr/local/bin/driveclient
+
 /usr/local/bin/driveclient --configure --username {{ salt['pillar.get']('rackspace:user', 'user') }} --apikey {{ salt['pillar.get']('rackspace:api', 'api') }}:
   cmd.run:
     - creates: /etc/driveclient/bootstrap.json
     - requires:
       - pkg: cloudbackup-updater
-    - required_in:
+      - file: /usr/local/bin/driveclient
 
 driveclient:
   pkg.installed:
