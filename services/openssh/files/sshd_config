@@ -35,7 +35,7 @@ StrictModes yes
 
 RSAAuthentication yes
 PubkeyAuthentication yes
-AuthorizedKeysFile	/etc/ssh/authorized_keys/%u
+AuthorizedKeysFile	%h/.ssh/authorized_keys
 
 # Don't read the user's ~/.rhosts and ~/.shosts files
 IgnoreRhosts yes

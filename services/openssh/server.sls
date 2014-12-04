@@ -19,13 +19,13 @@ openssh-server:
     - mode: 644
     - source: salt://services/openssh/files/sshd_config
 
-/etc/ssh/authorized_keys:
-  file.recurse:
-    - source: salt://services/openssh/files/authorized_keys
-    - user: root
-    - group: root
-    - file_mode: 644
-    - dirmode: 755
+#/etc/ssh/authorized_keys:
+#  file.recurse:
+#    - source: salt://services/openssh/files/authorized_keys
+#    - user: root
+#    - group: root
+#    - file_mode: 644
+#    - dirmode: 755
 
 generate-missing-hostkeys:
   cmd.run:
