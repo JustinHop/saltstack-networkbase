@@ -12,3 +12,14 @@ salt-master:
     - watch:
       - pkg: salt-minion
       - file: salt-master
+
+npm:
+  pkg.installed
+
+gitlab-deploy-salt:
+  npm.installed:
+    - require:
+      - pkg: npm
+
+
+
