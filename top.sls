@@ -11,26 +11,26 @@ base:
     - services/openssh
     - services/openssh/server
     - excludes
-    {%  if 'roles' in grains %}
-    {%    for role in grains['roles'] %}
-    {%      if role in states %}
+    {%-  if 'roles' in grains %}
+    {%-    for role in grains['roles'] %}
+    {%-      if role in states %}
     - {{ role }}
-    {%      endif %}  # state exists
-    {%    endfor %} # for roles
-    {%  endif %}  # role exists
-    {%  if 'virtual_subtype' in grains %}
-    {%    for virtual_subtype in grains['virtual_subtype'] %}
-    {%      if ".".join(['sys.virtual', grains['virtual_subtype']|replace(" ", "_")]) in states %}
+    {%-      endif %}
+    {%-    endfor %}
+    {%-  endif %}
+    {%-  if 'virtual_subtype' in grains %}
+    {%-    for virtual_subtype in grains['virtual_subtype'] %}
+    {%-      if ".".join(['sys.virtual', grains['virtual_subtype']|replace(" ", "_")]) in states %}
     - sys/virtual/{{ grains['virtual_subtype']|replace(" ", "_") }}
-    {%      endif %}  # state exists
-    {%    endfor %} # for virtual
-    {%  elif 'virtual' in grains %}
-    {%    for virtual in grains['virtual'] %}
-    {%      if ".".join(['sys.virtual', grains['virtual']|replace(" ", "_")]) in states %}
+    {%-      endif %}
+    {%-    endfor %}
+    {%-  elif 'virtual' in grains %}
+    {%-    for virtual in grains['virtual'] %}
+    {%-      if ".".join(['sys.virtual', grains['virtual']|replace(" ", "_")]) in states %}
     - sys/virtual/{{ grains['virtual']|replace(" ", "_") }}
-    {%      endif %}  # state exists
-    {%    endfor %} # for virtual
-    {%  else %}
+    {%-      endif %}
+    {%-    endfor %}
+    {%-  else %}
     - sys/physical
     {%    if 'productname' in grains %}
     {%      if ".".join(['sys.physical', grains['productname']|replace(" ", "_")]) in states %}
@@ -99,12 +99,12 @@ base:
   {%      if 'product' in grains %}
   {%        if ".".join(['class', grains['class'], 'product', grains['product']]) in states %}
     - class/{{ grains['class'] }}/product/{{ grains['product'] }}
-  {%        endif %}
-  {%      endif %}
-  {%    endif %}
-  {%  endif %}
+  {%        endif -%}
+  {%      endif -%}
+  {%    endif -%}
+  {%  endif -%}
 
-  {%  if ".".join(['host', grains['host']]) in states %}
+  {%-  if ".".join(['host', grains['host']]) in states %}
   host:{{ grains['host'] }}:
     - match: grain
     - host/{{ grains['host'] }}
