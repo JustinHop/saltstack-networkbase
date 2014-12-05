@@ -26,7 +26,7 @@ sphinxsearch:
 
 /etc/sphinxsearch/sphinx.conf:
   file.managed:
-    - source: salt://services/sphinx/gitlab/sphinx.conf
+    - source: salt://sphinxsearch/sphinx.conf
     - user: root
     - group: root
     - mode: 755
