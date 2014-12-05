@@ -1,3 +1,0 @@
-[submodule "services/sphinx/gitlab"]
-	path = services/sphinx/gitlab
-	url = git@gitlab.crowdrise.com:devops/sphinx.git
