@@ -27,8 +27,9 @@ sphinxsearch-git:
   git.latest:
     - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/sphinx.git
     - rev: master
-    - target: /etc/sphinxsearch
+    - target: /etc/sphinxsearch.git
     - identity: /home/beanstalk-pull/.ssh/id_rsa
+    - makedirs: true
     - force: true
     - require:
       - pkg: git
