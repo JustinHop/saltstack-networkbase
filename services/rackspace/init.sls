@@ -13,6 +13,7 @@ rackspace-monitoring-repo:
     - name: rackspace-monitoring-agent
   cmd.run:
     - name: /usr/bin/rackspace-monitoring-agent --setup --username {{ salt['pillar.get']('rackspace:user', 'user') }} --apikey {{ salt['pillar.get']('rackspace:api', 'api') }}
+    - timeout: 15
     - creates:
       - /etc/rackspace-monitoring-agent.cfg
   service.running:
