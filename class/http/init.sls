@@ -1,5 +1,5 @@
 #
-#   class/http/product/front/init.sls
+#   class/http/init.sls
 #   Crowdrise Frontend Webservers
 #
 
