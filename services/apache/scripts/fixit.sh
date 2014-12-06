@@ -64,6 +64,7 @@ for MOD in \
   negotiation \
   php5 \
   setenvif \
+  vhost_alias \
   status ; do
   a2enmod $MOD
 done
