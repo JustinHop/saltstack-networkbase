@@ -1,11 +1,2 @@
-#
-#   services/rsyslog/server.sls
-#   rsyslog server for log aggergation
-#
 
-
-rsyslog-server:
-  pkg.installed:
-    - pkgs:
-      - rsyslog-doc
-      - lvm2
+find /var/log/syslog/2008 -type f -mtime +1  -name "*.log" -exec bzip2 '{}' \;
