@@ -14,7 +14,7 @@ base:
     #
     # These are github hosted formulas
     #
-    {%-  if 'sysstat' in states %}
+    {%-  if "sysstat".replace(" ", "_") in states %}
     - sysstat
     {%-  endif %}
     #
