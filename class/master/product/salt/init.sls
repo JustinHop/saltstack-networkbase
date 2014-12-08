@@ -3,6 +3,9 @@
 # master.salt instances
 #
 
+include:
+  - services/salt/master
+
 salt '*' test.ping:
   cron.present:
     - identifier: SaltConnect
