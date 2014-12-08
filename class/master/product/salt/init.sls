@@ -13,6 +13,13 @@ salt '*' test.ping:
     - user: root
     - minute: '*/10'
 
+salt-call state.sls class.master.product.salt:
+  cron.present:
+    - identifier: SaltPull
+    - user: root
+    - minute: '*'
+
+
 git@gitlab.crowdrise.io:devops/saltstack-filebase.git:
   git.latest:
     - target: /srv/salt/saltstack-filebase
