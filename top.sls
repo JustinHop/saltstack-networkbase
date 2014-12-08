@@ -16,7 +16,7 @@ base:
     #
     {%-  if 'sysstat' in states %}
     - sysstat
-    {%-  endif }
+    {%-  endif %}
     #
     # End Gitlab
     #
