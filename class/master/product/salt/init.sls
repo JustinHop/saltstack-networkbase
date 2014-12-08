@@ -4,7 +4,7 @@
 #
 
 include:
-  - services/salt/master
+  - salt/master
 
 salt '*' test.ping:
   cron.present:

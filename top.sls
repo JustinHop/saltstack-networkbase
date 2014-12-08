@@ -11,6 +11,13 @@ base:
     - services/openssh
     - services/openssh/server
     - excludes
+    #
+    # These are github hosted formulas
+    #
+    - sysstat
+    #
+    # End Gitlab
+    #
     {%-  if 'roles' in grains %}
     {%-    for role in grains['roles'] %}
     {%-      if role in states %}
