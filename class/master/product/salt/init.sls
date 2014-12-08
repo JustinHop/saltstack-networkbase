@@ -3,8 +3,10 @@
 # master.salt instances
 #
 
+{%- if  'salt.master' in states %}
 include:
   - salt/master
+{%- endif %}
 
 salt '*' test.ping:
   cron.present:
