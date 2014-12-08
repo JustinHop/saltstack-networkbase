@@ -20,7 +20,6 @@ rackspace-monitoring-repo:
     - name: rackspace-monitoring-agent
     - require:
       - pkg: rackspace-monitoring-agent
-      - file: /etc/rackspace-monitoring-agent.cfg
 
 python-dev:
   pkg:
