@@ -14,7 +14,9 @@ base:
     #
     # These are github hosted formulas
     #
+    {%-  if 'sysstat' in states %}
     - sysstat
+    {%-  endif }
     #
     # End Gitlab
     #
