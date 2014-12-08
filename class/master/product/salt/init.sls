@@ -16,16 +16,16 @@ git@gitlab.crowdrise.io:devops/saltstack-filebase.git:
   git.latest:
     - target: /srv/salt/saltstack-filebase
     - force: true
-    - identity: /srv/salt/id_rsa
+    - identity: /srv/salt/.ssh/id_rsa
 
 git@gitlab.crowdrise.io:devops/saltstack-pillar.git:
   git.latest:
     - target: /srv/salt/saltstack-pillar
     - force: true
-    - identity: /srv/salt/id_rsa
+    - identity: /srv/salt/.ssh/id_rsa
 
 git@gitlab.crowdrise.io:devops/sphinx.git:
   git.latest:
     - target: /srv/salt/formulas/sphinx
     - force: true
-    - identity: /srv/salt/id_rsa
+    - identity: /srv/salt/.ssh/id_rsa
