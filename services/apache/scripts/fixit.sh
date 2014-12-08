@@ -48,6 +48,7 @@ for MOD in \
   authz_host \
   authz_user \
   autoindex \
+  expires \
   proxy \
   proxy_connect \
   proxy_http \
