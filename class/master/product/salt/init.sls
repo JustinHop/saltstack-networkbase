@@ -3,8 +3,9 @@
 # master.salt instances
 #
 
-include:
-  - salt/master
+
+#include:
+#  - salt/master
 
 salt '*' test.ping:
   cron.present:
