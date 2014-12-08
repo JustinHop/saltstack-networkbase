@@ -3,7 +3,7 @@
 # master.salt instances
 #
 
-{%- if  'salt.master' in states %}
+{%- if  "salt.master".replace(" ", "_") in states %}
 include:
   - salt/master
 {%- endif %}
