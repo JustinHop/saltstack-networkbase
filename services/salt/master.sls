@@ -3,6 +3,12 @@
 salt-master:
   pkg.installed:
     - name: {{ pkgs['salt-master'] }}
+  pkgrepo.managed:
+    - humanname: Dennis Kaarsemaker Python Modules
+    - name: ppa:dennis/python
+    - dist: {{ grains['oscodename'] }}
+    - require_in:
+      - service: salt-master
   file.managed:
     - name: /etc/salt/master
     - template: jinja

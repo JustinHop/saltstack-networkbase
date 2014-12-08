@@ -8,3 +8,4 @@ rsyslog-server:
   pkg.installed:
     - pkgs:
       - rsyslog-doc
+      - lvm2
