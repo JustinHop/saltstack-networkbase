@@ -20,7 +20,7 @@ base:
     #
     # End Gitlab
     #
-    {%-  if 'roles' in grains %}
+    {%   if 'roles' in grains %}
     {%-    for role in grains['roles'] %}
     {%-      if role in states %}
     - {{ role }}
@@ -48,10 +48,10 @@ base:
     - sys/physical/{{ grains['productname']|replace(" ", "_") }}
     {%-     endif %}
     {%-   endif %}
-    {%- endif %}
+    {%  endif %}
 
   {%- if 'os' in grains %}
-  {%-   if ".".join(['os', grains['os']]) in states %}
+  {%    if ".".join(['os', grains['os']]) in states %}
   os:{{ grains['os'] }}:
     - match: grain
     - os/{{ grains['os'] }}
@@ -64,25 +64,25 @@ base:
   {%-       endif %}
   {%-     endif %}
   {%-   endif %}
-  {%- endif %}
+  {%  endif %}
 
-  {%- if 'business' in grains %}
+  {%  if 'business' in grains %}
   {%-   if grains['business'] in states %}
   business:{{ grains['business'] }}:
     - match: grain
     - {{ grains['business'] }}
   {%-   endif %}
-  {%- endif %}
+  {%  endif %}
 
-  {%- if 'cluster' in grains %}
+  {%  if 'cluster' in grains %}
   {%-   if ".".join(['cluster', grains['cluster']]) in states %}
   cluster:{{ grains['cluster'] }}:
     - match: grain
     - cluster/{{ grains['cluster'] }}
   {%-   endif %}
-  {%- endif %}
+  {% endif %}
 
-  {%- if 'product' in grains %}
+  {%  if 'product' in grains %}
   {%-   if ".".join(['product', grains['product']]) in states %}
   product:{{ grains['product'] }}:
     - match: grain
@@ -93,7 +93,7 @@ base:
   {%-       endif %}
   {%-     endif %}
   {%-   endif %}
-  {%- endif %}
+  {% endif %}
 
   {%- if 'class' in grains %}
   {%-   if ".".join(['class', grains['class']]) in states %}
