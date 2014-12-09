@@ -6,4 +6,5 @@
 
 include:
   - salt/master
+  - services/sync
 
