@@ -1,4 +1,4 @@
-{%- from 'sync/settings.jinja' import sync with context %}
+{%- from 'services/sync/settings.jinja' import sync with context %}
 ----- 
 -- This file is managed by salt.
 -- This was originally taken from an example provided by Floren Munteanu.
