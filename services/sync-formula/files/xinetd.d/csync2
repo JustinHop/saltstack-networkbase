@@ -1,0 +1,13 @@
+{% set interface = salt['pillar.get']('interfaces:private', 'eth0') %}
+{% set ip = salt['network.ip_addrs'](interface)[0] %}
+service csync2
+{
+	disable = no
+	protocol = tcp
+	socket_type = stream
+	wait = no
+	user = root
+	server = /usr/sbin/csync2
+	server_args = -i
+    interface = {{ ip }}
+}

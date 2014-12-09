@@ -1,0 +1,21 @@
+# Need to know how to choose which minions to pull from the salt mine.
+{% set target = salt['pillar.get']('sync:target', 'roles:web') %}
+{% set expr_type = salt['pillar.get']('sync:expr_type', 'grain') %}
+
+# Need to get ips keyed by minion-id as well as hostames keyed by
+# minion-id
+{% set original_hosts = salt['mine.get'](target, 'network.ip_addrs', expr_type) %}
+{% set hostnames = salt['mine.get'](target, 'grains.get', expr_type) %}
+
+# State sls files should import this
+{% set sync = {
+    'xinetd_path': '/etc/xinetd.d',
+    'csync2_path': '/etc/csync2',
+    'hosts': original_hosts,
+    'hostnames': hostnames,
+    'includes': salt['pillar.get']('sync:includes', []),
+    'excludes': salt['pillar.get']('sync:excludes', []),
+    'group': salt['pillar.get']('sync:group', 'default'),
+    'conflict': salt['pillar.get']('sync:conflict', 'none')
+} %}
+
