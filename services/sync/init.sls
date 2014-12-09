@@ -1,4 +1,4 @@
-{%- from 'sync/settings.jinja' import sync with context %}
+{%- from 'services/sync/settings.jinja' import sync with context %}
 
 # Add entries to hostsfile. csync2 likes to use hosts
 {%- for host, ips in sync.hosts.iteritems() %}
@@ -20,7 +20,7 @@ sync-software:
 # csync2 configuration for xinetd
 {{ sync.xinetd_path }}/csync2:
   file.managed:
-    - source: salt://sync/files/xinetd.d/csync2
+    - source: salt://services/sync/files/xinetd.d/csync2
     - template: jinja
     - mode: 644
     - user: root
@@ -37,7 +37,7 @@ sync-software:
 # Preshared csync2 key
 {{ sync.csync2_path }}/csync2.key:
   file.managed:
-    - source: salt://sync/files/csync2/csync2.key
+    - source: salt://services/sync/files/csync2/csync2.key
     - mode: 600
     - requires:
       - file: {{ sync.csync2_path }}
@@ -45,7 +45,7 @@ sync-software:
 # Bidirectional csync2 config
 {{ sync.csync2_path }}/csync2.cfg:
   file.managed:
-    - source: salt://sync/files/csync2/csync2.cfg
+    - source: salt://services/sync/files/csync2/csync2.cfg
     - template: jinja
     - mode: 644
     - user: root
@@ -68,7 +68,7 @@ sync-software:
 {% set clean_hostname = hostname.translate(None, '_-.') %}
 {{ sync.csync2_path }}/csync2_{{ clean_hostname }}.cfg:
   file.managed:
-    - source: salt://sync/files/csync2/directional.cfg
+    - source: salt://services/sync/files/csync2/directional.cfg
     - template: jinja
     - user: root
     - group: root
@@ -94,7 +94,7 @@ xinetd:
 
 /etc/lsyncd/lsyncd.conf.lua:
   file.managed:
-    - source: salt://sync/files/lsyncd/lsyncd.conf.lua
+    - source: salt://services/sync/files/lsyncd/lsyncd.conf.lua
     - makedirs: True
     - template: jinja
     - user: root
