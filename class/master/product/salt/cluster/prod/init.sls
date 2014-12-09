@@ -10,9 +10,9 @@ salt '*' test.ping:
     - minute: '*/10'
 
 
-salt-call state.sls class.master.product.salt:
+salt-call state.sls class.master.product.salt.cluster.prod:
   cron.present:
-    - identifier: SaltPull
+    - identifier: SaltPullProd
     - user: root
     - minute: '*'
 
