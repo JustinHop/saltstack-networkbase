@@ -16,7 +16,6 @@ salt-call state.sls class.master.product.salt.cluster.prod:
     - user: root
     - minute: '*'
 
-
 git@gitlab.crowdrise.io:devops/saltstack-filebase.git:
   git.latest:
     - target: /srv/salt/saltstack-filebase
