@@ -65,8 +65,7 @@ sync-software:
 # May not be necessary but assuming for now it is at least useful.
 {% for host in sync.hosts.keys() %}
 {% set hostname = sync.hostnames[host] %}
-# set clean_hostname = hostname.translate(None, '_-.') %}
-{% set clean_hostname = hostname %}
+{% set clean_hostname = hostname.translate(None, '_-.') %}
 {{ sync.csync2_path }}/csync2_{{ clean_hostname }}.cfg:
   file.managed:
     - source: salt://services/sync/files/csync2/directional.cfg
