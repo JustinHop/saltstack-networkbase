@@ -123,6 +123,6 @@ base:
 
   '*.*':
     - services/rackspace
-    - services/salt/minion
+    - salt/minion
     - last
 
