@@ -74,8 +74,8 @@ base:
   {%-   endif %}
   {%- endif %}
 
-  {%  if 'cluster' in grains %}
-  {%    if ".".join(['cluster', grains['cluster']]) in states %}
+  {%- if 'cluster' in grains %}
+  {%-   if ".".join(['cluster', grains['cluster']]) in states %}
   cluster:{{ grains['cluster'] }}:
     - match: grain
     - cluster/{{ grains['cluster'] }}
@@ -87,8 +87,8 @@ base:
   product:{{ grains['product'] }}:
     - match: grain
     - product/{{ grains['product'] }}
-  {%-     if 'class' in grains %}
-  {%-       if ".".join(['product', grains['product'], 'class', grains['class']]) in states %}
+  {%      if 'class' in grains %}
+  {%        if ".".join(['product', grains['product'], 'class', grains['class']]) in states %}
     - product/{{ grains['product'] }}/class/{{ grains['class'] }}
   {%-       endif %}
   {%-     endif %}
@@ -108,11 +108,11 @@ base:
   {%-     if 'product' in grains %}
   {%-       if ".".join(['class', grains['class'], 'product', grains['product']]) in states %}
     - class/{{ grains['class'] }}/product/{{ grains['product'] }}
-  {%        endif -%}
-  {%      endif -%}
-  {%    endif -%}
-  {%  endif -%}
-  {%-       %}
+  {%        endif %}
+  {%      endif %}
+  {%    endif %}
+  {%  endif %}
+
   {%-  if ".".join(['host', grains['host']]) in states %}
   host:{{ grains['host'] }}:
     - match: grain
