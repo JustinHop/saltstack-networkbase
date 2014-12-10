@@ -18,18 +18,24 @@ base-min-pkgs:
       - colortail
       - curl
       - debsums
-      - dialog
       - etckeeper
       - git
       - htop
       - iotop
       - iptables
-      - multitail
+      - moreutils
       - mosh
+      - multitail
       - ncurses-term
       - pv
       - python-apt
+      - python-pip
       - rkhunter
+      - rlwrap
+      - screen
+      - socat
+      - stow
+      - strace
       - swig
       - tmux
       - vim
