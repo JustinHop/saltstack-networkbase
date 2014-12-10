@@ -5,6 +5,11 @@ package_{{ rsyslog.package }}:
     - name: {{ rsyslog.package }}
     - installed
 
+rsyslog-relp:
+  pkg:
+    - installed
+
+
 service_{{ rsyslog.service }}:
   service.running:
     - name: {{ rsyslog.service }}
