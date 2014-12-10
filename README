@@ -1,5 +1,29 @@
 # CrowdRise SaltStack File Base
 
+- Keep the layout consistent.
+
+## Hostnames
+
+Given the following hostname
++ myclass1.myproduct.mycluster2.crowdrise.io
+
+We get the following info available as grains
+class | myclass
+class_instance | 1
+product | myproduct
+cluster | mycluster
+cluster_instance | 2
+business | crowdrise
+tld | io
+
+This info is used to lay out name based path traversal for state execution.
+
+In the above example you could create the following state files that would be executed everytime the minion executes state.highstate
+
+- class/myclass/init.sls
+- product/myproduct.sls
+- class/myclass/product/myproduct/init.sls
+- cluster/mycluster/cluster_instance/2/init.sls
 
 ## User management
 
@@ -7,4 +31,3 @@
 - split up by usernames
 - users
 
-Thu Dec  4 00:09:47 PST 2014
