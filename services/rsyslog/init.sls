@@ -1,4 +1,4 @@
-{% from "rsyslog/map.jinja" import rsyslog with context %}
+{% from "services/rsyslog/map.jinja" import rsyslog with context %}
 
 package_{{ rsyslog.package }}:
   pkg:
@@ -18,6 +18,6 @@ config_{{ rsyslog.config }}:
   file.managed:
     - name: /etc/rsyslog.conf
     - template: jinja
-    - source: salt://rsyslog/files/rsyslog.conf.jinja
+    - source: salt://services/rsyslog/files/rsyslog.conf.jinja
     - context:
       config: {{ salt['pillar.get']('rsyslog', {}) }}
