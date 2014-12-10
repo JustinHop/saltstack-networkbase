@@ -19,6 +19,11 @@ sphinxsearch:
       - pkg: sphinxsearch
       - file: /etc/sphinxsearch/sphinx.conf
 
+/usr/bin/indexer --all --rotate:
+  cmd.run:
+    - watch:
+      - file: /etc/sphinxsearch/sphinx.conf
+
 /etc/sphinxsearch:
   file.directory:
     - user: root
