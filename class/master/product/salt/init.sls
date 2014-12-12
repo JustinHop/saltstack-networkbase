@@ -10,7 +10,7 @@ include:
   - salt/syndic
   - services/sync
 
-salt-masters:
+salt-masters-{{ grains['fqdn'] }}:
   git.latest:
     - name: git@gitlab.crowdrise.com:devops/saltstack-pillar.git
     - target: /srv/salt/saltstack-filebase
