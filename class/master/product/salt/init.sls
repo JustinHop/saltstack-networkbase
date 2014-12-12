@@ -13,7 +13,7 @@ include:
 salt-masters-{{ grains['fqdn'] }}:
   git.latest:
     - name: git@gitlab.crowdrise.com:devops/saltstack-pillar.git
-    - target: /srv/salt/saltstack-filebase
+    - target: /srv/salt/saltstack-pillar
     - identity: /srv/salt/.ssh/id_rsa
     - force: true
     - require:
