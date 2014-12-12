@@ -1,5 +1,5 @@
 #
-#   base//autodns/init.sls
+#   baseautodns/init.sls
 #   Configure auto dns for rackspace
 #
 

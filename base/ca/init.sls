@@ -5,7 +5,7 @@
     - group: root
     - file_mode: 644
     - dir_mode: 755
-    - source: salt://base//ca/files
+    - source: salt://baseca/files
 
 /usr/sbin/update-ca-certificates:
   cmd.run:

@@ -1,6 +1,6 @@
 #
 #   Profile init
-#   base//profile/init.sls
+#   baseprofile/init.sls
 #
 
 min-env:
@@ -30,7 +30,7 @@ https://github.com/JustinHop/Profile.git:
 
 link-profile:
   cmd.script:
-    - source: salt://base//profile/scripts/zshup.sh
+    - source: salt://baseprofile/scripts/zshup.sh
     - user: root
     - group: root
     - shell: /bin/zsh

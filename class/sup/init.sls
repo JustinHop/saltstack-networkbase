@@ -4,8 +4,8 @@
 #
 
 include:
-  - base//ca
-  - base//profile
+  - baseca
+  - baseprofile
   - base/full/python
   - base/full/systemd
   - services/openssh/internal

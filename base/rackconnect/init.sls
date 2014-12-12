@@ -1,5 +1,5 @@
 #
-#   base//rackconnect/init.sls
+#   baserackconnect/init.sls
 #   enable custom rules for rackconnect
 #
 
