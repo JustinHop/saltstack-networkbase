@@ -48,10 +48,10 @@ base:
     - sys/physical/{{ grains['productname']|replace(" ", "_") }}
     {%-     endif %}
     {%-   endif %}
-    {%  endif %}
+    {%- endif %}
 
   {%- if 'os' in grains %}
-  {%    if ".".join(['os', grains['os']]) in states %}
+  {%-   if ".".join(['os', grains['os']]) in states %}
   os:{{ grains['os'] }}:
     - match: grain
     - os/{{ grains['os'] }}
@@ -64,7 +64,7 @@ base:
   {%-       endif %}
   {%-     endif %}
   {%-   endif %}
-  {%  endif %}
+  {%-  endif %}
 
   {%  if 'business' in grains %}
   {%-   if grains['business'] in states %}
