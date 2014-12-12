@@ -6,8 +6,8 @@
 
 include:
   - salt/master
-  - salt/cloud
-  - salt/syndic
+  #  - salt/cloud
+  #- salt/syndic
   - services/sync
 
 salt-masters-{{ grains['fqdn'] }}:
