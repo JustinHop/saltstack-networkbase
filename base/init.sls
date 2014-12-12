@@ -1,10 +1,10 @@
 include:
-  - base/min/rackconnect
-  - base/min/hostsfile
-  - base/min/bin
-  - base/min/profile
-  #- base/min/hostsfile/resolv
-  #- base/min/pam
+  - base//rackconnect
+  - base//hostsfile
+  - base//bin
+  - base//profile
+  #- base//hostsfile/resolv
+  #- base//pam
 
 base-min-pkgs:
   pkg.installed:

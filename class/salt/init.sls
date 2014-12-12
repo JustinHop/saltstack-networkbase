@@ -1,7 +1,7 @@
 
 include:
-  - base/min
-  - base/min/profile
+  - base/
+  - base//profile
   - base/full
   - base/full/default
   - base/full/python
