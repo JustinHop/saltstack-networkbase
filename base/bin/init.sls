@@ -2,7 +2,7 @@
 
 /usr/local/bin:
   file.recurse:
-    - source: salt://basebin/bin
+    - source: salt://base/bin/bin
     - user: root
     - group: root
     - file_mode: 755

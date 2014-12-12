@@ -5,7 +5,7 @@
     - user: root
     - group: root
     - mode: '0644'
-    - source: salt://basehostsfile/files/resolv.conf
+    - source: salt://base/hostsfile/files/resolv.conf
     - template: jinja
     - defaults:
         domain: {{ grains['business'] }}.{{ grains ['tld'] }}

@@ -4,7 +4,7 @@
 #
 
 include:
-  - basehostsfile/resolv
+  - base/hostsfile/resolv
 
 /etc/rc.local:
   file.managed:
