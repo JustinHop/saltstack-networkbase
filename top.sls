@@ -7,7 +7,7 @@ base:
 
   '*':
     - users
-    - base/
+    - base
     - services/openssh
     - services/openssh/server
     - excludes
