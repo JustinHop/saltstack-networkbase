@@ -10,7 +10,9 @@ include:
   - salt/syndic
   - services/sync
 
-/srv/salt/saltstack-filebase:
+
+
+salt-masters:
   git.latest:
     - name: git@gitlab.crowdrise.com:devops/saltstack-pillar.git
     - target: /srv/salt/saltstack-filebase
@@ -19,3 +21,7 @@ include:
       - require:
         - pkg: git
         - user: salt
+  pkg.installed:
+    - names:
+      - python-ws4py
+      - python-cherrypy
