@@ -10,11 +10,11 @@ salt '*' test.ping:
     - minute: '*/10'
 
 
-timeout 30 salt-call state.sls class.master.product.salt.cluster.prod:
-  cron.present:
-    - identifier: SaltPullProd
-    - user: root
-    - minute: '*'
+#timeout 30 salt-call state.sls class.master.product.salt.cluster.prod:
+#  cron.present:
+#    - identifier: SaltPullProd
+#    - user: root
+#    - minute: '*'
 
 git@gitlab.crowdrise.io:devops/saltstack-filebase.git:
   git.latest:
