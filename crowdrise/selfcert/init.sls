@@ -1,5 +1,5 @@
 #
-#   base/selfcert/init.sls
+#   crowdrise/selfcert/init.sls
 #   Creates Self Signed Certs
 #
 

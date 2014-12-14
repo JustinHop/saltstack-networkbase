@@ -1,5 +1,5 @@
 #
-#   base/rackconnect/init.sls
+#   crowdrise/rackconnect/init.sls
 #   enable custom rules for rackconnect
 #
 
