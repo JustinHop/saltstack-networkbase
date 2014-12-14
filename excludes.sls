@@ -6,6 +6,7 @@
 #
 
 
-#exclude:
-# - sls: services/salt/minion
-#  - sls: services/salt/master
+exclude:
+  - sls: salt/minion
+  - sls: salt/master
+  - sls: services/sync
