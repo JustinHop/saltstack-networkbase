@@ -7,7 +7,6 @@ base:
 
   '*':
     - users
-    - base
     - services/openssh
     - services/openssh/server
     - excludes
@@ -123,4 +122,3 @@ base:
     - services/rackspace
     - salt/minion
     - last
-
