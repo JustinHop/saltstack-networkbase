@@ -9,6 +9,6 @@ chkrootkit:
     - user: root
     - group: root
     - mode: 600
-    - source: salt://base/full/chkrootkit/files/chkrootkit.conf
+    - source: salt://services/chkrootkit/files/chkrootkit.conf
     - require:
       - pkg: chkrootkit
