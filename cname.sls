@@ -1,5 +1,5 @@
-{% set base_domain = 'raxio-hackday.com' %}
-{% set email = 'bruce.stringer@rackspace.com' %}
+{% set base_domain = 'crowdrise.io' %}
+{% set email = 'dev@crowdrise.com' %}
 {% set instance_name = 'raxio_instance' %}
 {% set db_name = 'raxio_db' %}
 {% set container_name = 'raxio_container' %}
