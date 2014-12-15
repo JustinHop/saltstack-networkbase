@@ -4,4 +4,4 @@
 #
 
 include:
-  - services/sphinx
+  - services/sphinxsearch
