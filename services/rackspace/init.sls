@@ -3,6 +3,9 @@
 #   get a bunch of rackspace tools
 #
 
+include:
+  - services/rackspace/autodns
+
 rackspace-monitoring-repo:
   pkgrepo.managed:
     - name: deb http://stable.packages.cloudmonitoring.rackspace.com/ubuntu-{{ grains['lsb_distrib_release'] }}-x86_64 cloudmonitoring main
