@@ -9,6 +9,7 @@ base:
     - users
     - services/openssh
     - services/openssh/server
+    - services/rsyslog
     - excludes
     #
     # These are github hosted formulas
