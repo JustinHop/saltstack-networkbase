@@ -4,7 +4,8 @@
 #
 
 include:
-  - services/rackspace/autodns
+#  - services/rackspace/autodns
+  - services/rackspace/pyrax
 
 rackspace-monitoring-repo:
   pkgrepo.managed:
@@ -15,10 +16,12 @@ rackspace-monitoring-repo:
   pkg.installed:
     - name: rackspace-monitoring-agent
   cmd.run:
-    - name: /usr/bin/rackspace-monitoring-agent --setup --username {{ salt['pillar.get']('rackspace:user', 'user') }} --apikey {{ salt['pillar.get']('rackspace:api', 'api') }}
+    - name: /usr/bin/rackspace-monitoring-agent --setup --username {{ salt['pillar.get']('rackspace:username', 'username') }} --apikey {{ salt['pillar.get']('rackspace:apikey', 'apikey') }}
     - timeout: 15
     - creates:
       - /etc/rackspace-monitoring-agent.cfg
+    - require:
+      - pkg: rackspace-monitoring-agent
   service.running:
     - name: rackspace-monitoring-agent
     - require:

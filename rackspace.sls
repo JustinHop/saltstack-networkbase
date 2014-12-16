@@ -1,8 +1,8 @@
-{% set base_domain = 'raxio-hackday.com' %}
-{% set email = 'bruce.stringer@rackspace.com' %}
-{% set instance_name = 'raxio_instance' %}
-{% set db_name = 'raxio_db' %}
-{% set container_name = 'raxio_container' %}
+{% set base_domain = 'crowdrise.io' %}
+{% set email = 'hop@crowdrise.com' %}
+{% set instance_name = 'crowdrise' %}
+{% set db_name = 'crowdrise' %}
+{% set container_name = 'dev' %}
 
 pyrax_setup:
   pkg.installed:

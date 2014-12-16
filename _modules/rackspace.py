@@ -979,7 +979,7 @@ def _auth():
         )
 
 
-def _get_driver(driver_type, region='DFW'):
+def _get_driver(driver_type, region='ORD'):
     """
     Returns the appropriate diver for the specified rackspace product.
 
