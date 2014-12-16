@@ -20,10 +20,7 @@
 
 gen-privatekey:
   cmd.run:
-    - name: >
-      openssl genrsa
-      -out /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key
-      2048
+    - name: openssl genrsa -out /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key 2048
     - creates: /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key
 
 gen-certreq:
