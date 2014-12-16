@@ -120,9 +120,9 @@ daemon.*;mail.*;\
         *.=debug;*.=info;\
         *.=notice;*.=warn       |/dev/xconsole
 
-*.* @syslog1.sys.prod1.crowdrise.io
 {% if config.target|default(false) %}
-*.* @{{ config.target }}
+$ModLoad omrelp
+*.* :omrelp:{{ config.target }}:2514
 {% endif %}
 
 {% if config.logbasepath|default(false) %}
