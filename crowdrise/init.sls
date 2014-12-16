@@ -1,5 +1,7 @@
 include:
   - crowdrise/rackconnect
+  - crowdrise/rclocal
+  - crowdrise/selfcert
   - crowdrise/hostsfile
   - crowdrise/bin
   - crowdrise/profile
