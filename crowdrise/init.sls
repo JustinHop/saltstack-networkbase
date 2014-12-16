@@ -48,6 +48,7 @@ six:
     - upgrade: True
     - pkgs:
       - six
+      - pyrax
     - require:
       - pkg: python-pip
       - pkg: git

@@ -3,9 +3,14 @@
 #   get a bunch of rackspace tools
 #
 
-include:
-#  - services/rackspace/autodns
-  - services/rackspace/pyrax
+python-dev:
+  pkg:
+    - installed
+
+python-pip:
+  pkg:
+    - installed
+
 
 rackspace-monitoring-repo:
   pkgrepo.managed:
@@ -27,14 +32,6 @@ rackspace-monitoring-repo:
     - require:
       - pkg: rackspace-monitoring-agent
 
-python-dev:
-  pkg:
-    - installed
-
-python-pip:
-  pkg:
-    - installed
-
 rackspace-tools:
   module.run:
     - name: pip.install
@@ -44,6 +41,7 @@ rackspace-tools:
       - ptrcreate
       - python-cloudlb
       - python-cloudservers
+      - pyrax
     - requires:
       - pkg: python-pip
       - pkg: python-dev
@@ -66,3 +64,7 @@ driveclient:
   service.running:
     - requires:
       - file: /etc/driveclient/bootstrap.json
+
+include:
+#  - services/rackspace/autodns
+  - services/rackspace/pyrax
