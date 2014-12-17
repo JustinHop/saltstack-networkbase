@@ -26,11 +26,11 @@ gen-privatekey:
 gen-certreq:
   cmd.run:
     - name: >
-      openssl req
-      -new
-      -key /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key
-      -out /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.csr
-      -subj "/C=US/ST=California/L=Los Angeles/O=CrowdRise/CN={{ grains['fqdn'] }}"
+      'openssl req'
+      '-new'
+      '-key /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key'
+      '-out /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.csr'
+      '-subj "/C=US/ST=California/L=Los Angeles/O=CrowdRise/CN={{ grains['fqdn'] }}"'
     - creates: /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.csr
     - requires:
       - file: /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key
@@ -39,11 +39,11 @@ gen-selfsign:
   cmd.run:
     - name: >
       openssl x509
-      -req
-      -days 3650
-      -in /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.csr
-      -signkey /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key
-      -out /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.crt
+      "-req"
+      "-days 3650"
+      "-in /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.csr"
+      "-signkey /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key"
+      "-out /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.crt"
     - creates: /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.crt
     - requires:
       - file: /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key
