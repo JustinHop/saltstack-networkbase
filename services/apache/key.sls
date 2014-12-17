@@ -4,4 +4,4 @@
 #
 
 include:
-  - services/ssl
+  - crowdrise/ssl
