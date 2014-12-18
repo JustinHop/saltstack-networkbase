@@ -6,6 +6,7 @@
 #
 
 
+
 exclude:
   - sls: salt/minion
   - sls: salt/master
