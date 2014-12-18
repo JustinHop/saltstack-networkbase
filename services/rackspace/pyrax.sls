@@ -3,6 +3,13 @@
 #   setup services using rackspace module
 #
 
+pyraxrc:
+  file.managed:
+    source: salt://services/rackspace/files/pyraxrc
+    name: /root/.pyrax.cfg
+    template: jinja
+    user: root
+    group: root
 
 pyrax_setup:
   pkg.installed:
@@ -11,6 +18,7 @@ pyrax_setup:
     - name: pyrax
     - require:
       - pkg: pyrax_setup
+      - file: pyraxrc
 
 setup_domain:
   rackspace.dns_zone_exists:
@@ -19,6 +27,7 @@ setup_domain:
     - ttl: 300
     - require:
       - pip: pyrax_setup
+      - file: pyraxrc
 
 setup_records2:
   rackspace.dns_record_exists:
@@ -28,3 +37,4 @@ setup_records2:
     - data: {{ grains['fqdn_ip4'] }}
     - require:
       - rackspace: setup_domain
+      - file: pyraxrc

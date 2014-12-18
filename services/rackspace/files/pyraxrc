@@ -1,0 +1,9 @@
+[default]
+identity_type = rackspace
+region = ORD
+use_servicenet = True
+
+
+[rackspace_cloud]
+username = {{ salt['pillar.get']('rackspace:username', 'username') }}
+api_key = {{ salt['pillar.get']('rackspace:apikey', 'apikey') }}
