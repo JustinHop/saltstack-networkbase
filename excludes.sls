@@ -5,8 +5,6 @@
 #   shame on you
 #
 
-
-
 exclude:
   - sls: salt/minion
   - sls: salt/master
