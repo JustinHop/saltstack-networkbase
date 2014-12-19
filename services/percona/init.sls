@@ -18,8 +18,8 @@ percona-apt:
       - pkg: percona-apt
   pkg.latest:
     - names: 
+      - percona-xtradb-cluster-client-5.6
       - percona-xtradb-cluster-server-5.6
-      - percona-xtradb-cluster-full-56
       - percona-xtrabackup
       - percona-toolkit
 
