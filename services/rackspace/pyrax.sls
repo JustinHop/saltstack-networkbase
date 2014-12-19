@@ -33,8 +33,8 @@ setup_records2:
   rackspace.dns_record_exists:
     - zone_name: crowdrise.io
     - name: {{ grains['fqdn'] }}
-    - record_type: A
-    - data: {{ grains['fqdn_ip4'] }}
+    - record_type: "A"
+    - data: {{ grains['fqdn_ip4']|first }}
     - require:
       - rackspace: setup_domain
       - file: pyraxrc
