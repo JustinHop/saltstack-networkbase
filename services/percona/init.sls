@@ -3,6 +3,9 @@
 #   stuff for percona XtraDB
 #
 
+include:
+  - crowdrise/blockdev
+
 percona-needed:
   pkg.installed:
     - names:
@@ -22,4 +25,6 @@ percona-apt:
       - percona-xtradb-cluster-server-5.6
       - percona-xtrabackup
       - percona-toolkit
+
+
 
