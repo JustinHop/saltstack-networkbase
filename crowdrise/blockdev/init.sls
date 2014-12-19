@@ -9,7 +9,7 @@
   blockdev.formatted:
     - fs_type: ext4
   mount.mounted:
-    - name: /data{{ loop.index }}
+    - name: /data{{ loop.index0 }}
     - fstype: ext4
     - mkmnt: True
     - opts:
