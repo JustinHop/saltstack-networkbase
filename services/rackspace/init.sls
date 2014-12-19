@@ -66,5 +66,5 @@ driveclient:
       - file: /etc/driveclient/bootstrap.json
 
 include:
-#  - services/rackspace/autodns
+  - services/rackspace/autodns
   - services/rackspace/pyrax
