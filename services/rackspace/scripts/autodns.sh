@@ -38,7 +38,8 @@ reg_addr () {
 }
 
 for ADDR in $(hostname -I | tr ' ' "\n" | grep -v ':' ) ; do
-  if grep -sqP "$RFC1918" $ADDR ; then
+  echo $ADDR
+  if echo $ADDR | grep -P "$RFC1918" ; then
     echo $ADDR PRIVATE
     PRIVATE=$ADDR
     reg_addr $ADDR
