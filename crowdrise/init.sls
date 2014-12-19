@@ -14,6 +14,7 @@ base-min-pkgs:
       - bash-completion
       - bind9-host
       - bsdmainutils
+      - build-essential
       - ca-certificates
       - chkrootkit
       - colortail
@@ -31,6 +32,7 @@ base-min-pkgs:
       - pv
       - python-apt
       - python-pip
+      - python-dev
       - rkhunter
       - rlwrap
       - screen
