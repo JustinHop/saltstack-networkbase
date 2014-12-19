@@ -26,5 +26,11 @@ percona-apt:
       - percona-xtrabackup
       - percona-toolkit
 
-
+/etc/mysql/my.cnf:
+  file.managed:
+    - source: salt://services/percona/files/{{ grains['mem_total'] }}/my.cnf
+    - template: jinja
+    - user: root
+    - pass: root
+    - makedirs: True
 
