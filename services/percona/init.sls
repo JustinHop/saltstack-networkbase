@@ -17,5 +17,9 @@ percona-apt:
     - require_in:
       - pkg: percona-xtradb-cluster-full-56
   pkg.latest:
-    - name: percona-xtradb-cluster-full-56
+    - names: 
+      - percona-xtradb-cluster-server-5.6
+      - percona-xtradb-cluster-full-56
+      - percona-xtrabackup
+      - percona-toolkit
 
