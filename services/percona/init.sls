@@ -34,3 +34,12 @@ percona-apt:
     - pass: root
     - makedirs: True
 
+/usr/bin/mysql_install_db:
+  cmd.run:
+    - user: root
+    - group: root
+    - creates:
+      - /data1/mysqld/mysql/proc.MYD
+    - requires:
+      - file: /etc/mysql/my.cnf
+      - pkg: percona-xtradb-cluster-server-5.6
