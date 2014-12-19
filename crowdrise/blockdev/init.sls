@@ -17,6 +17,15 @@
       - async
       - noatime
       - barrier=0
+
+/data{{ loop.index0 }}/mysql:
+  file.directory:
+    - user: mysql
+    - group: mysql
+    - mode: 750
+    - makedirs: True
+    - require:
+      - mount: /dev/{{ ssd }}1
 {%  endif %}
 {% endfor %}
 
