@@ -3,13 +3,13 @@
 #   make sure all presented SSDs are formatted ext4
 #
 
-{% for count, ssd enumerate(grains['SSDs']) %}
+{% for ssd in grains['SSDs'] %}
 {%  if ssd != 'xvda' %}
 /dev/{{ ssd }}1:
   blockdev.formatted:
     - fs_type: ext4
   mount.mounted:
-    - name: /data{{ count }}
+    - name: /data{{ loop.index }}
     - fstype: ext4
     - mkmnt: True
     - opts:
