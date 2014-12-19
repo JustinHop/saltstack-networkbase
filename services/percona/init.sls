@@ -15,7 +15,7 @@ percona-apt:
     - keyid: 1C4CBDCDCD2EFD2A
     - keyserver: keys.gnupg.net
     - require_in:
-      - pkg: percona-xtradb-cluster-full-56
+      - pkg: percona-apt
   pkg.latest:
     - names: 
       - percona-xtradb-cluster-server-5.6
