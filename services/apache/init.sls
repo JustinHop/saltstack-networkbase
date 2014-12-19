@@ -63,6 +63,18 @@ include:
     - makedirs: true
     - mode: 755
 
+www.crowdrise.com:
+  git.latest:
+    - name: git@gitlab.crowdrise.com:crowdrise/codeigniter-app.git
+    - user: crowdrise
+    - group: www-data
+    - target: /var/www/vhosts/www.crowdrise.com
+    - identity: /home/crowdrise/.ssh/id_rsa
+    - require:
+      - pkg: git
+    - unless:
+      - 'test \! -f /var/www/vhosts/www.crowdrise.com/htdocs/content/robots.txt'
+
 /var/www/vhosts/www.crowdrise.com/htdocs:
   file.symlink:
     - target: /var/www/trunk
