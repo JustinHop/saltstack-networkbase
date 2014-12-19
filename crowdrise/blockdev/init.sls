@@ -16,6 +16,7 @@
     - opts:
       - async
       - noatime
+      - barrier=0
 {%  endif %}
 {% endfor %}
 
