@@ -16,7 +16,7 @@ RSTTL=300
 RSPATH=/usr/local/rsdns
 
 
-RFC1918="(10|192\.168|172\.(1[6-9]|2[0-9]|3[01]))\."
+RFC1918='^(10|192\.168|172\.(1[6-9]|2[0-9]|3[01]))\.'
 
 reg_addr () {
   local _ADDR=$1
@@ -39,9 +39,11 @@ reg_addr () {
 
 for ADDR in $(hostname -I | tr ' ' "\n" | grep -v ':' ) ; do
   if grep -sqP "$RFC1918" $ADDR ; then
+    echo $ADDR PRIVATE
     PRIVATE=$ADDR
     reg_addr $ADDR
   else
+    echo $ADDR PUBLIC
     PUBLIC=$ADDR
     reg_addr $ADDR ext.
   fi
