@@ -10,5 +10,8 @@ percona-apt:
     - require_in:
       - pkg: percona-xtradb-cluster-full-56
   pkg.latest:
-    - name: percona-xtradb-cluster-full-56
+    - pkgs: 
+      - percona-xtradb-cluster-full-56
+      - lvm2
+      - automysqlbackup
 
