@@ -31,3 +31,5 @@ In the above example you could create the following state files that would be ex
 - split up by usernames
 - users
 
+## Logging
+- make sure logs go to syslog
