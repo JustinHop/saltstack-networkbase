@@ -10,6 +10,7 @@
     - fs_type: ext4
   mount.mounted:
     - name: /data{{ loop.index0 }}
+    - device: /dev/{{ ssd }}1
     - fstype: ext4
     - mkmnt: True
     - opts:
