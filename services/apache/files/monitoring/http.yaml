@@ -1,0 +1,14 @@
+type           : remote.http
+label          : Website check {{ grains['fqdn'] }}
+timeout        : 30
+period         : 90
+target_alias   : default
+details        :
+    url        : {{ target_url }}
+    method     : GET
+monitoring_zones_poll: 
+               - mzord
+alarms         :
+    alarm1     :
+        label                 : http connect alarm
+        notification_plan_id  : {{ grains['cluster'] }}
