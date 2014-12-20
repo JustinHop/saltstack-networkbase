@@ -17,6 +17,8 @@
       - async
       - noatime
       - barrier=0
+    - require:
+      - blockdev: /dev/{{ ssd }}1
 
 /data{{ loop.index0 }}/mysql:
   file.directory:
@@ -26,6 +28,7 @@
     - makedirs: True
     - require:
       - mount: /dev/{{ ssd }}1
+      - blockdev: /dev/{{ ssd }}1
 {%  endif %}
 {% endfor %}
 
