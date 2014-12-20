@@ -20,7 +20,7 @@
     - require:
       - blockdev: /dev/{{ ssd }}1
 
-/data{{ loop.index0 }}/mysql:
+/data{{ loop.index0 }}/mysqld:
   file.directory:
     - user: mysql
     - group: mysql
