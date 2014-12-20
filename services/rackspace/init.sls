@@ -9,6 +9,10 @@ rackspacebase:
       - python-dev
       - python-pip
       - build-essential
+      - nagios-plugins-contrib
+      - nagios-plugins-extra
+      - nagios-plugins-openstack
+      - nagios-plugins-rabbitmq
 
 rackspace-tools:
   module.run:
