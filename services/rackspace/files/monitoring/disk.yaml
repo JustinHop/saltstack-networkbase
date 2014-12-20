@@ -1,0 +1,18 @@
+type        : agent.filesystem
+label       : Check for Disk
+disabled    : false
+period      : 60
+timeout     : 30
+details     :
+    target  : {{ target_path }}
+alarms      :
+    techs   :
+        label                 : disk {{ target_path }} used alarm
+        notification_plan_id  : {{ grains['cluster'] }}
+        criteria              : |
+            if (percentage(metric['used'], metric['total']) > 95) {
+                return new AlarmStatus(CRITICAL, 'Less than 5% free space left.');
+            }
+            if (percentage(metric['used'], metric['total']) > 90) {
+                return new AlarmStatus(WARNING, 'Less than 10% free space left.');
+            }
