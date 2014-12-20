@@ -19,7 +19,7 @@ percona-apt:
     - keyserver: keys.gnupg.net
     - require_in:
       - pkg: percona-apt
-  pkg.latest:
+  pkg.installed:
     - names: 
       - percona-xtradb-cluster-client-5.6
       - percona-xtradb-cluster-server-5.6
@@ -34,7 +34,7 @@ percona-apt:
     - pass: root
     - makedirs: True
 
-/usr/bin/mysql_install_db:
+/usr/bin/mysql_install_db --user=mysql --explicit_defaults_for_timestamp=true:
   cmd.run:
     - user: root
     - group: root
