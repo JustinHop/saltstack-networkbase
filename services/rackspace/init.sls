@@ -18,7 +18,8 @@ rackspace-tools:
   module.run:
     - name: pip.install
     - pkgs:
-      - raxmon
+      - rackspace-monitoring
+      - rackspace-monitoring-cli
       - python-clouddns
       - cloud_dns_cli
       - ptrcreate
@@ -27,6 +28,7 @@ rackspace-tools:
       - pyrax
     - requires:
       - pkg: rackspacebase
+      - pkg: python-dev
 
 cloudbackup-updater -v:
   cmd.run:
