@@ -11,5 +11,5 @@ backuppackages:
   pkg.installed:
     - names:
       - automysqlbackup
-      - lvm
+      - lvm2
       - rsync
