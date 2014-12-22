@@ -4,8 +4,7 @@
 #
 
 
-{%  for CI in grains['class_instance'] %}
-{%    if CI == "1" %}
+{%  if grains['class_instance']|int == "1"|int %}
 wepay-cron-prod:
   cron.present:
     - name: /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php prod /cron/wepay_tips
@@ -20,5 +19,4 @@ wepay-cron-dev:
     - user: www-data
     - identifier: Process Queued Wepay Donation Tips Every 2 Minutes Dev
 
-{%    endif %}
-{%  endfor %}
+{%  endif %}
