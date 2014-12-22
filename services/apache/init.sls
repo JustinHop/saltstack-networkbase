@@ -35,6 +35,9 @@ cr-apache-pkgs:
 
 include:
   - services/apache/{{ grains['oscodename'] }}
+{%- if grains['cluster'] == "prod" %}
+  - services/apache/cron
+{% endif %}
 
 #/etc/apache2:
 #  file.recurse:
