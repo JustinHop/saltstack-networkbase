@@ -16,4 +16,5 @@ npi-download:
     - require:
       - pkg: openjdk-7-jre-headless
     - creates:
+      - /opt/newrelic
 

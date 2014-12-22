@@ -5,6 +5,11 @@
 
 {% for ssd in grains['SSDs'] %}
 {%  if ssd != 'xvda' %}
+
+echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/{{ ssd }}:
+  cmd.run:
+    - creates: /dev/{{ ssd }}1
+
 /dev/{{ ssd }}1:
   blockdev.formatted:
     - fs_type: ext4
