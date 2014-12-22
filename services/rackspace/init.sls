@@ -48,7 +48,7 @@ driveclient:
       - cloudbackup-updater: http://agentrepo.drivesrvr.com/debian/cloudbackup-updater-latest.deb
   service.running:
     - requires:
-      - cmd: cloudbackup-updater -v:
+      - cmd: cloudbackup-updater -v
       - file: /etc/driveclient/bootstrap.json
 
 include:
