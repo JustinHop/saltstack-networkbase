@@ -10,8 +10,7 @@ rackspace-monitoring-repo:
     - require_in:
       - pkg: rackspace-monitoring-agent
 
-rackspace-monitoring-agent:
-  pkg.installed: []
+init-rackspace-monitoring:
   cmd.run:
     - name: /usr/bin/rackspace-monitoring-agent --setup --username {{ salt['pillar.get']('rackspace:username', 'username') }} --apikey {{ salt['pillar.get']('rackspace:apikey', 'apikey') }}
     - timeout: 15
@@ -19,6 +18,9 @@ rackspace-monitoring-agent:
       - /etc/rackspace-monitoring-agent.cfg
     - require:
       - pkg: rackspace-monitoring-agent
+
+rackspace-monitoring-agent:
+  pkg.installed: []
   service.running:
     - name: rackspace-monitoring-agent
     - watch:
@@ -26,7 +28,6 @@ rackspace-monitoring-agent:
       - file: /etc/rackspace-monitoring-agent.cfg
     - require:
       - pkg: rackspace-monitoring-agent
-
 
 /etc/rackspace-monitoring-agent.conf.d/root-disk.yaml:
   file.managed:
