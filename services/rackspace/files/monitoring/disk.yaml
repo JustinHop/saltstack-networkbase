@@ -1,5 +1,5 @@
 type        : agent.filesystem
-label       : Check for Disk
+label       : Filesystem on {{ target_path }}
 disabled    : false
 period      : 60
 timeout     : 30
