@@ -9,8 +9,9 @@ rackspace-monitoring-repo:
     - key_url: https://monitoring.api.rackspacecloud.com/pki/agent/linux.asc
     - require_in:
       - pkg: rackspace-monitoring-agent
-  pkg.installed:
-    - name: rackspace-monitoring-agent
+
+rackspace-monitoring-agent:
+  pkg.installed: []
   cmd.run:
     - name: /usr/bin/rackspace-monitoring-agent --setup --username {{ salt['pillar.get']('rackspace:username', 'username') }} --apikey {{ salt['pillar.get']('rackspace:apikey', 'apikey') }}
     - timeout: 15
