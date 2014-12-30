@@ -5,6 +5,7 @@
 
 include:
   - crowdrise/blockdev
+  - services/mysql/newrelic
 
 percona-needed:
   pkg.installed:
