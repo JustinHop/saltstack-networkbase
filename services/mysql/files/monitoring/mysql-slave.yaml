@@ -1,0 +1,24 @@
+type      : agent.mysql
+label     : MySQL Slave Replication
+period    : 60
+timeout   : 10
+username  : {{ target_username }}
+password  : {{ target_password }}
+alarms    :
+    mysql-slave:
+        label                 : MySQL Slave Replication
+        notification_plan_id  : {{ grains['cluster'] }}
+        criteria              : |
+            if (metric['replication.slave_running'] != "On" ) {
+                return new AlarmStatus(CRITICAL, 'MySQL Slave Broken');
+            }
+            if (metric['replication.seconds_behind_master'] > 100) {
+                return new AlarmStatus(CRITICAL, 'MySQL Slave Over 100 SBM');
+            }
+            if (metric['replication.seconds_behind_master'] > 0) {
+                return new AlarmStatus(WARNING, 'MySQL Slave Running Behind');
+            }
+            return new AlarmStatus(OK, "MySQL Slave Happy");
+
+    
+
