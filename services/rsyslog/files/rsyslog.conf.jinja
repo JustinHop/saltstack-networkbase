@@ -125,7 +125,7 @@ $ModLoad omrelp
 *.* :omrelp:{{ config.target }}:2514
 {% endif %}
 
-{% if config.logbasepath|default(false) %}
+{% if grains['class'] == "syslog" %}
 $template DailyPerHostLogs,"{{ config.logbasepath }}/%$YEAR%/%$MONTH%/%$DAY%/%HOSTNAME%-%FROMHOST-IP%.log"
 *.* -?DailyPerHostLogs
 {% endif %}
