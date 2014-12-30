@@ -20,5 +20,5 @@ include:
     - group: root
     - template: jinja
     - defaults:
-      - target_username: {{ pillar['mysqlmon.user'] }}
-      - target_password: {{ pillar['mysqlmon.pass'] }}
+      - target_username: {{ salt['pillar.get']('mysqlmon:user', 'user') }}
+      - target_password: {{ salt['pillar.get']('mysqlmon:pass', 'pass') }}
