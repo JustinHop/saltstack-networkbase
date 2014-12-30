@@ -3,14 +3,6 @@
 #   setup services using rackspace module
 #
 
-pyraxrc:
-  file.managed:
-    - source: salt://services/rackspace/files/pyraxrc
-    - name: /root/.pyrax.cfg
-    - template: jinja
-    - user: root
-    - group: root
-
 pyrax_setup:
   pkg.installed:
       - name: python-pip
