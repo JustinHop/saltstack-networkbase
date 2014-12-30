@@ -28,9 +28,9 @@ rackspace-monitoring-agent:
     - require:
       - pkg: rackspace-monitoring-agent
 
-/etc/rackspace-monitoring-agent.conf.d/root-disk.yaml:
-  file.managed:
-    - source: salt://services/rackspace/files/monitoring/disk.yaml
+/etc/rackspace-monitoring-agent.conf.d:
+  file.recurse:
+    - source: salt://services/rackspace/files/monitoring/
     - template: jinja
     - user: root
     - group: root
