@@ -16,8 +16,7 @@ alarms    :
             if (metric['replication.seconds_behind_master'] > 100) {
                 return new AlarmStatus(CRITICAL, 'MySQL Slave Over 100 SBM');
             }
-            if (metric['replication.seconds_behind_master'] > 0) {
+            if (metric['replication.seconds_behind_master'] > 10) {
                 return new AlarmStatus(WARNING, 'MySQL Slave Running Behind');
             }
             return new AlarmStatus(OK, "MySQL Slave Happy");
-
