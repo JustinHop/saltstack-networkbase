@@ -5,6 +5,7 @@
 
 include:
   - crowdrise/blockdev
+  - services/newrelic
   - services/newrelic/npi
   - services/mysql/newrelic
 
