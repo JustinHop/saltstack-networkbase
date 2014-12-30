@@ -3,6 +3,9 @@
 #   for java based npi plugins in newrelic
 #
 
+include:
+  - services/newrelic
+
 openjdk-7-jre-headless:
   pkg:
     - installed
