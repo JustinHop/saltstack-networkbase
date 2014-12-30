@@ -2,14 +2,15 @@ type      : agent.mysql
 label     : MySQL Slave Replication
 period    : 60
 timeout   : 10
-username  : {{ target_username }}
-password  : {{ target_password }}
+details   :
+    username  : {{ target_username }}
+    password  : {{ target_password }}
 alarms    :
     mysql-slave:
         label                 : MySQL Slave Replication
         notification_plan_id  : {{ salt['pillar.get']('rackspace:monitoring', 'npK5G8rmjm') }}
         criteria              : |
-            if (metric['replication.slave_running'] == "off" ) {
+            if (metric['replication.slave_running'] != "ON" ) {
                 return new AlarmStatus(CRITICAL, 'MySQL Slave Broken');
             }
             if (metric['replication.seconds_behind_master'] > 100) {
@@ -19,6 +20,4 @@ alarms    :
                 return new AlarmStatus(WARNING, 'MySQL Slave Running Behind');
             }
             return new AlarmStatus(OK, "MySQL Slave Happy");
-
-    
 
