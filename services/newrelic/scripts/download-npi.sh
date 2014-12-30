@@ -9,4 +9,4 @@ if [ -f /opt/newrelic-npi/npi ]; then
 fi
 
 cd /opt
-curl -L https://download.newrelic.com/npi/release/install-npi-linux-debian-x64.sh | sh -- -u -l $LICENSE_KEY
+curl -L https://download.newrelic.com/npi/release/install-npi-linux-debian-x64.sh | sh -s -- -u -l $LICENSE_KEY
