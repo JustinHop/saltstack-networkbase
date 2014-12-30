@@ -2,6 +2,11 @@
 #   services/mysql/newrelic.sls
 #   newrelic monitoring for mysql
 #
+/opt/newrelic-npi:
+  file.directory:
+    - makedirs: True
+    - user: newrelic
+    - group: newrelic
 
 mysql-npi-install:
   cmd.script:
@@ -9,6 +14,7 @@ mysql-npi-install:
     - cwd: /opt/newrelic-npi
     - require:
       - cmd: npi-download
+      - file: /opt/newrelic-npi
 
 /opt/newrelic-npi/plugins/com.newrelic.plugins.mysql.instance/newrelic_mysql_plugin-2.0.0/config/newrelic.json:
   file.managed:
