@@ -36,6 +36,6 @@ rackspace-monitoring-agent:
     - group: root
     - defaults:
       target_path: /
-      target_disk: /dev/xvda
+      target_disk: /dev/xvda1
 
 
