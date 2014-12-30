@@ -15,7 +15,7 @@ include:
 
 /etc/rackspace-monitoring-agent.conf.d/mysql.yaml:
   file.managed:
-    - source: salt://services/mysql/files/monitoring/mysql.yaml
+    - source: salt://services/mysql/files/monitoring/mysql-slave.yaml
     - user: root
     - group: root
     - template: jinja
