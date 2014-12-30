@@ -9,7 +9,7 @@ alarms    :
         label                 : MySQL Slave Replication
         notification_plan_id  : {{ salt['pillar.get']('rackspace:monitoring', 'npK5G8rmjm') }}
         criteria              : |
-            if (metric['replication.slave_running'] != "on" ) {
+            if (metric['replication.slave_running'] == "off" ) {
                 return new AlarmStatus(CRITICAL, 'MySQL Slave Broken');
             }
             if (metric['replication.seconds_behind_master'] > 100) {
