@@ -6,3 +6,5 @@
 
 include:
   - services/percona
+  - services/newrelic
+  - services/rackspace
