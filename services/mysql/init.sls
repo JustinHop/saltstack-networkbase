@@ -8,4 +8,4 @@ echo mysql > /etc/product:
     - user: root
 
 include:
-  - services/mysql/newrelic
+  - services/mysql/common
