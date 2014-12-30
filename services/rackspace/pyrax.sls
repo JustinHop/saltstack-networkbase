@@ -10,7 +10,6 @@ pyrax_setup:
     - name: pyrax
     - require:
       - pkg: pyrax_setup
-      - file: pyraxrc
 
 setup_domain:
   rackspace.dns_zone_exists:
@@ -19,7 +18,6 @@ setup_domain:
     - ttl: 300
     - require:
       - pip: pyrax_setup
-      - file: pyraxrc
 
 setup_records2:
   rackspace.dns_record_exists:
@@ -29,4 +27,3 @@ setup_records2:
     - data: {{ grains['fqdn_ip4']|first }}
     - require:
       - rackspace: setup_domain
-      - file: pyraxrc
