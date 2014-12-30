@@ -35,9 +35,19 @@ echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/{{ ssd }}:
       - mount: /dev/{{ ssd }}1
       - blockdev: /dev/{{ ssd }}1
 
-/etc/rackspace-monitoring-agent.conf.d/data{{ loop.index0 }}-disk.yaml:
+/etc/rackspace-monitoring-agent.conf.d/{{ ssd }}1-disk.yaml:
   file.managed:
     - source: salt://services/rackspace/files/monitoring/disk.yaml
+    - template: jinja
+    - makedirs: true
+    - user: root
+    - group: root
+    - defaults:
+      target_disk: /dev/{{ ssd }}1
+
+/etc/rackspace-monitoring-agent.conf.d/data{{ loop.index0 }}-filesystem.yaml:
+  file.managed:
+    - source: salt://services/rackspace/files/monitoring/filesystem.yaml
     - template: jinja
     - makedirs: true
     - user: root

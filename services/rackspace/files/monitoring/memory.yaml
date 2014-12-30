@@ -1,0 +1,18 @@
+type    : agent.memory
+label   : Memory
+period  : 60
+timeout : 10
+alarms  :
+    actual-memory-usage:
+        label: Memory usage
+        notification_plan_id: {{ grains['cluster'] }}
+        criteria: |
+            if (percentage(metric['actual_used'], metric['total']) > 95) {
+                return new AlarmStatus(CRITICAL, "Memory usage is above
+                your critical threshold of 90%"); }
+            if (percentage(metric['actual_used'], metric['total']) > 90) {
+                return new AlarmStatus(WARNING, "Memory usage is above your
+                warning threshold of 80%"); }
+            return new AlarmStatus(OK, "Memory usage is below your warning
+            threshold of 90%");
+

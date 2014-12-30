@@ -6,8 +6,8 @@ timeout     : 30
 details     :
     target  : {{ target_path }}
 alarms      :
-    techs   :
-        label                 : disk {{ target_path }} used alarm
+    filesystem:
+        label                 : Filesystem {{ target_path }} used alarm
         notification_plan_id  : {{ grains['cluster'] }}
         criteria              : |
             if (percentage(metric['used'], metric['total']) > 95) {
@@ -16,3 +16,4 @@ alarms      :
             if (percentage(metric['used'], metric['total']) > 90) {
                 return new AlarmStatus(WARNING, 'Less than 10% free space left.');
             }
+            return new AlarmStatus(OK, "More than 90% free space left");
