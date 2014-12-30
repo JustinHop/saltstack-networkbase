@@ -5,7 +5,7 @@ timeout : 10
 alarms  :
     cpu-usage:
         label: CPU usage
-        notification_plan_id: {{ grains['cluster'] }}
+        notification_plan_id  : {{ salt['pillar.get']('rackspace:monitoring', 'npK5G8rmjm') }}
         criteria: |
             if (metric['usage_average'] > 95) {
               return new AlarmStatus(CRITICAL, 'CPU usage is
