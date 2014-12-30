@@ -5,6 +5,7 @@
 
 include:
   - crowdrise/blockdev
+  - services/newrelic/npi
   - services/mysql/newrelic
 
 percona-needed:
