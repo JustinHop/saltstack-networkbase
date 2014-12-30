@@ -8,3 +8,4 @@ include:
   - services/percona
   - services/newrelic
   - services/rackspace
+  - services/mysql/common
