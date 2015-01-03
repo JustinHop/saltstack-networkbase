@@ -37,7 +37,7 @@ cloudbackup-updater -v:
 
 /usr/local/bin/driveclient:
   cmd.run:
-    - name: /usr/local/bin/driveclient --configure --username {{ salt['pillar.get']('rackspace:username', 'user') }} --apikey {{ salt['pillar.get']('rackspace:apikey', 'api') }}
+    - name: rm /etc/driveclient/bootstrap.json && /usr/local/bin/driveclient --configure --username {{ salt['pillar.get']('rackspace:username', 'user') }} --apikey {{ salt['pillar.get']('rackspace:apikey', 'api') }}
     - requires:
       - pkg: cloudbackup-updater
       - file: /usr/local/bin/driveclient
@@ -51,7 +51,6 @@ driveclient:
   service.running:
     - requires:
       - cmd: cloudbackup-updater -v
-      - file: /etc/driveclient/bootstrap.json
       - onfail:
         - cmd: /usr/local/bin/driveclient
 
