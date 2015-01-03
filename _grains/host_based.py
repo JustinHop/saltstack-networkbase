@@ -24,6 +24,13 @@ def host_based_info():
     grains = {}
     fqdn = socket.getfqdn()
 
+    grains['class'] = "oldschool"
+    grains['product'] = "sys"
+    grains['cluster'] = "prod"
+    grains['cluster_instance'] = 1
+    grains['business'] = "crowdrise"
+    grains['tld'] = "io"
+
     try:
         hostparts = re.match(
             r'^(\D+)(\d+)\.(\w+)\.(\D+)(\d+)\.(\w+)\.(\w+)$', fqdn)
@@ -46,6 +53,6 @@ def host_based_info():
     except:
         pass
 
-    log.warn("host_based has failed")
+    log.warn("host_based has resorted to defaults")
     grains['security_level'] = ''
     return grains
