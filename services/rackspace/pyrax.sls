@@ -29,3 +29,9 @@ setup_records2:
     - data: {{ grains['fqdn_ip4']|first }}
     - require:
       - rackspace: setup_domain
+
+include:
+  - services/rackspace/autodns
+  - onfail:
+    - pyrax_setup
+    - setup_records2
