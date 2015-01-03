@@ -4,6 +4,7 @@ include:
   - crowdrise/hostsfile
   - crowdrise/bin
   - crowdrise/profile
+  - services/chkrootkit
   #- crowdrise/hostsfile/resolv
   #- crowdrise/pam
 
