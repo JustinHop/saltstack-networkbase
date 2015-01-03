@@ -43,7 +43,20 @@ base-min-pkgs:
       - swig
       - tmux
       - vim
+      - unattended-upgrades
       - zsh
+
+/etc/apt/apt.conf.d/10periodic:
+  file.managed:
+    - source: salt://crowdrise/files/10periodic
+    - user: root
+    - group: root
+
+/etc/apt/apt.conf.d/50unattended-upgrades:
+  file.managed:
+    - source: salt://crowdrise/files/50unattended-upgrades
+    - user: root
+    - group: root
 
 six:
   module.run:
