@@ -19,7 +19,7 @@ setup_domain:
     - email_address: noreply@crowdrise.com
     - ttl: 300
     - require:
-      - pip: pyrax_setup
+      - pip: pyrax
 
 setup_records2:
   rackspace.dns_record_exists:
@@ -28,10 +28,6 @@ setup_records2:
     - record_type: "A"
     - data: {{ grains['fqdn_ip4']|first }}
     - require:
+      - pip: pyrax
       - rackspace: setup_domain
 
-include:
-  - services/rackspace/autodns
-  - onfail:
-    - pyrax_setup
-    - setup_records2

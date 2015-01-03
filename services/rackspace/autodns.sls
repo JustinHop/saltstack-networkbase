@@ -23,4 +23,6 @@ update_rackspace:
     - template: jinja
     - require: 
       - git: https://github.com/linickx/rsdns.git
+    - onfail:
+      - rackspace: setup_domain
 
