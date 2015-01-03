@@ -1,5 +1,11 @@
+#
+#   services/openssh/server.sls
+#   openssh server config
+#
+
 include:
   - services/openssh
+  - services/sshguard
 
 openssh-server:
   pkg:
