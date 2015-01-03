@@ -43,6 +43,7 @@ cloudbackup-updater -v:
       - pkg: cloudbackup-updater
       - file: /usr/local/bin/driveclient
       - cmd: cloudbackup-updater -v
+      - pkg: driveclient
 
 driveclient:
   pkg.installed:

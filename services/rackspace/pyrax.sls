@@ -10,6 +10,8 @@ pyrax_setup:
     - name: pyrax
     - require:
       - pkg: pyrax_setup
+      - pkg: python-dev
+      - pkg: build-essential
 
 setup_domain:
   rackspace.dns_zone_exists:
