@@ -22,7 +22,10 @@ rackspace-monitoring-agent:
   pkg.installed: []
   service.running:
     - name: rackspace-monitoring-agent
+    - enable: true
+    - restart: true
     - watch:
+      - file: /etc/rackspace-monitoring-agent.cfg
       - file: /etc/rackspace-monitoring-agent.conf.d/*
       - cmd: init-rackspace-monitoring
     - require:
@@ -37,5 +40,4 @@ rackspace-monitoring-agent:
     - defaults:
       target_path: /
       target_disk: /dev/xvda1
-
 
