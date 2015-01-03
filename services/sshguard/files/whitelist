@@ -7,9 +7,4 @@
 162.218.233.101/31
 192.168.221.0/24
 216.103.134.250
-{% if 'sshguard_whitelist' in grains %}
-{%  for 'white' in grains['sshguard_whitelist'] %}
-{{ white }}
-{%  endfor %}
-{% endif %}
 
