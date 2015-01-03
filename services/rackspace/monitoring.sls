@@ -25,8 +25,7 @@ rackspace-monitoring-agent:
     - enable: true
     - restart: true
     - watch:
-      - file: /etc/rackspace-monitoring-agent.cfg
-      - file: /etc/rackspace-monitoring-agent.conf.d/*
+      - file: /etc/rackspace-monitoring-agent.conf.d
       - cmd: init-rackspace-monitoring
     - require:
       - pkg: rackspace-monitoring-agent
