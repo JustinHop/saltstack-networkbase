@@ -27,3 +27,5 @@ sshguard:
     - template: jinja
     - mode: 644
     - source: salt://services/sshguard/files/whitelist
+    - defaults:
+      - sshguard_whitelist: www.justinhoppensteadt.com
