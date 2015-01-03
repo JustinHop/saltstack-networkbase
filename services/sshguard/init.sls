@@ -28,4 +28,4 @@ sshguard:
     - mode: 644
     - source: salt://services/sshguard/files/whitelist
     - defaults:
-      - sshguard_whitelist: www.justinhoppensteadt.com
+      sshguard_whitelist: www.justinhoppensteadt.com
