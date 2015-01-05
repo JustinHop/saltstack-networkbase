@@ -10,7 +10,7 @@ include:
 
 base-min-nopkg:
   pkg.removed:
-    - python-pip
+    - name: python-pip
 
 base-min-pkgs:
   pkg.installed:
