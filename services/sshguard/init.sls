@@ -4,13 +4,11 @@
 #
 
 sshguard:
+  pkg.installed: []
   service.running:
     - require:
       - pkg: sshguard
       - file: /etc/default/sshguard
-  pkg.installed:
-    - names:
-      - sshguard
 
 /etc/default/sshguard:
   file.managed:
