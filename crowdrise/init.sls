@@ -59,14 +59,14 @@ base-min-pkgs:
     - group: root
 
 six:
-    pip.install
+  pip.install:
     - upgrade: True
     - pkgs:
       - six
       - pyrax
     - require:
       - pkg: bash-min-pkgs
-    - reload_modules: True
+      - reload_modules: True
     - order:
       - 1
 
