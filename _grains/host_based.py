@@ -27,7 +27,7 @@ def host_based_info():
     grains['class'] = "oldschool"
     grains['product'] = "sys"
     grains['cluster'] = "prod"
-    grains['cluster_instance'] = 1
+    grains['cluster_instance'] = "1"
     grains['business'] = "crowdrise"
     grains['tld'] = "io"
 
