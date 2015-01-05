@@ -4,4 +4,4 @@
 #
 
 rsyslog:
-  service.running:
+  service.running
