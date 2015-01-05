@@ -4,7 +4,7 @@
 #
 
 {% for ssd in grains['SSDs'] %}
-{%  if ssd != 'xvda' %}
+{%  if ssd != 'xvda' and ssd.startswith('xvd') %}
 
 echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/{{ ssd }}:
   cmd.run:
