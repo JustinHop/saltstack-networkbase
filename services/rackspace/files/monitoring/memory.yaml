@@ -7,6 +7,7 @@ alarms  :
         label: Memory usage
         notification_plan_id  : {{ salt['pillar.get']('rackspace:monitoring', 'npK5G8rmjm') }}
         criteria: |
+            :set consecutiveCount=3
             if (percentage(metric['actual_used'], metric['total']) > 95) {
                 return new AlarmStatus(CRITICAL, "Memory usage is above
                 your critical threshold of 90%"); }

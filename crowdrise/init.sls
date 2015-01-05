@@ -8,10 +8,6 @@ include:
   #- crowdrise/hostsfile/resolv
   #- crowdrise/pam
 
-base-min-nopkg:
-  pkg.removed:
-    - name: python-pip
-
 base-min-pkgs:
   pkg.installed:
     - names:
@@ -72,7 +68,8 @@ six:
     - require:
       - pkg: bash-min-pkgs
     - reload_modules: True
-
+    - order:
+      - 1
 
 curl -L https://bootstrap.pypa.io/get-pip.py | python:
   cmd.run:

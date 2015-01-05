@@ -10,6 +10,7 @@ alarms      :
         label                 : Filesystem {{ target_path }} used alarm
         notification_plan_id  : {{ salt['pillar.get']('rackspace:monitoring', 'npK5G8rmjm') }}
         criteria              : |
+            :set consecutiveCount=3
             if (percentage(metric['used'], metric['total']) > 95) {
                 return new AlarmStatus(CRITICAL, 'Less than 5% free space left.');
             }
