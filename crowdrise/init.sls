@@ -10,9 +10,7 @@ include:
 
 base-min-nopkg:
   pkg.removed:
-    - names: 
-      - python-pip
-      - salt-common
+    - python-pip
 
 base-min-pkgs:
   pkg.installed:
