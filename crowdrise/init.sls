@@ -59,8 +59,7 @@ base-min-pkgs:
     - group: root
 
 six:
-  module.run:
-    - name: pip.install
+    pip.install
     - upgrade: True
     - pkgs:
       - six
@@ -75,7 +74,8 @@ curl -L https://bootstrap.pypa.io/get-pip.py | python:
   cmd.run:
     - user: root
     - group: root
-    - onfail: six
+    - onfail:
+      - six
 
 userdel ubuntu || echo hello:
   cmd.run:
