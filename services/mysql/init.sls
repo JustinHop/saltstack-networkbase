@@ -3,9 +3,5 @@
 #   stuff for mysql
 #
 
-echo mysql > /etc/product:
-  cmd.run:
-    - user: root
-
 include:
   - services/mysql/common
