@@ -15,8 +15,6 @@ newrelic-plugin-agent:
     - name: pip.install
     - pkgs:
       - newrelic-plugin-agent
-    - requires:
-      - pkg: python-pip
 
 /etc/init.d/newrelic-plugin-agent:
   file.managed:

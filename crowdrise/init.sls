@@ -8,6 +8,10 @@ include:
   #- crowdrise/hostsfile/resolv
   #- crowdrise/pam
 
+base-min-nopkg:
+  pkg.removed:
+    - pkgs: ['python-pip', 'salt-common']
+
 base-min-pkgs:
   pkg.installed:
     - names:
@@ -33,7 +37,6 @@ base-min-pkgs:
       - ncurses-term
       - pv
       - python-apt
-      - python-pip
       - python-dev
       - rkhunter
       - rlwrap
@@ -69,6 +72,13 @@ six:
     - require:
       - pkg: bash-min-pkgs
     - reload_modules: True
+
+
+curl -L https://bootstrap.pypa.io/get-pip.py | python:
+  cmd.run:
+    - user: root
+    - group: root
+    - onfail: six
 
 userdel ubuntu || echo hello:
   cmd.run:

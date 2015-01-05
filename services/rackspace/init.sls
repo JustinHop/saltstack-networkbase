@@ -7,7 +7,6 @@ rackspacebase:
   pkg.installed:
     - names:
       - python-dev
-      - python-pip
       - build-essential
       - nagios-plugins-contrib
       - nagios-plugins-extra

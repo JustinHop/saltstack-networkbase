@@ -16,7 +16,6 @@ newrelic:
       - python-pip
     - requires:
       - pkgrepo: newrelic-monitoring-repo
-      - pkg: python-pip
 
 /etc/newrelic:
   file.recurse:

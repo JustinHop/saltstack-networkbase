@@ -13,13 +13,10 @@ pyraxrc:
 
 
 pyrax_setup:
-  pkg.installed:
-      - name: python-pip
   pip.installed:
     - name: pyrax
     - require:
       - file: pyraxrc
-      - pkg: pyrax_setup
       - pkg: python-dev
       - pkg: build-essential
 
