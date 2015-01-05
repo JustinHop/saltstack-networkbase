@@ -15,6 +15,7 @@ base-min-pkgs:
       - bash-completion
       - bind9-host
       - bsdmainutils
+      - btrfs-tools
       - build-essential
       - ca-certificates
       - chkrootkit
@@ -66,8 +67,7 @@ six:
       - six
       - pyrax
     - require:
-      - pkg: python-pip
-      - pkg: git
+      - pkg: bash-min-pkgs
     - reload_modules: True
 
 userdel ubuntu || echo hello:
