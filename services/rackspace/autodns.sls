@@ -3,10 +3,6 @@
 #   Configure auto dns for rackspace
 #
 
-git:
-  pkg:
-    - installed
-
 https://github.com/linickx/rsdns.git:
   git.latest:
     - target: /usr/local/rsdns
