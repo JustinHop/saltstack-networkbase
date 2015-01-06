@@ -8,7 +8,6 @@ https://github.com/linickx/rsdns.git:
     - target: /usr/local/rsdns
     - require:
       - pkg: git
-      - sls: crowdrise
 
 update_rackspace:
   cmd.script:
