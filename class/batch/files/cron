@@ -1,0 +1,33 @@
+#
+#   THIS FILE IS MAINTAINED BY SALT
+#
+#   CONFIG CHANGES WILL BE OVERWRITTEN
+#
+
+0 2 * * * php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php prod /cron/send_fundraising_minimum_summary > /dev/null
+0 * * * * php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_my_crowd.php
+####### does not exist 0 * * * * /usr/local/bin/cache_explore_page    
+0 * * * * php /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_inventory.php
+*/15 * * * * php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_inventory.php
+30 5 * * * php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_birthdays.php
+0 5 * * * php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_fundraising_minimums.php
+0 5 * * * php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php prod /cron/fundraising_minimum_warnings
+45 5 * * * php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php prod /cron/wepay_process_account_warnings > /dev/null
+1 4 * * * php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_latest_project_activity.php
+0 3 1 * * php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_votes.php
+5 1 * * * php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_clean_fundraisers.php
+#1 0 * * * php /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_birthdays.php
+1 0 * * * php /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_latest_project_activity.php
+0 0 1 * * php /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_votes.php
+#####* * * * * chown apache:apache /var/www/vhosts/www.crowdrise.com/htdocs/application/logs/*
+#####* * * * * chown apache:apache /var/www/vhosts/dev.crowdrise.com/htdocs/application/logs/*
+# 30 3 * * * php /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_fundraising_minimums.php
+0 6 1 * 1 php /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_weekly_donation_report.php
+@daily php /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_clean_fundraisers.php
+* * * * * /usr/sbin/logrotate /etc/logrotate.d/httpd-strace 
+######## 0,5,10,15,20,25,30,35,40,45,50,55 * * * * php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_replication_test.php        #Test that replication is up and running on 'Main Slave', 'Reports Slave', and 'Mirror Slave'
+@daily php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_weddingRegistries.php
+@daily php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_weddingRegistriesDonations.php
+@daily php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_babyRegistries.php
+@daily php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_babyRegistriesDonations.php
+
