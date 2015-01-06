@@ -8,6 +8,16 @@ include:
   #- crowdrise/hostsfile/resolv
   #- crowdrise/pam
 
+git:
+  pkg.installed:
+    - order:
+      - 1
+
+build-essential:
+  pkg.installed:
+    - order:
+      - 1
+
 base-min-pkgs:
   pkg.installed:
     - names:
@@ -16,14 +26,12 @@ base-min-pkgs:
       - bind9-host
       - bsdmainutils
       - btrfs-tools
-      - build-essential
       - ca-certificates
       - chkrootkit
       - colortail
       - curl
       - debsums
       - etckeeper
-      - git
       - htop
       - iotop
       - iptables
@@ -45,6 +53,8 @@ base-min-pkgs:
       - vim
       - unattended-upgrades
       - zsh
+    - order:
+      - 1
 
 /etc/apt/apt.conf.d/10periodic:
   file.managed:
@@ -61,14 +71,14 @@ base-min-pkgs:
 six:
   pip.install:
     - upgrade: True
+    - reload_modules: True
     - pkgs:
       - six
       - pyrax
-    - require:
-      - pkg: bash-min-pkgs
-      - reload_modules: True
     - order:
-      - 1
+      - 3
+    - require:
+      - pkg: git
 
 curl -L https://bootstrap.pypa.io/get-pip.py | python:
   cmd.run:
@@ -81,9 +91,13 @@ userdel ubuntu || echo hello:
   cmd.run:
     - user: root
     - group: root
+    - order:
+      - 2
 
 
 groupdel ubuntu || echo hello:
   cmd.run:
     - user: root
     - group: root
+    - order:
+      - 2
