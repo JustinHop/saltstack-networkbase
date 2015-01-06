@@ -1,12 +1,7 @@
-include:
-  - crowdrise/rackconnect
-  - crowdrise/rclocal
-  - crowdrise/hostsfile
-  - crowdrise/bin
-  - crowdrise/profile
-  - services/chkrootkit
-  #- crowdrise/hostsfile/resolv
-  #- crowdrise/pam
+#
+#   crowdrise/init.sls
+#   base for crowdrise systems
+#
 
 git:
   pkg.installed:
@@ -101,3 +96,11 @@ groupdel ubuntu || echo hello:
     - group: root
     - order:
       - 2
+
+include:
+  - crowdrise/rackconnect
+  - crowdrise/rclocal
+  - crowdrise/hostsfile
+  - crowdrise/bin
+  - crowdrise/profile
+  - services/chkrootkit
