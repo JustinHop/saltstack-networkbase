@@ -28,7 +28,10 @@ rackspace-tools:
       - pkg: rackspacebase
       - pkg: python-dev
 
-cloudbackup-updater -v:
+cloudbackup-updater:
+  pkg.installed:
+    - sources:
+      - cloudbackup-updater: http://agentrepo.drivesrvr.com/debian/cloudbackup-updater-latest.deb
   cmd.run:
     - creates: /usr/local/bin/driveclient
     - requires:
@@ -40,16 +43,14 @@ cloudbackup-updater -v:
     - requires:
       - pkg: cloudbackup-updater
       - file: /usr/local/bin/driveclient
-      - cmd: cloudbackup-updater -v
+      - cmd: cloudbackup-updater
       - pkg: driveclient
 
 driveclient:
-  pkg.installed:
-    - sources:
-      - cloudbackup-updater: http://agentrepo.drivesrvr.com/debian/cloudbackup-updater-latest.deb
   service.running:
     - requires:
-      - cmd: cloudbackup-updater -v
+      - cmd: cloudbackup-updater
+      - pkg: cloudbackup-updater
       - onfail:
         - cmd: /usr/local/bin/driveclient
 
