@@ -40,3 +40,8 @@ rackspace-monitoring-agent:
       target_path: /
       target_disk: /dev/xvda1
 
+https://github.com/racker/rackspace-monitoring-agent-plugins-contrib.git:
+  git.latest:
+    - target: /usr/lib/rackspace-monitoring-agent/plugins
+    - require:
+      - pkg: git
