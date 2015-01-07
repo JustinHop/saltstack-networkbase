@@ -70,7 +70,7 @@ six:
 
 get-pip-latest:
   cmd.run:
-    - name: curl -L https://bootstrap.pypa.io/get-pip.py | python:
+    - name: curl -L https://bootstrap.pypa.io/get-pip.py | python
     - user: root
     - group: root
     - creates: /usr/local/bin/pip
