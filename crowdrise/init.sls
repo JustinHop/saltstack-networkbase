@@ -11,6 +11,11 @@ include:
   - crowdrise/rclocal
   - services/chkrootkit
 
+python-pip:
+  pkg.removed
+    - order:
+      - 1
+
 git:
   pkg.installed:
     - order:
@@ -60,13 +65,15 @@ base-min-pkgs:
       - 2
 
 six:
-  pip.install:
+  pip.latest:
     - reload_modules: True
     - require:
       - pkg: git
       - cmd: get-pip-latest
   module.run:
     - name: pip_state.uptodate
+    - order:
+      - 2
 
 get-pip-latest:
   cmd.run:
@@ -83,11 +90,15 @@ userdel ubuntu || echo hello:
   cmd.run:
     - user: root
     - group: root
+    - order:
+      - 1
 
 groupdel ubuntu || echo hello:
   cmd.run:
     - user: root
     - group: root
+    - order:
+      - 1
 
 /etc/apt/apt.conf.d/10periodic:
   file.managed:
