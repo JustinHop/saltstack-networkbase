@@ -29,6 +29,7 @@ gen-certreq:
     - creates: /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.csr
     - requires:
       - file: /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key
+      - cmd: gen-privatekey
 
 gen-selfsign:
   cmd.run:
@@ -37,3 +38,5 @@ gen-selfsign:
     - requires:
       - file: /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key
       - file: /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.csr
+      - cmd: gen-certreq
+      - cmd: gen-privatekey

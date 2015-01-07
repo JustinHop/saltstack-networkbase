@@ -5,6 +5,7 @@
 
 include:
   - crowdrise/bin
+  - crowdrise/selfcert
   - crowdrise/hostsfile
   - crowdrise/profile
   - crowdrise/rackconnect
