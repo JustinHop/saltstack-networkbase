@@ -1,6 +1,6 @@
 {% from "services/apache/map.jinja" import apache with context %}
 
-apache-cr:
+apache:
   pkg:
     - installed
     - name: {{ apache.server }}
@@ -9,13 +9,13 @@ apache-cr:
     - name: {{ apache.service }}
     - enable: True
 
-apache-reload-cr:
+apache-reload:
   module:
     - wait
     - name: service.reload
     - m_name: {{ apache.service }}
 
-apache-restart-cr:
+apache-restart:
   module:
     - wait
     - name: service.restart
