@@ -55,7 +55,7 @@ include:
 
 /var/www/:
   file.directory:
-    - user: crowdrise
+    - user: www-data
     - mode: 755
     - makedirs: True
 
