@@ -1,2 +1,3 @@
-*:
-  - crowdrise.profile
+base:
+  *:
+    - crowdrise.profile

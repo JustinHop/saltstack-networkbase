@@ -1,2 +1,3 @@
-*:
-  - crowdrise.rackconnect
+base:
+  *:
+    - crowdrise.rackconnect

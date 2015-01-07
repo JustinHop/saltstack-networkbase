@@ -1,2 +1,3 @@
-*:
-  - crowdrise.hostsfile
+base:
+  *:
+    - crowdrise.hostsfile

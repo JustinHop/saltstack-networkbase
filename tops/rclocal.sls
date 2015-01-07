@@ -1,2 +1,3 @@
-*:
-  - crowdrise.rclocal
+base:
+  *:
+    - crowdrise.rclocal

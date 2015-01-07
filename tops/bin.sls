@@ -1,2 +1,3 @@
-*:
-  - crowdrise.bin
+base:
+  *:
+    - crowdrise.bin

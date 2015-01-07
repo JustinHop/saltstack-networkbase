@@ -1,2 +1,3 @@
-*:
-  - services.chkrootkit
+base:
+  *:
+    - services.chkrootkit
