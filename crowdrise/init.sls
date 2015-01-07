@@ -3,6 +3,14 @@
 #   base for crowdrise systems
 #
 
+include:
+  - crowdrise/bin
+  - crowdrise/hostsfile
+  - crowdrise/profile
+  - crowdrise/rackconnect
+  - crowdrise/rclocal
+  - services/chkrootkit
+
 git:
   pkg.installed:
     - order:
@@ -51,6 +59,36 @@ base-min-pkgs:
     - order:
       - 2
 
+six:
+  pip.install:
+    - reload_modules: True
+    - require:
+      - pkg: git
+      - cmd: get-pip-latest
+  module.run:
+    - name: pip_state.uptodate
+
+get-pip-latest:
+  cmd.run:
+    - name: curl -L https://bootstrap.pypa.io/get-pip.py | python:
+    - user: root
+    - group: root
+    - creates: /usr/local/bin/pip
+    - require:
+      - pkg: python-dev
+      - pkg: build-essential
+      - pkg: git
+
+userdel ubuntu || echo hello:
+  cmd.run:
+    - user: root
+    - group: root
+
+groupdel ubuntu || echo hello:
+  cmd.run:
+    - user: root
+    - group: root
+
 /etc/apt/apt.conf.d/10periodic:
   file.managed:
     - source: salt://crowdrise/files/10periodic
@@ -63,40 +101,4 @@ base-min-pkgs:
     - user: root
     - group: root
 
-six:
-  pip.install:
-    - upgrade: True
-    - reload_modules: True
-    - pkgs:
-      - six
-      - pyrax
-    - order:
-      - 3
-    - require:
-      - pkg: git
 
-curl -L https://bootstrap.pypa.io/get-pip.py | python:
-  cmd.run:
-    - user: root
-    - group: root
-    - onfail:
-      - six
-
-userdel ubuntu || echo hello:
-  cmd.run:
-    - user: root
-    - group: root
-
-
-groupdel ubuntu || echo hello:
-  cmd.run:
-    - user: root
-    - group: root
-
-include:
-  - crowdrise/rackconnect
-  - crowdrise/rclocal
-  - crowdrise/hostsfile
-  - crowdrise/bin
-  - crowdrise/profile
-  - services/chkrootkit
