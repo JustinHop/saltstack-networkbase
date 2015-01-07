@@ -12,5 +12,3 @@ base:
     - os/{{ grains['os'] }}/{{ grains['oscodename'] }}
   {%-       endif %}
   {%-     endif %}
-  {%-   endif %}
-  {%-  endif %}
