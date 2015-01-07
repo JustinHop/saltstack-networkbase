@@ -49,7 +49,7 @@ base-min-pkgs:
       - unattended-upgrades
       - zsh
     - order:
-      - 1
+      - 2
 
 /etc/apt/apt.conf.d/10periodic:
   file.managed:
@@ -86,16 +86,12 @@ userdel ubuntu || echo hello:
   cmd.run:
     - user: root
     - group: root
-    - order:
-      - 2
 
 
 groupdel ubuntu || echo hello:
   cmd.run:
     - user: root
     - group: root
-    - order:
-      - 2
 
 include:
   - crowdrise/rackconnect
