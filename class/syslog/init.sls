@@ -4,5 +4,4 @@
 #
 
 include:
-  - crowdrise/blockdev
   - services/rsyslog/server
