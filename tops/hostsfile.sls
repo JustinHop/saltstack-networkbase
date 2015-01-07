@@ -1,0 +1,2 @@
+*:
+  - crowdrise.hostsfile
