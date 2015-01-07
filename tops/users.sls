@@ -1,0 +1,8 @@
+#
+#   Users only
+#
+
+base:
+
+  '*':
+    - users
