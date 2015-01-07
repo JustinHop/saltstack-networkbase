@@ -10,6 +10,9 @@ base:
     - services/openssh
     - services/openssh/server
     - services/rsyslog
+    - services/rackspace
+    - salt/minion
+    - last
     - excludes
     #
     # These are github hosted formulas
@@ -20,6 +23,7 @@ base:
     #
     # End Gitlab
     #
+
     {%   if 'roles' in grains %}
     {%-    for role in grains['roles'] %}
     {%-      if role in states %}
@@ -118,8 +122,3 @@ base:
     - match: grain
     - host/{{ grains['host'] }}
   {%  endif %}
-
-  '*.*':
-    - services/rackspace
-    - salt/minion
-    - last
