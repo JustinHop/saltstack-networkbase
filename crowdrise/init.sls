@@ -12,7 +12,7 @@ include:
   - services/chkrootkit
 
 python-pip:
-  pkg.removed
+  pkg.removed:
     - order:
       - 1
 
