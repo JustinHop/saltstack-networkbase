@@ -26,3 +26,12 @@ config_{{ rsyslog.config }}:
     - source: salt://services/rsyslog/files/rsyslog.conf.jinja
     - context:
       config: {{ salt['pillar.get']('rsyslog', {}) }}
+
+/etc/rsyslog.d/30-omrelp.conf:
+  file.managed:
+    - source: salt://services/rsyslog/files/rsyslog.d/30-omrelp.conf
+    - user: root
+    - group: root
+    - template: jinja
+
+
