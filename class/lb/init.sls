@@ -152,6 +152,6 @@ fs.file-max:
 #kernel.pid_max:
  
 # Increase system IP port limits
-net.ipv4.ip_local_port_range: 65000
+net.ipv4.ip_local_port_range:
   sysctl.present:
-    - value: 2000 65000
+    - value: 3000 65000
