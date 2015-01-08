@@ -73,14 +73,14 @@ six:
       - cmd: get-pip-latest
   module.run:
     - name: pip_state.uptodate
-    - order:
-      - 3
+    - order: 100
 
 get-pip-latest:
   cmd.run:
     - name: curl -L https://bootstrap.pypa.io/get-pip.py | python
     - user: root
     - group: root
+    - creates: /usr/local/bin/pip
     - order: 2
     - require:
       - pkg: python-dev
