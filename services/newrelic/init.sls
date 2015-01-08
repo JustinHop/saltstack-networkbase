@@ -13,7 +13,6 @@ newrelic:
     - pkgs:
       - newrelic-sysmond
       - newrelic-daemon
-      - python-pip
     - requires:
       - pkgrepo: newrelic-monitoring-repo
 
