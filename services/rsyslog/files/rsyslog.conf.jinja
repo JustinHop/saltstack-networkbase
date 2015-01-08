@@ -60,11 +60,13 @@ $IncludeConfig /etc/rsyslog.d/*.conf
 #### RULES ####
 ###############
 
+{% if grains['class'] == "syslog" %}
 $template DailyTemplate,"/data/logs/%$YEAR%/%$MONTH%/%$DAY%/%FROMHOST%/%syslogfacility-text%.log"
 
 
 :source, !isequal, "localhost" -?DailyTemplate
 :source, !isequal, "localhost" stop
+{% endif %}
 
 #
 # First some standard log files.  Log by facility.
