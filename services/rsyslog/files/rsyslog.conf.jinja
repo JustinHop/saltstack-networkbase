@@ -34,17 +34,22 @@ $InputTCPServerRun 514
 # Use traditional timestamp format.
 # To enable high precision timestamps, comment out the following line.
 #
-$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+$ActionFileDefaultTemplate RSYSLOG_SyslogProtocol23Format
 
 #
 # Set the default permissions for all log files.
 #
-$FileOwner root
-$FileGroup adm
-$FileCreateMode {{ config.get('filemode', '0640') }}
+$FileOwner syslog
+$FileGroup syslog
+$PrivDropToUser syslog
+$PrivDropToGroup syslog
+$FileCreateMode {{ config.get('filemode', '0644') }}
 $DirCreateMode {{ config.get('dirmode', '0755') }}
 $Umask 0022
 
+$PreserveFQDN on
+#
+#
 #
 # Include all config files in /etc/rsyslog.d/
 #
@@ -55,12 +60,14 @@ $IncludeConfig /etc/rsyslog.d/*.conf
 #### RULES ####
 ###############
 
+:source, !isequal, "localhost" stop
+
 #
 # First some standard log files.  Log by facility.
 #
 auth,authpriv.*                 /var/log/auth.log
 *.*;auth,authpriv.none          -/var/log/syslog
-#cron.*                         /var/log/cron.log
+cron.*                         /var/log/cron.log
 daemon.*                        -/var/log/daemon.log
 kern.*                          -/var/log/kern.log
 lpr.*                           -/var/log/lpr.log
@@ -120,12 +127,12 @@ daemon.*;mail.*;\
         *.=debug;*.=info;\
         *.=notice;*.=warn       |/dev/xconsole
 
-{% if config.target|default(false) %}
-$ModLoad omrelp
-*.* :omrelp:{{ config.target }}:2514
-{% endif %}
+#{% if config.target|default(false) %}
+#$ModLoad omrelp
+#*.* :omrelp:{{ config.target }}:2514
+#{% endif %}
 
-{% if grains['class'] == "syslog" %}
-$template DailyPerHostLogs,"{{ config.logbasepath }}/%$YEAR%/%$MONTH%/%$DAY%/%HOSTNAME%-%FROMHOST-IP%.log"
-*.* -?DailyPerHostLogs
-{% endif %}
+#{% if grains['class'] == "syslog" %}
+#$template DailyPerHostLogs,"{{ config.logbasepath }}/%$YEAR%/%$MONTH%/%$DAY%/%HOSTNAME%-%FROMHOST-IP%.log"
+#*.* -?DailyPerHostLogs
+#{% endif %}
