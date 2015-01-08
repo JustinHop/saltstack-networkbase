@@ -35,6 +35,10 @@ $InputTCPServerRun 514
 # To enable high precision timestamps, comment out the following line.
 #
 $ActionFileDefaultTemplate RSYSLOG_SyslogProtocol23Format
+$ActionQueueType LinkedList # use asynchronous processing
+$ActionQueueFileName /var/tmp/rsyslog-cache # set file name, also enables disk mode
+$ActionResumeRetryCount -1 # infinite retries on insert failure
+$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
 
 #
 # Set the default permissions for all log files.
@@ -62,10 +66,16 @@ $IncludeConfig /etc/rsyslog.d/*.conf
 
 {% if grains['class'] == "syslog" %}
 $template DailyTemplate,"/data/logs/%$YEAR%/%$MONTH%/%$DAY%/%FROMHOST%/%syslogfacility-text%.log"
+template(name="DailyPerHost_app" type="string" "/data/logs/%$YEAR%/%$MONTH%/%$DAY%/%FROMHOST%/%programname%.log"
+
+if $fromhost != "localhost" then {
+                action(type="omfile" DynaFile="DailyPerHost_app")
+                stop
+}
 
 
-:source, !isequal, "localhost" -?DailyTemplate
-:source, !isequal, "localhost" stop
+#:source, !isequal, "localhost" -?DailyTemplate
+#:source, !isequal, "localhost" stop
 {% endif %}
 
 #
@@ -128,10 +138,6 @@ news.notice                     -/var/log/news/news.notice
 # NOTE: adjust the list below, or you'll go crazy if you have a reasonably
 #      busy site..
 #
-daemon.*;mail.*;\
-        news.err;\
-        *.=debug;*.=info;\
-        *.=notice;*.=warn       |/dev/xconsole
 
 #{% if config.target|default(false) %}
 #$ModLoad omrelp
