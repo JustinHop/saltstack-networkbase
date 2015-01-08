@@ -60,6 +60,10 @@ $IncludeConfig /etc/rsyslog.d/*.conf
 #### RULES ####
 ###############
 
+$template DailyTemplate "/data/logs/%$YEAR%/%$MONTH%/%$DAY%/%FROMHOST%/%syslogfacility-text%.log"
+
+
+:source, !isequal, "localhost" -?DailyTemplate
 :source, !isequal, "localhost" stop
 
 #
