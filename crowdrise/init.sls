@@ -66,7 +66,7 @@ base-min-pkgs:
       - 2
 
 six:
-  pip.latest:
+  pip.installed:
     - reload_modules: True
     - require:
       - pkg: git
@@ -74,14 +74,14 @@ six:
   module.run:
     - name: pip_state.uptodate
     - order:
-      - 2
+      - 3
 
 get-pip-latest:
   cmd.run:
     - name: curl -L https://bootstrap.pypa.io/get-pip.py | python
     - user: root
     - group: root
-    - creates: /usr/local/bin/pip
+    - order: 2
     - require:
       - pkg: python-dev
       - pkg: build-essential
