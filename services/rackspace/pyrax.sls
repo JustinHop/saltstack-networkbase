@@ -35,6 +35,7 @@ setup_records2:
     - name: {{ grains['fqdn'] }}
     - record_type: "A"
     - data: {{ grains['fqdn_ip4']|first }}
+    - comment: salt pyrax added system record
     - require:
       - pip: pyrax
       - file: pyraxrc

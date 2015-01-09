@@ -8,6 +8,14 @@ include:
   - crowdrise/ssl
   - nginx/ng
 
+/etc/nginx/htpasswd-dev:
+  file.managed:
+    - user: root
+    - group: root
+    - contents: |
+        crowdrise:$2y$05$sOVCk1FRGKEuRhreNvxcUeep4kcVfhQIRov7jJwmwTM1nLKpa3D6C
+        monitoring:$2y$05$lxVkX5tM7JeDkOW69XBbFO7z4ZUISZsf1S8toQDN52L9HcCessY5q
+
 #
 # Sysctl Tuning, Work on this more!
 #
