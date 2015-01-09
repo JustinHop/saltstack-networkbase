@@ -3,13 +3,12 @@
 #   cloud backups mofo
 #
 
-
-t
 cloudbackup-updater:
   pkg.installed:
     - sources:
       - cloudbackup-updater: http://agentrepo.drivesrvr.com/debian/cloudbackup-updater-latest.deb
   cmd.run:
+    - name: cloudbackup-updater -v
     - creates: /usr/local/bin/driveclient
     - requires:
       - pkg: cloudbackup-updater
