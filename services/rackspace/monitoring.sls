@@ -40,6 +40,13 @@ rackspace-monitoring-agent:
       target_path: /
       target_disk: /dev/xvda1
 
+/usr/lib/rackspace-monitoring-agent/plugins:
+  file.directory:
+    - user: root
+    - group: root
+    - makedirs: true
+
+
 https://github.com/racker/rackspace-monitoring-agent-plugins-contrib.git:
   git.latest:
     - target: /usr/lib/rackspace-monitoring-agent/plugins
