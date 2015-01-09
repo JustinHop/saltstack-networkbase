@@ -13,10 +13,9 @@ include:
     - user: root
     - group: root
     - contents: |
-        crowdrise:$2y$05$sOVCk1FRGKEuRhreNvxcUeep4kcVfhQIRov7jJwmwTM1nLKpa3D6C
-        monitoring:$2y$05$lxVkX5tM7JeDkOW69XBbFO7z4ZUISZsf1S8toQDN52L9HcCessY5q
+        crowdrise:$apr1$bGpmtRQ2$Z1x21c8f.QTCSMSD.vvBb1
+        monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
 
-#
 # Sysctl Tuning, Work on this more!
 #
 
