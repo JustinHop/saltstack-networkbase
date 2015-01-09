@@ -28,34 +28,9 @@ rackspace-tools:
       - pkg: rackspacebase
       - pkg: python-dev
 
-cloudbackup-updater:
-  pkg.installed:
-    - sources:
-      - cloudbackup-updater: http://agentrepo.drivesrvr.com/debian/cloudbackup-updater-latest.deb
-  cmd.run:
-    - creates: /usr/local/bin/driveclient
-    - requires:
-      - pkg: cloudbackup-updater
-
-/usr/local/bin/driveclient:
-  cmd.run:
-    - name: rm /etc/driveclient/bootstrap.json; /usr/local/bin/driveclient --configure --username {{ salt['pillar.get']('rackspace:username', 'user') }} --apikey {{ salt['pillar.get']('rackspace:apikey', 'api') }}
-    - requires:
-      - pkg: cloudbackup-updater
-      - file: /usr/local/bin/driveclient
-      - cmd: cloudbackup-updater
-      - pkg: driveclient
-
-driveclient:
-  service.running:
-    - requires:
-      - cmd: cloudbackup-updater
-      - pkg: cloudbackup-updater
-      - onfail:
-        - cmd: /usr/local/bin/driveclient
-
 
 include:
   - services/rackspace/autodns
+  - services/rackspace/backup
   - services/rackspace/pyrax
   - services/rackspace/monitoring
