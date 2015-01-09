@@ -52,3 +52,10 @@ https://github.com/racker/rackspace-monitoring-agent-plugins-contrib.git:
     - target: /usr/lib/rackspace-monitoring-agent/plugins
     - require:
       - pkg: git
+
+chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
+  cmd.run:
+    - user: root
+    - group: root
+    - require:
+      - git: https://github.com/racker/rackspace-monitoring-agent-plugins-contrib.git
