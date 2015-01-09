@@ -16,7 +16,8 @@ cloudbackup-updater:
 /usr/local/bin/driveclient:
   cmd.run:
     - name: rm /etc/driveclient/bootstrap.json; /usr/local/bin/driveclient --configure --username {{ salt['pillar.get']('rackspace:username', 'user') }} --apikey {{ salt['pillar.get']('rackspace:apikey', 'api') }}
-    - unless: grep '"IsRegistered" : true' /etc/driveclient/bootstrap.json
+    - unless: |
+        grep '"IsRegistered" : true' /etc/driveclient/bootstrap.json
     - requires:
       - pkg: cloudbackup-updater
       - file: /usr/local/bin/driveclient
