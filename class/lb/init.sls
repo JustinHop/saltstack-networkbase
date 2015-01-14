@@ -8,6 +8,11 @@ include:
   - crowdrise/ssl
   - nginx/ng
 
+nginx-packages:
+  pkg.installed:
+    - names:
+      - nginx-naxsi
+
 /etc/nginx/htpasswd-dev:
   file.managed:
     - user: root
