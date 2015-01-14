@@ -11,6 +11,8 @@ include:
 nginx-config:
   pkgrepo.managed:
     - ppa: crowdrise/nginx-builds
+    - keyid: 75FC36CE
+    - keyserver: keyserver.ubuntu.com
   pkg.latest:
     - name: nginx-light
     - refresh: true
