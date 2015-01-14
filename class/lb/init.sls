@@ -10,9 +10,9 @@ include:
 
 nginx-config:
   pkgrepo.managed:
-    - ppa: nginx/development
+    - ppa: crowdrise/nginx-builds
   pkg.latest:
-    - name: nginx-full
+    - name: nginx-light
     - refresh: true
 
 /etc/nginx/htpasswd-dev:
