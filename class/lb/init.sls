@@ -8,10 +8,12 @@ include:
   - crowdrise/ssl
   - nginx/ng
 
-nginx-packages:
-  pkg.installed:
-    - names:
-      - nginx-naxsi
+nginx-config:
+  pkgrepo.managed:
+    - ppa: nginx/development
+  pkg.latest:
+    - name: nginx
+    - refresh: true
 
 /etc/nginx/htpasswd-dev:
   file.managed:
