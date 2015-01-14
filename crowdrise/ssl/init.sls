@@ -11,7 +11,8 @@
     - group: root
     - mode: 400
     - makedirs: true
-    - contents: {{ cert['key'] }}
+    - contents: |
+      {{ cert['key'] }}
 
 /etc/tls/certs/{{ name }}.crowdrise.com.crt:
   file.managed:
@@ -19,7 +20,8 @@
     - group: root
     - mode: 644
     - makedirs: true
-    - contents: {{ cert['cert'] }}
+    - contents: |
+      {{ cert['cert'] }}
 
 /etc/tls/certs/{{ name }}.crowdrise.com.crt.ca:
   file.managed:
@@ -27,7 +29,8 @@
     - group: root
     - mode: 644
     - makedirs: true
-    - contents: {{ cert['certchain'] }}
+    - contents: |
+      {{ cert['certchain'] }}
 
 /etc/tls/certs/{{ name }}.crowdrise.com.certchain:
   file.managed:
