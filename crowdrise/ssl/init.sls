@@ -12,7 +12,7 @@
     - mode: 400
     - makedirs: true
     - contents: |
-      {{ cert['key'] }}
+        {{ cert['key'] | indent(8) }}
 
 /etc/tls/certs/{{ name }}.crowdrise.com.crt:
   file.managed:
@@ -21,7 +21,7 @@
     - mode: 644
     - makedirs: true
     - contents: |
-      {{ cert['cert'] }}
+        {{ cert['cert'] | indent(8) }}
 
 /etc/tls/certs/{{ name }}.crowdrise.com.crt.ca:
   file.managed:
@@ -30,7 +30,7 @@
     - mode: 644
     - makedirs: true
     - contents: |
-      {{ cert['certchain'] }}
+        {{ cert['certchain'] | indent(8) }}
 
 /etc/tls/certs/{{ name }}.crowdrise.com.certchain:
   file.managed:
@@ -39,7 +39,7 @@
     - mode: 644
     - makedirs: true
     - contents: |
-      {{ cert['cert'] }}
-      {{ cert['certchain'] }}
+        {{ cert['cert'] | indent(8) }}
+        {{ cert['certchain'] | indent(8) }}
 
 {% endfor %}
