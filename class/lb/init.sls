@@ -12,7 +12,7 @@ nginx-config:
   pkgrepo.managed:
     - ppa: nginx/development
   pkg.latest:
-    - name: nginx
+    - name: nginx-naxsi
     - refresh: true
 
 /etc/nginx/htpasswd-dev:

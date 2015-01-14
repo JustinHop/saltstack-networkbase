@@ -1,33 +1,42 @@
 #
 #   crowdrise/ssl/init.sls
-#   crowdrise 2016 wildcard certs
+#   fancy loop over pillar data
 #
 
-/etc/pki/tls/private/wildcard.crowdrise.com.key:
+{% for name, cert in  pillar.get('ssl', {}).items() %}
+
+/etc/tls/private/{{ name }}.crowdrise.com.key:
   file.managed:
-    - source: salt://crowdrise/ssl/files/private
-    - template: jinja
     - user: root
+    - group: root
+    - mode: 400
+    - makedirs: true
+    - contents: {{ cert['key'] }}
+
+/etc/tls/certs/{{ name }}.crowdrise.com.crt:
+  file.managed:
+    - user: root
+    - group: root
     - mode: 644
     - makedirs: true
+    - contents: {{ cert['cert'] }}
 
-/etc/pki/tls/certs/wildcard.crowdrise.com.crt:
+/etc/tls/certs/{{ name }}.crowdrise.com.crt.ca:
   file.managed:
-    - source: salt://crowdrise/ssl/files/cert
-    - template: jinja
     - user: root
+    - group: root
+    - mode: 644
     - makedirs: true
+    - contents: {{ cert['certchain'] }}
 
-/etc/pki/tls/certs/wildcard.crowdrise.com.crt.ca:
+/etc/tls/certs/{{ name }}.crowdrise.com.certchain:
   file.managed:
-    - source: salt://crowdrise/ssl/files/certchain
-    - template: jinja
     - user: root
+    - group: root
+    - mode: 644
     - makedirs: true
+    - contents: |
+      {{ cert['cert'] }}
+      {{ cert['certchain'] }}
 
-/etc/pki/tls/certs/wildcard.crowdrise.com.certchain:
-  file.managed:
-    - source: salt://crowdrise/ssl/files/fullcertchain
-    - template: jinja
-    - user: root
-    - makedirs: true
+{% endfor %}
