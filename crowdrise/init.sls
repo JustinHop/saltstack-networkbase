@@ -71,9 +71,6 @@ six:
     - require:
       - pkg: git
       - cmd: get-pip-latest
-  module.run:
-    - name: pip_state.uptodate
-    - order: 100
 
 get-pip-latest:
   cmd.run:
