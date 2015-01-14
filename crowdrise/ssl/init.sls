@@ -39,7 +39,7 @@
     - mode: 644
     - makedirs: true
     - contents: |
-        {{ cert['certchain'] | indent(8) }}
         {{ cert['cert'] | indent(8) }}
+        {{ cert['certchain'] | indent(8) }}
 
 {% endfor %}
