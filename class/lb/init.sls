@@ -17,6 +17,12 @@ nginx-config:
     - name: nginx-light
     - refresh: true
 
+openssl dhparam -out /etc/nginx/dhparam.pem 4096:
+  cmd.run:
+    - user: root
+    - group: root
+    - creates: /etc/nginx/dhparam.pem
+
 /etc/nginx/htpasswd-dev:
   file.managed:
     - user: root
