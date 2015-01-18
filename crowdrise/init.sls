@@ -41,6 +41,7 @@ base-min-pkgs:
       - curl
       - debsums
       - etckeeper
+      - haveged
       - htop
       - iotop
       - iptables
