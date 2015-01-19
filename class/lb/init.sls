@@ -27,7 +27,9 @@ openssl dhparam -out /etc/nginx/dhparam.pem 4096:
   file.managed:
     - user: root
     - group: root
-    - source: salt://class/lb/files/include
+    - contents: |
+      include: /etc/nginx/naxsi.rules;
+      include: /etc/nginx/proxy_params;
 
 /etc/nginx/naxsi.rules:
   file.managed:
