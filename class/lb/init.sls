@@ -23,7 +23,7 @@ openssl dhparam -out /etc/nginx/dhparam.pem 4096:
     - group: root
     - creates: /etc/nginx/dhparam.pem
 
-/etc/nginx/naxsi_core.rules:
+/etc/nginx/naxsi.rules:
   file.managed:
     - user: root
     - group: root
