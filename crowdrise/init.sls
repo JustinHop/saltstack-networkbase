@@ -45,6 +45,7 @@ base-min-pkgs:
       - htop
       - iotop
       - iptables
+      - lockfile-progs
       - moreutils
       - mosh
       - multitail
