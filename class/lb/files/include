@@ -1,0 +1,2 @@
+include: /etc/nginx/naxsi.rules
+include: /etc/nginx/proxy_params

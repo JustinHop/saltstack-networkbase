@@ -23,6 +23,12 @@ openssl dhparam -out /etc/nginx/dhparam.pem 4096:
     - group: root
     - creates: /etc/nginx/dhparam.pem
 
+/etc/nginx/include:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://class/lb/files/include
+
 /etc/nginx/naxsi.rules:
   file.managed:
     - user: root
