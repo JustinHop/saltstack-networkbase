@@ -4,6 +4,7 @@
 #
 
 /etc/ssh/sshd_config:
-  - user: root
-  - group: root
-  - source: salt://services/openssh/files/sshd_config.default
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://services/openssh/files/sshd_config.default
