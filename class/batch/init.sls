@@ -6,8 +6,6 @@
 include:
   - class/http
 
-
-
 /etc/cron.d/crowdrise:
   file.managed:
     - source: salt://class/batch/files/cron
