@@ -6,40 +6,8 @@
 include:
   - services/newrelic
   - crowdrise/ssl
+  - services/nginx
   - nginx/ng
-
-nginx-config:
-  pkgrepo.managed:
-    - ppa: crowdrise/nginx-builds
-    - keyid: 75FC36CE
-    - keyserver: keyserver.ubuntu.com
-  pkg.latest:
-    - name: nginx-light
-    - refresh: true
-
-openssl dhparam -out /etc/nginx/dhparam.pem 4096:
-  cmd.run:
-    - user: root
-    - group: root
-    - creates: /etc/nginx/dhparam.pem
-
-/etc/nginx/include:
-  file.managed:
-    - user: root
-    - group: root
-    - source: salt://class/lb/files/include
-
-/etc/nginx/naxsi.rules:
-  file.managed:
-    - user: root
-    - group: root
-    - source: salt://class/lb/files/naxsi.rules
-
-/etc/nginx/naxsi_core.rules:
-  file.managed:
-    - user: root
-    - group: root
-    - source: salt://class/lb/files/naxsi_core.rules
 
 /etc/nginx/htpasswd-showcase:
   file.managed:
