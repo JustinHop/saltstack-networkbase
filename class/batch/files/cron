@@ -4,21 +4,23 @@
 #   CONFIG CHANGES WILL BE OVERWRITTEN
 #
 
+TZ=America/New_York
+
 # CONVERTING ALL TIMES TO UTC
 
-0     20  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php                  prod  /cron/send_fundraising_minimum_summary  2>&1
+0     8   *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php                  prod  /cron/send_fundraising_minimum_summary  2>&1
 0     *   *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_my_crowd.php
 0     *   *  *  *  www-data  php  /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_inventory.php
 */15  *   *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_inventory.php
-30    23  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_birthdays.php
-0     23  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_fundraising_minimums.php
-0     23  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php                  prod  /cron/fundraising_minimum_warnings
-45    23  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php                  prod  /cron/wepay_process_account_warnings    2>&1
-1     22  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_latest_project_activity.php
-0     21  1  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_votes.php
-5     19  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_clean_fundraisers.php
-1     18  *  *  *  www-data  php  /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_latest_project_activity.php
-0     18  1  *  *  www-data  php  /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_votes.php
+30    11  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_birthdays.php
+0     11  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_fundraising_minimums.php
+0     11  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php                  prod  /cron/fundraising_minimum_warnings
+45    11  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php                  prod  /cron/wepay_process_account_warnings    2>&1
+1     10  *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_latest_project_activity.php
+0     9   1  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_votes.php
+5     7   *  *  *  www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_clean_fundraisers.php
+1     6   *  *  *  www-data  php  /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_latest_project_activity.php
+0     6   1  *  *  www-data  php  /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_votes.php
 0     0   1  *  1  www-data  php  /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_weekly_donation_report.php
 @daily             www-data  php  /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_clean_fundraisers.php
 @daily             www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_weddingRegistries.php

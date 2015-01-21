@@ -25,7 +25,9 @@ export APACHE_LOG_DIR=/var/log/apache2$SUFFIX
 ## The locale used by some modules like mod_dav
 export LANG=C
 ## Uncomment the following line to use the system default locale instead:
-#. /etc/default/locale
+. /etc/default/locale
+
+export TZ=America/New_York
 
 export LANG
 
@@ -35,7 +37,7 @@ export LANG
 
 ## If you need a higher file descriptor limit, uncomment and adjust the
 ## following line (default is 8192):
-#APACHE_ULIMIT_MAX_FILES='ulimit -n 65536'
+APACHE_ULIMIT_MAX_FILES='ulimit -n 65536'
 
 ## If you would like to pass arguments to the web server, add them below
 ## to the APACHE_ARGUMENTS environment.
