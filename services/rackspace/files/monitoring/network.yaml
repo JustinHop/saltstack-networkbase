@@ -1,0 +1,7 @@
+type        : agent.network
+label       : network interface {{ target_interface }}
+disabled    : false
+period      : 60
+timeout     : 30
+details     :
+    target  : {{ target_interface }}
