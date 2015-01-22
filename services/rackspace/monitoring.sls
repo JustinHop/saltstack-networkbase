@@ -65,14 +65,7 @@ chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
     - user: root
     - group: root
     - makedirs: True
-    - contents: |
-      # Managed by salt
-      module(load="imfile" PollingInterval="5")
-      input(type="imfile"
-            File="/var/log/rackspace-monitoring-agent.log"
-            Tag="RSMon"
-            Severity="info"
-            Facility="daemon")
+    - source: salt://services/rackspace/files/rsyslog.conf
 
 {% for interface in grains['ip_interfaces'] %}
 {% if interface != 'lo' %}
