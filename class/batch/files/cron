@@ -4,6 +4,8 @@
 #   CONFIG CHANGES WILL BE OVERWRITTEN
 #
 
+# Setting this variable for timezone will not change the times at which the cronjobs are run, only the time
+# that are reported from within the applications themseleves.
 TZ=America/New_York
 
 # CONVERTING ALL TIMES TO UTC
