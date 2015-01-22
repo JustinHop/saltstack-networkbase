@@ -71,7 +71,7 @@ openssl dhparam -out /etc/nginx/dhparam.pem 4096:
     - contents: |
       # Managed by salt
       module(load="imfile" PollingInterval="5")
-
+      #
       input(type="imfile"
             File="/var/log/nginx/*error.log"
             Tag="NginxError"
