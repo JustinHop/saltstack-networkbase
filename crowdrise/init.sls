@@ -63,6 +63,7 @@ base-min-pkgs:
       - tmux
       - vim
       - unattended-upgrades
+      - update-notifier-common
       - zsh
     - order:
       - 2
