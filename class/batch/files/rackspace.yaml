@@ -1,0 +1,27 @@
+type        : agent.plugin
+label       : WePay
+disabled    : false
+period      : 60
+timeout     : 30
+details     :
+    file    : /usr/lib/rackspace-monitoring-agent/plugins/wepay.sh
+alarms      :
+    wepay:
+        label                 : WePay Processing
+        notification_plan_id  : npYJv7dn5N
+        criteria              : |
+            if (metric['wepay_pings_unprocessed'] > 100) {
+                return new AlarmStatus(CRITICAL, 'Over 100 wepay pings unprocessed!');
+            }
+            if (metric['wepay_pings_unprocessed'] > 50) {
+                return new AlarmStatus(WARNING, 'Over 50 wepay pings unprocessed!');
+            }
+            if (metric['wepay_tips_unprocessed'] > 50) {
+                return new AlarmStatus(CRITICAL, 'Over 50 wepay tips unprocessed!');
+            }
+            if (metric['wepay_tips_unprocessed'] > 15) {
+                return new AlarmStatus(WARNING, 'Over 15 wepay tips unprocessed!');
+            }
+            return new AlarmStatus(OK, "WePay Tips and Pings OK");
+
+
