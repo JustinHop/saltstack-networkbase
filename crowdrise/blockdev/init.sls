@@ -57,7 +57,3 @@ echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/{{ ssd }}:
 
 {%  endif %}
 {% endfor %}
-
-
-
-

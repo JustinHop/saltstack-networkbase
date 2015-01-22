@@ -39,13 +39,13 @@ rackspace-monitoring-agent:
     - defaults:
       target_path: /
       target_disk: /dev/xvda1
+      target_interface: lo
 
 /usr/lib/rackspace-monitoring-agent/plugins:
   file.directory:
     - user: root
     - group: root
     - makedirs: true
-
 
 https://github.com/racker/rackspace-monitoring-agent-plugins-contrib.git:
   git.latest:
@@ -59,3 +59,18 @@ chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
     - group: root
     - require:
       - git: https://github.com/racker/rackspace-monitoring-agent-plugins-contrib.git
+
+{% for interface in grains['ip_interfaces'] %}
+{% if interface != 'lo' %}
+/etc/rackspace-monitoring-agent.conf.d/network-{{ interface }}.yaml:
+  file.managed:
+    - source: salt://services/rackspace/files/monitoring/network.yaml
+    - template: jinja
+    - makedirs: true
+    - user: root
+    - group: root
+    - defaults:
+      target_interface: {{ interface }}
+
+{%  endif %}
+{% endfor %}
