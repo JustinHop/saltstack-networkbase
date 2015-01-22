@@ -65,23 +65,10 @@ openssl dhparam -out /etc/nginx/dhparam.pem 4096:
 
 /etc/rsyslog.d/nginx.conf:
   file.managed:
+    - source: salt://services/nginx/files/rsyslog.conf
     - user: root
     - group: root
     - makedirs: True
-    - contents: |
-      # Managed by salt
-      module(load="imfile" PollingInterval="5")
-      #
-      input(type="imfile"
-            File="/var/log/nginx/*error.log"
-            Tag="NginxError"
-            Severity="warn"
-            Facility="local6")
-      input(type="imfile"
-            File="/var/log/nginx/*access.log"
-            Tag="NginxAccess"
-            Severity="info"
-            Facility="local7")
 
 /etc/rackspace-monitoring-agent.conf.d/nginx.yaml:
   file.managed:
