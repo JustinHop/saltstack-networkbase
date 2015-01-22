@@ -68,7 +68,7 @@ chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
     - contents: |
       # Managed by salt
       module(load="imfile" PollingInterval="5")
-
+      
       input(type="imfile"
             File="/var/log/rackspace-monitoring-agent.log"
             Tag="RSMon"
