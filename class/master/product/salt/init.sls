@@ -4,7 +4,8 @@
 #
 
 
-#include:
+include:
+  - services/nginx
 #  # - salt/master
 #  #  - salt/cloud
 #  #- salt/syndic
