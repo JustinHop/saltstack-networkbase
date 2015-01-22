@@ -60,8 +60,7 @@ openssl dhparam -out /etc/nginx/dhparam.pem 4096:
         sharedscripts
         postrotate
             [ -f /run/nginx.pid ] && kill -USR1 $(cat /run/nginx.pid)
-        endscript
-      }
+        endscript }
 
 /etc/rsyslog.d/nginx.conf:
   file.managed:
