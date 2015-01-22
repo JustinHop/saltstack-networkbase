@@ -60,6 +60,21 @@ chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
     - require:
       - git: https://github.com/racker/rackspace-monitoring-agent-plugins-contrib.git
 
+/etc/rsyslog.d/rackspace-monitoring-daemon.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - makedirs: True
+    - contents: |
+      # Managed by salt
+      module(load="imfile" PollingInterval="5")
+
+      input(type="imfile"
+            File="/var/log/rackspace-monitoring-agent.log"
+            Tag="RSMon"
+            Severity="info"
+            Facility="daemon")
+
 {% for interface in grains['ip_interfaces'] %}
 {% if interface != 'lo' %}
 /etc/rackspace-monitoring-agent.conf.d/network-{{ interface }}.yaml:
