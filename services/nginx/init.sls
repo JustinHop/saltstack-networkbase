@@ -47,20 +47,7 @@ openssl dhparam -out /etc/nginx/dhparam.pem 4096:
     - user: root
     - group: root
     - makedirs: True
-    - contents: |
-      # Managed by salt
-      /var/log/nginx/*.log {
-        daily
-        missingok
-        rotate 30
-        compress
-        delaycompress
-        notifempty
-        create 644 www-data syslog
-        sharedscripts
-        postrotate
-            [ -f /run/nginx.pid ] && kill -USR1 $(cat /run/nginx.pid)
-        endscript }
+    - source: salt://services/nginx/files/logrotate.conf
 
 /etc/rsyslog.d/nginx.conf:
   file.managed:
