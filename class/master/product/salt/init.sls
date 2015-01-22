@@ -6,6 +6,7 @@
 
 include:
   - services/nginx
+  - nginx/ng
 #  # - salt/master
 #  #  - salt/cloud
 #  #- salt/syndic
