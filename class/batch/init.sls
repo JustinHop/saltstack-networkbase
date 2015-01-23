@@ -22,9 +22,17 @@ include:
     - group: root
     - mode: 644
 
-/usr/lib/rackspace-monitoring-agent/plugins/wepay.sh:
+/etc/rackspace-monitoring-agent.conf.d/crowdrisedb.yaml:
   file.managed:
-    - source: salt://class/batch/files/wepay.sh
+    - source: salt://class/batch/files/crowdrisedb.yaml
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
+
+/usr/lib/rackspace-monitoring-agent/plugins/crowdrisedb.sh:
+  file.managed:
+    - source: salt://class/batch/files/crowdrisedb.sh
     - template: jinja
     - user: root
     - group: root
