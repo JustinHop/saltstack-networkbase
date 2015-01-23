@@ -8,7 +8,7 @@
         compressext .xz
         delaycompress
         notifempty
-        create 644 root adm
+        create 644 www-data syslog
         sharedscripts
         postrotate
                 if /etc/init.d/apache2 status > /dev/null ; then \

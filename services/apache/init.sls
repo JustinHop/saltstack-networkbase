@@ -39,19 +39,13 @@ include:
   - services/apache/cron
 {% endif %}
 
-#/etc/apache2:
-#  file.recurse:
-#    - source: salt://services/apache/files/{{ grains['oscodename'] }}/{{ grains['cluster'] }}/apache2
-#    - dir_mode: 755
-#    - file_mode: 644
-#    - template: jinja
-#    - include_empty: true
-
-#php5-fpm:
-#  pkg:
-#    - installed
-#  service:
-#    - running
+/etc/rsyslog.d/apache-crowdrise.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - makedirs: True
+    - mode: 644
+    - source: salt://services/apache/files/rsyslog.conf
 
 /var/www/:
   file.directory:
@@ -65,22 +59,6 @@ include:
     - group: root
     - makedirs: true
     - mode: 755
-
-www.crowdrise.com:
-  git.latest:
-    - name: git@gitlab.crowdrise.com:crowdrise/codeigniter-app.git
-    - user: crowdrise
-    - group: www-data
-    - target: /var/www/vhosts/www.crowdrise.com
-    - identity: /home/crowdrise/.ssh/id_rsa
-    - require:
-      - pkg: git
-    - unless:
-      - 'test \! -f /var/www/vhosts/www.crowdrise.com/htdocs/content/robots.txt'
-
-/var/www/vhosts/www.crowdrise.com/htdocs:
-  file.symlink:
-    - target: /var/www/trunk
 
 /var/www/vhosts/www.crowdrise.com/htdocs/content/photos/bin1/original:
   file.directory:
