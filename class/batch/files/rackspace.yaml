@@ -10,16 +10,17 @@ alarms      :
         label                 : WePay Processing
         notification_plan_id  : npYJv7dn5N
         criteria              : |
-            if (metric['wepay_pings_unprocessed'] > 100) {
+            :set consecutiveCount=5
+            if (metric['wepay_pings_unprocessed'] > 120) {
                 return new AlarmStatus(CRITICAL, 'Over 100 wepay pings unprocessed!');
             }
-            if (metric['wepay_pings_unprocessed'] > 50) {
+            if (metric['wepay_pings_unprocessed'] > 60) {
                 return new AlarmStatus(WARNING, 'Over 50 wepay pings unprocessed!');
             }
             if (metric['wepay_tips_unprocessed'] > 50) {
                 return new AlarmStatus(CRITICAL, 'Over 50 wepay tips unprocessed!');
             }
-            if (metric['wepay_tips_unprocessed'] > 15) {
+            if (metric['wepay_tips_unprocessed'] > 25) {
                 return new AlarmStatus(WARNING, 'Over 15 wepay tips unprocessed!');
             }
             return new AlarmStatus(OK, "WePay Tips and Pings OK");
