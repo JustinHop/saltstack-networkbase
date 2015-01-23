@@ -38,9 +38,9 @@ PubkeyAuthentication yes
 AuthorizedKeysFile	%h/.ssh/authorized_keys
 
 ### HIGH SECURITY 2015 ###
-KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
-Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
-MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,umac-128-etm@openssh.com
+KexAlgorithms   curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1
+Ciphers         chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,blowfish-cbc
+MACs            hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-ripemd160@openssh.com
 ### HIGH SECURITY 2015 ###
 
 # Don't read the user's ~/.rhosts and ~/.shosts files
@@ -62,16 +62,6 @@ ChallengeResponseAuthentication yes
 # Change to no to disable tunnelled clear text passwords
 PasswordAuthentication yes
 
-# Kerberos options
-#KerberosAuthentication no
-#KerberosGetAFSToken no
-#KerberosOrLocalPasswd yes
-#KerberosTicketCleanup yes
-
-# GSSAPI options
-#GSSAPIAuthentication no
-#GSSAPICleanupCredentials yes
-
 X11Forwarding yes
 X11DisplayOffset 10
 PrintMotd yes
@@ -80,7 +70,7 @@ TCPKeepAlive yes
 UseLogin yes
 
 MaxStartups 10:30:60
-#Banner /etc/issue.net
+Banner /etc/issue.net
 
 # Allow client to pass locale environment variables
 AcceptEnv LANG LC_*
