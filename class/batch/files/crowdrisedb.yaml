@@ -1,0 +1,7 @@
+type        : agent.plugin
+label       : CrowdriseDatabase
+disabled    : false
+period      : 60
+timeout     : 50
+details     :
+    file    : /usr/lib/rackspace-monitoring-agent/plugins/crowdrisedb.sh
