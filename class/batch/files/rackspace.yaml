@@ -12,16 +12,16 @@ alarms      :
         criteria              : |
             :set consecutiveCount=5
             if (metric['wepay_pings_unprocessed'] > 120) {
-                return new AlarmStatus(CRITICAL, 'Over 100 wepay pings unprocessed!');
+                return new AlarmStatus(CRITICAL, 'Over 120 wepay pings unprocessed!');
             }
             if (metric['wepay_pings_unprocessed'] > 60) {
-                return new AlarmStatus(WARNING, 'Over 50 wepay pings unprocessed!');
+                return new AlarmStatus(WARNING, 'Over 60 wepay pings unprocessed!');
             }
             if (metric['wepay_tips_unprocessed'] > 50) {
                 return new AlarmStatus(CRITICAL, 'Over 50 wepay tips unprocessed!');
             }
             if (metric['wepay_tips_unprocessed'] > 25) {
-                return new AlarmStatus(WARNING, 'Over 15 wepay tips unprocessed!');
+                return new AlarmStatus(WARNING, 'Over 25 wepay tips unprocessed!');
             }
             return new AlarmStatus(OK, "WePay Tips and Pings OK");
 
