@@ -14,6 +14,8 @@ $ModLoad imklog   # provides kernel logging support (previously done by rklogd)
 {% endif %}
 $ModLoad immark  # provides --MARK-- message capability
 
+$ModLoad imfile
+
 {% if config.listenudp|default(false) %}
 # provides UDP syslog reception
 $ModLoad imudp
