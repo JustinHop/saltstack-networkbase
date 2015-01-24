@@ -40,6 +40,8 @@ rackspace-monitoring-agent:
       target_path: /
       target_disk: /dev/xvda1
       target_interface: lo
+      target_proc: init
+      target_proc_level: 'CRITICAL'
 
 /usr/lib/rackspace-monitoring-agent/plugins:
   file.directory:
@@ -81,3 +83,17 @@ chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
 
 {%  endif %}
 {% endfor %}
+
+{% for proc in grains['monitoring.proc'] %}
+/etc/rackspace-monitoring-agent.conf.d/proc-{{ proc }}.yaml:
+  file.managed:
+    - source: salt://services/rackspace/files/monitoring/proc.yaml
+    - template: jinja
+    - makedirs: true
+    - user: root
+    - group: root
+    - defaults:
+      target_proc: {{ proc }}
+      target_proc_level: 'CRITICAL'
+{% endfor %}
+

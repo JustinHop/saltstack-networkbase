@@ -1,19 +1,18 @@
 type        : agent.plugin
-label       : Process Check {{ target_process }}
+label       : Process Check {{ target_proc }}
 disabled    : false
 period      : 60
 timeout     : 30
 details     :
     file    : /usr/lib/rackspace-monitoring-agent/plugins/process_mon.sh
-    args    : [{{ target_process }}]
+    args    : [{{ target_proc }}]
 alarms      :
-    wepay:
-        label                 : Process {{ target_process }}
+    proc:
+        label                 : Process {{ target_proc }}
         notification_plan_id  : npYJv7dn5N
         criteria              : |
             :set consecutiveCount=2
             if (metric['process_mon'] < 1) {
-                return new AlarmStatus({{ target_process_level }}, '{{ target_process }} not running!');
+                return new AlarmStatus({{ target_proc_level }}, '{{ target_proc }} not running!');
             }
-            return new AlarmStatus(OK, "Process {{ target_process }} running");
-
+            return new AlarmStatus(OK, "Process {{ target_proc }} running");
