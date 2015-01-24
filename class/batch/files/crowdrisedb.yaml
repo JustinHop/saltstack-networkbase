@@ -1,7 +1,10 @@
 type        : agent.plugin
-label       : CrowdriseDatabase
+label       : CrowdriseDatabase{%- if extension -%}{{ extension }}{%- endif -%}
 disabled    : false
 period      : 60
 timeout     : 50
 details     :
     file    : /usr/lib/rackspace-monitoring-agent/plugins/crowdrisedb.sh
+{%- if start_number and end_number %}
+    args    : [{{ start_number }}, {{ end_number }}]
+{%- endif %}

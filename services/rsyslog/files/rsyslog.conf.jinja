@@ -32,15 +32,13 @@ $InputTCPServerRun 514
 #### GLOBAL DIRECTIVES ####
 ###########################
 
-#
-# Use traditional timestamp format.
-# To enable high precision timestamps, comment out the following line.
-#
-$ActionFileDefaultTemplate RSYSLOG_SyslogProtocol23Format
 $ActionQueueType LinkedList # use asynchronous processing
 $ActionQueueFileName /var/tmp/rsyslog-cache # set file name, also enables disk mode
 $ActionResumeRetryCount -1 # infinite retries on insert failure
 $ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
+
+$RepeatedMsgReduction on
+$WorkDirectory /var/spool/rsyslog
 
 #
 # Set the default permissions for all log files.
