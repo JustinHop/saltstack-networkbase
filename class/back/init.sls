@@ -4,7 +4,9 @@
 #
 
 include:
-  - crowdrise/blockdev
+  #- crowdrise/blockdev
+  - crowdrise/lvm
+  - services/percona
 
 
 backuppackages:
