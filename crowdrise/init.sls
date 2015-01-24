@@ -113,10 +113,4 @@ groupdel ubuntu || echo hello:
     - user: root
     - group: root
 
-{% for mon in ["salt-minion", "sshguard", "rackspace-monitoring-agent", "cron", "rsyslogd", "sshd" ] %}
-{% grains.append("monitoring.proc", mon) %}
-{% endfor %}
-
-
-
-
+{% grains.set("monitoring.proc", ["salt-minion", "sshguard", "rackspace-monitoring-agent", "cron", "rsyslogd", "sshd" ]) %}
