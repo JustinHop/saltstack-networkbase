@@ -84,7 +84,7 @@ chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
 {%  endif %}
 {% endfor %}
 
-{% for proc in pillar['monitoring.proc'] %}
+{% for proc in salt['pillar.get']('monitoring:proc', "sshd") %}
 /etc/rackspace-monitoring-agent.conf.d/proc-{{ proc }}.yaml:
   file.managed:
     - source: salt://services/rackspace/files/monitoring/proc.yaml
