@@ -112,5 +112,3 @@ groupdel ubuntu || echo hello:
     - source: salt://crowdrise/files/50unattended-upgrades
     - user: root
     - group: root
-
-{% grains.setval("monitoring.proc", ["salt-minion", "sshguard", "rackspace-monitoring-agent", "cron", "rsyslogd", "sshd" ]) %}
