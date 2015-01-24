@@ -139,7 +139,7 @@ def cs_grains():
     try:
         for server in driver.servers.list():
             output += server
-        return({'nova': output})
+        return({'nova': [output]})
     except:
         raise
 
