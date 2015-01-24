@@ -123,7 +123,7 @@ def _get_driver(driver_type, region='ORD'):
     raise KeyError(u"No Driver found by: {}".format(driver_type))
 
 
-def _cs_grains():
+def cs_grains():
     """
     Returns a list of all domains for the configured account
 
@@ -137,5 +137,5 @@ def _cs_grains():
             output += server
         return({'nova': output})
     except:
-        assert
+        raise
 
