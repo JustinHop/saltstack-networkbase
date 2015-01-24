@@ -1,5 +1,7 @@
 # CrowdRise SaltStack File Base
 
+##### WEBHOOKBOT LIVES
+
 - Keep the layout consistent.
 
 ## Hostnames
@@ -30,9 +32,6 @@ In the above example you could create the following state files that would be ex
 - Its in the pillars
 - split up by usernames
 - users
-
-## WEBHOOKBOT LIVES
-
 
 ## Logging
 - make sure logs go to syslog
