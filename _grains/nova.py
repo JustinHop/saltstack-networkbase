@@ -60,7 +60,9 @@ def _auth():
     apikey = rackspace['apikey']
 
     try:
-        pyrax.set_credentials(username, apikey)
+        #pyrax.set_credentials(username, apikey)
+        creds_file = os.path.expanduser("~/.pyrax.cfg")
+        pyrax.set_credential_file(creds_file)
     except exc.AuthenticationFailed:
         logger.error(
             u"Unable to authenticate with the provided credentials, "
