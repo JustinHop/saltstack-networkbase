@@ -113,4 +113,4 @@ groupdel ubuntu || echo hello:
     - user: root
     - group: root
 
-{% grains.set("monitoring.proc", ["salt-minion", "sshguard", "rackspace-monitoring-agent", "cron", "rsyslogd", "sshd" ]) %}
+{% grains.setval("monitoring.proc", ["salt-minion", "sshguard", "rackspace-monitoring-agent", "cron", "rsyslogd", "sshd" ]) %}
