@@ -24,21 +24,6 @@ def host_based_info():
     grains = {}
     fqdn = socket.getfqdn()
 
-    # Memory Shortcuts
-    meminfofile = open('/proc/meminfo').read()
-    memfind = re.search(r'^MemTotal:\s+(\d+)', meminfofile)
-    if memfind:
-        grains['mem100'] = int(memfind.groups()[0])
-        grains['mem10'] = int(grains['mem100'] * .1)
-        grains['mem20'] = int(grains['mem100'] * .2)
-        grains['mem30'] = int(grains['mem100'] * .3)
-        grains['mem40'] = int(grains['mem100'] * .4)
-        grains['mem50'] = int(grains['mem100'] * .5)
-        grains['mem60'] = int(grains['mem100'] * .6)
-        grains['mem70'] = int(grains['mem100'] * .7)
-        grains['mem80'] = int(grains['mem100'] * .8)
-        grains['mem90'] = int(grains['mem100'] * .9)
-
     grains['class'] = "oldschool"
     grains['product'] = "sys"
     grains['cluster'] = "prod"
