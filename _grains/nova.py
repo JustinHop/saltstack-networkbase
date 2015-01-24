@@ -138,7 +138,7 @@ def cs_grains():
     output = []
     try:
         for server in driver.servers.list():
-            output += server
+            output.append(server.to_dict())
         return({'nova': [output]})
     except:
         raise
