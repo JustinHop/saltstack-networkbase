@@ -2,8 +2,6 @@
 
 - Keep the layout consistent.
 
-#######     WEBHOOKBOT LIVES
-
 ## Hostnames
 
 Given the following hostname
@@ -32,6 +30,9 @@ In the above example you could create the following state files that would be ex
 - Its in the pillars
 - split up by usernames
 - users
+
+## WEBHOOKBOT LIVES
+
 
 ## Logging
 - make sure logs go to syslog
