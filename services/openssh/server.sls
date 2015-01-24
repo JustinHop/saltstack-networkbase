@@ -23,6 +23,7 @@ openssh-server:
     - user: root
     - group: root
     - mode: 644
+    - template: jinja
     - source: salt://services/openssh/files/sshd_config
 
 #/etc/ssh/authorized_keys:
