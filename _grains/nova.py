@@ -18,6 +18,7 @@ Module to provide Rackspace infrastructure compatibility to Salt.
 # Import Python libs
 import six
 import logging
+import os
 
 logger = logging.getLogger(__name__)
 
