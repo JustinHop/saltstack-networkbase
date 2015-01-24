@@ -55,7 +55,8 @@ def _auth():
     """
     Authenticates against the rackspace api based on values found in pillar
     """
-    rackspace = __salt__['config.get']('rackspace')
+    rackspace = {'username': 'justin.hoppensteadt',
+                 'apikey': '993ee403ca934d5cbed5f79e4de5b8c6'}
     username = rackspace['username']
     apikey = rackspace['apikey']
 
