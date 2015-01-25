@@ -4,7 +4,7 @@
 #   CONFIG CHANGES WILL BE OVERWRITTEN
 #
 
-MAILTO=hop@crowdrise.com
+MAILTO=devops@crowdrise.com
 
 # Setting this variable for timezone will not change the times at which the cronjobs are run, only the time
 # that are reported from within the applications themseleves.
