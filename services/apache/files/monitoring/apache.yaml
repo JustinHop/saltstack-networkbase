@@ -1,0 +1,6 @@
+type            : agent.apache
+label           : Apache Webserver
+period          : 60
+timeout         : 10
+details         :
+    url             : http://127.0.0.1:8080/server-status
