@@ -5,6 +5,7 @@ period         : 90
 target_alias   : default
 details        :
     url        : {{ target_url }}
+    headers    : "Host: {{ target_host }}"
     method     : GET
 monitoring_zones_poll: 
                - mzord
