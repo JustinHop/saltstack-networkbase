@@ -5,11 +5,12 @@
 
 /etc/apache2/sites-available/900-http-localhost-monitoring.conf:
   file.managed:
-    - source: salt://services/apache/files/monitoring/900-localhost-monitoring.conf
+    - source: salt://services/apache/files/monitoring/status.conf
     - user: root
     - group: root
+    - template: jinja
     - makedirs: true
-    - mode: 755
+    - mode: 644
 
 a2ensite 900-http-localhost-monitoring.conf:
   cmd.run:
