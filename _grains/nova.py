@@ -21,6 +21,8 @@ import logging
 import os
 
 logger = logging.getLogger(__name__)
+pyrax_log = logging.getLogger('pyrax')
+urllib3_log = logging.getLogger('urllib3')
 
 # Import salt libs
 import salt.utils
@@ -33,14 +35,20 @@ try:
 
     HAS_PYRAX = True
     pyrax.set_setting("identity_type", "rackspace")
-    logging.set_logger_level('pyrax', logging.CRITICAL)
 except ImportError:
     logger.error("Could not import Pyrax")
 
 #TODO: Add Absent Modules
 #TODO: Add Get Modules
 
-__virtualname__ = 'rackspace'
+__virtualname__ = 'hopnova'
+
+def __virtual__():
+    if HAS_PYRAX:
+        pyrax_log.setLevel('CRITICAL')
+        urllib3_log.setLevel('CRITICAL')
+    return HAS_PYRAX
+
 
 #Global variables that aren't available from pyrax
 MAX_DB_VOLUME_SIZE = 150
