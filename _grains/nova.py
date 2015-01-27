@@ -129,17 +129,42 @@ def _get_driver(driver_type, region='ORD'):
 
 def cs_grains():
     """
-    Returns a list of all domains for the configured account
+    Returns a list of all nova servers
 
-    :return: A list of DNS Domain objects
+    :return: Grain of nova output
     """
+
     driver = _get_driver('cs')
     #assert isinstance(driver, pyrax.clouddns.CloudDNSClient)
-    output = []
+    output = {}
     try:
         for server in driver.servers.list():
-            output.append(server.to_dict())
+            try:
+                o = server.to_dict()
+                output{o['id']: o}
+            except:
+                pass
         return({'nova': output})
     except:
-        raise
+        pass
 
+def clb_grains():
+    """
+    Returns a list of all cloud load balancers
+
+    :return: Grain of lb output
+    """
+
+    driver = _get_driver('lb')
+    #assert isinstance(driver, pyrax.clouddns.CloudDNSClient)
+    output = {}
+    try:
+        for lb in driver.list():
+            try:
+                o = lb.to_dict()
+                output{o['id']: o}
+            except:
+                pass
+        return({'loadbalancers': output})
+    except:
+        pass
