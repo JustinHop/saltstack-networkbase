@@ -17,3 +17,4 @@ for FORMULA in salt deployment sphinxsearch ; do
 done
 
 salt-run fileserver.update
+salt-call saltutil.sync_all
