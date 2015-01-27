@@ -14,7 +14,7 @@ echo {{ id }}:
 {%    if lb.name is defined and id is defined %}
 /etc/rackspace-monitoring-agent.conf.d/loadbalancer-{{ lb.name }}.yaml:
   file.managed:
-    - source: salt://class/mon/files/monitoring/loadbalancer.yaml
+    - source: salt://class/mon/files/loadbalancer.yaml
     - user: root
     - group: root
     - mode: 644
