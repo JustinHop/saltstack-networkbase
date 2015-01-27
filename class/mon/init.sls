@@ -6,7 +6,7 @@
 include:
   - services/newrelic
 
-{%  for lb in grains["loadbalancers", []].iteritems() %}
+{%  for lb in salt['grains.get']("loadbalancers", []).iteritems() %}
 {%    if lb.name is defined and lb.id is defined %}
 /etc/rackspace-monitoring-agent.conf.d/loadbalancer-{{ lb.name }}.yaml:
   file.managed:
