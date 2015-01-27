@@ -10,6 +10,7 @@ include:
 {%    if lb.name and lb.id %}
 /etc/rackspace-monitoring-agent.conf.d/loadbalancer-{{ lb.name }}.yaml:
   file.managed:
+    - source: salt://class/mon/files/init.sls
     - user: root
     - group: root
     - mode: 644
