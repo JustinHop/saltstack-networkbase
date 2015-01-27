@@ -22,21 +22,18 @@ import os
 
 logger = logging.getLogger(__name__)
 
-
 # Import salt libs
 import salt.utils
 
 #Import pyrax
 HAS_PYRAX = False
 try:
-    urllib3_logger = logging.getLogger('urllib3')
-    urllib3_logger.setLevel(logging.CRITICAL)
     import pyrax
     import pyrax.exceptions as exc
 
     HAS_PYRAX = True
     pyrax.set_setting("identity_type", "rackspace")
-    urllib3_logger.setLevel(logging.CRITICAL)
+    logging.set_logger_level('pyrax', logging.CRITICAL)
 except ImportError:
     logger.error("Could not import Pyrax")
 
