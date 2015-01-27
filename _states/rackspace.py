@@ -25,8 +25,6 @@ try:
     HAS_PYRAX = True
     pyrax.set_setting("identity_type", "rackspace")
     logger.debug(u'Successfully imported pyrax')
-    urllib3_logger = logging.getLogger('urllib3')
-    urllib3_logger.setLevel(logging.CRITICAL)
 
 except ImportError:
     logger.error(u"Could not import Pyrax")
@@ -40,6 +38,8 @@ def __virtual__():
     Only load if pyrax is available and has the correct values in pillar
     """
     if HAS_PYRAX:
+        urllib3_logger = logging.getLogger('urllib3')
+        urllib3_logger.setLevel(logging.CRITICAL)
         return __virtualname__
     return False
 

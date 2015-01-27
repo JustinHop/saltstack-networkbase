@@ -34,10 +34,6 @@ try:
     import pyrax
     import pyrax.exceptions as exc
 
-    urllib3_logger = logging.getLogger('urllib3')
-    urllib3_logger.setLevel(logging.CRITICAL)
-
-
     HAS_PYRAX = True
     pyrax.set_setting("identity_type", "rackspace")
 except ImportError:
@@ -64,6 +60,8 @@ def __virtual__():
     Only load if pyrax is available
     """
     if HAS_PYRAX:
+        urllib3_logger = logging.getLogger('urllib3')
+        urllib3_logger.setLevel(logging.CRITICAL)
         return __virtualname__
     return False
 

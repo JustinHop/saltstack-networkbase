@@ -6,7 +6,7 @@
 include:
   - services/newrelic
 
-{%  for lb in salt['grains.item']('loadbalancers', {}) %}
+{%  for lb in salt['rackspace.lb_list'] %}
 
 echo {{ lb.name|e }}:
   cmd.run
