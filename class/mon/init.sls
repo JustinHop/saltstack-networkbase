@@ -6,7 +6,7 @@
 include:
   - services/newrelic
 
-{%  for lb, attr in salt['grains.item']('loadbalancers', {})|dictsort() %}
+{%  for lb, attr in salt['grains.item']('loadbalancers', {}) %}
 
 echo {{ lb|e }}:
   cmd.run
