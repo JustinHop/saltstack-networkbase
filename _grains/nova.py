@@ -141,7 +141,7 @@ def cs_grains():
         for server in driver.servers.list():
             try:
                 o = server.to_dict()
-                output{o['id']: o}
+                output[o['id']] = o
             except:
                 pass
         return({'nova': output})
