@@ -8,7 +8,7 @@ include:
 
 {%  for attr in salt['grains.get']("loadbalancers", {}) %}
 
-echo {{ attr|e }}:
+echo {% for a in attr -%}{{ attr|e }} {%- endfor %}:
   cmd.run
 
 {%    if attr.name is defined and attr.id is defined %}
