@@ -6,13 +6,13 @@
 include:
   - services/newrelic
 
-{%  for lb, attr in salt['grains.item']('loadbalancers', {}) %}
+{%  for lb in salt['grains.item']('loadbalancers', {}) %}
 
-echo {{ lb|e }}:
+echo {{ lb.name|e }}:
   cmd.run
 
-{%    if attr.name is defined and attr.id is defined %}
-/etc/rackspace-monitoring-agent.conf.d/loadbalancer-{{ attr.name }}.yaml:
+{%    if lb.name is defined and lb.id is defined %}
+/etc/rackspace-monitoring-agent.conf.d/loadbalancer-{{ lb.name }}.yaml:
   file.managed:
     - source: salt://class/mon/files/init.sls
     - user: root
@@ -20,8 +20,8 @@ echo {{ lb|e }}:
     - mode: 644
     - template: jinja
     - defaults:
-      target_name: {{ attr.name|e }}
-      target_id: {{ attr.id|e }}
+      target_name: {{ lb.name|e }}
+      target_id: {{ lb.id|e }}
 {%    endif %}
 {%  endfor %}
 
