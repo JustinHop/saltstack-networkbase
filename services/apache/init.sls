@@ -35,6 +35,7 @@ cr-apache-pkgs:
 
 include:
   - services/apache/{{ grains['oscodename'] }}
+  - services/apache/monitoring
 {%- if grains['cluster'] == "prod" %}
   - services/apache/cron
 {% endif %}
@@ -94,6 +95,3 @@ include:
     - group: www-data
     - mode: 755
     - makedirs: true
-
-include:
-  - services/apache/monitoring
