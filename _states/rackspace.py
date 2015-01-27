@@ -25,6 +25,9 @@ try:
     HAS_PYRAX = True
     pyrax.set_setting("identity_type", "rackspace")
     logger.debug(u'Successfully imported pyrax')
+    urllib3_logger = logging.getLogger('urllib3')
+    urllib3_logger.setLevel(logging.CRITICAL)
+
 except ImportError:
     logger.error(u"Could not import Pyrax")
     pass

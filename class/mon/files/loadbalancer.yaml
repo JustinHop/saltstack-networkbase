@@ -1,0 +1,8 @@
+type        : agent.plugin
+label       : Cloud LB {{ target_name }} {{ target_id }}
+disabled    : false
+period      : 60
+timeout     : 30
+details     :
+    file    : /usr/lib/rackspace-monitoring-agent/plugins/cloudload_balancer.py
+    args    : [{{ target_id }}, "ORD"]
