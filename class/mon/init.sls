@@ -6,9 +6,9 @@
 include:
   - services/newrelic
 
-{%  for lb, attr in salt['grains.get']("loadbalancers", {}) %}
+{%  for attr in salt['grains.get']("loadbalancers", {}) %}
 
-echo {{ lb|e }}:
+echo {{ attr|e }}:
   cmd.run
 
 {%    if attr.name is defined and attr.id is defined %}
