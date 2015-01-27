@@ -26,3 +26,9 @@ echo {{ id }}:
 {%  endfor %}
 
 
+npm:
+  pkg.installed
+
+sitespeed.io:
+  npm.install
+
