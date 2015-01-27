@@ -6,7 +6,7 @@
 include:
   - services/newrelic
 
-{%  for lb in salt['rackspace.lb_list'] %}
+{%  for lb in salt['pillar.get']('lb', {}) %}
 
 echo {{ lb.name|e }}:
   cmd.run
@@ -21,7 +21,7 @@ echo {{ lb.name|e }}:
     - template: jinja
     - defaults:
       target_name: {{ lb.name|e }}
-      target_id: {{ lb.id|e }}
+      target_id: {{ lb|e }}
 {%    endif %}
 {%  endfor %}
 
