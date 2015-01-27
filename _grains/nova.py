@@ -147,12 +147,12 @@ def cs_grains():
 
     driver = _get_driver('cs')
     #assert isinstance(driver, pyrax.clouddns.CloudDNSClient)
-    output = {}
+    output = []
     try:
         for server in driver.servers.list():
             try:
                 o = server.to_dict()
-                output[o['id']] = o
+                output.append(o)
             except:
                 pass
         return({'nova': output})
@@ -168,7 +168,7 @@ def clb_grains():
 
     driver = _get_driver('lb')
     #assert isinstance(driver, pyrax.clouddns.CloudDNSClient)
-    output = {}
+    output = []
     try:
         for lb in driver.list():
             try:
@@ -178,8 +178,8 @@ def clb_grains():
                         pvip.append("%s" % (ip.address))
                 except(AttributeError):
                     pass
-                output[lb.id] = {'id': lb.id, 'name': lb.name, 'addresses': pvip,
-                        'port': lb.port, 'protocol': lb.protocol, 'status': lb.status}
+                output.append({'id': lb.id, 'name': lb.name, 'addresses': pvip,
+                        'port': lb.port, 'protocol': lb.protocol, 'status': lb.status})
             except:
                 pass
         return({'loadbalancers': output})
