@@ -30,5 +30,7 @@ npm:
   pkg.installed
 
 sitespeed.io:
-  npm.install
+  npm.install:
+    - require:
+      - pkg: npm
 
