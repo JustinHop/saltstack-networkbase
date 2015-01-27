@@ -161,8 +161,14 @@ def clb_grains():
     try:
         for lb in driver.list():
             try:
-                o = lb.to_dict()
-                output[o['id']] = o
+                pvip = []
+                try:
+                    for ip in lb.virtualIps:
+                        pvip.append("%s" % (ip.address))
+                except(AttributeError):
+                    pass
+                output[lb.id] = {'id': lb.id, 'name': lb.name, 'addresses': pvip,
+                        'port': lb.port, 'protocol': lb.protocol, 'status': lb.status}
             except:
                 pass
         return({'loadbalancers': output})
