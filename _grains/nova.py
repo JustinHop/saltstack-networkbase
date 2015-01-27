@@ -31,6 +31,9 @@ try:
     import pyrax
     import pyrax.exceptions as exc
 
+    urllib3_logger = logging.getLogger('urllib3')
+    urllib3_logger.setLevel(logging.CRITICAL)
+
     HAS_PYRAX = True
     pyrax.set_setting("identity_type", "rackspace")
 except ImportError:
