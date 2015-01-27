@@ -161,8 +161,7 @@ def clb_grains():
     try:
         for lb in driver.list():
             try:
-                o = lb.to_dict()
-                output{o['id']: o}
+                output{lb.id: lb}
             except:
                 pass
         return({'loadbalancers': output})
