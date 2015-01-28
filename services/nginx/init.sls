@@ -4,13 +4,19 @@
 #
 
 nginx-config:
+{% if salt['pillar.get']('nginx:repo:crowdrise') %}
   pkgrepo.managed:
     - ppa: crowdrise/nginx-builds
     - keyid: 75FC36CE
     - keyserver: keyserver.ubuntu.com
   pkg.latest:
     - name: nginx-light
+    - skip_verify: true
     - refresh: true
+{% else %}
+  pkg.installed:
+    - name: {{ salt['pillar.get']('nginx:package', 'nginx-full') }}
+{% endif %}
 
 openssl dhparam -out /etc/nginx/dhparam.pem 4096:
   cmd.run:
