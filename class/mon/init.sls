@@ -5,6 +5,7 @@
 
 include:
   - services/newrelic
+  - services/nginx
 
 {%  for id, lb in salt['pillar.get']('lb', {}).items() %}
 
