@@ -50,6 +50,19 @@ nginx-config:
     - name: {{ salt['pillar.get']('nginx:package', 'nginx-full') }}
 {% endif %}
 
+{% if salt['pillar.get']('nginx:repo:crowdrise') %}
+/etc/nginx/naxsi_core.rules:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://class/lb/files/naxsi_core.rules
+{% else %}
+echo > /etc/nginx/naxsi_core.rules:
+  cmd.run:
+    - user: root
+    - group: root
+{% endif %}
+
 openssl dhparam -out /etc/nginx/dhparam.pem 4096:
   cmd.run:
     - user: root
@@ -67,12 +80,6 @@ openssl dhparam -out /etc/nginx/dhparam.pem 4096:
     - user: root
     - group: root
     - source: salt://class/lb/files/naxsi.rules
-
-/etc/nginx/naxsi_core.rules:
-  file.managed:
-    - user: root
-    - group: root
-    - source: salt://class/lb/files/naxsi_core.rules
 
 /var/log/nginx:
   file.directory:
