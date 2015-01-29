@@ -5,6 +5,7 @@
 
 include:
   - nginx/ng
+  - crowdrise/ssl
 
 /etc/nginx/htpasswd-showcase:
   file.managed:
