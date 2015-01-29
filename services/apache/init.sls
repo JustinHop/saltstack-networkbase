@@ -26,17 +26,21 @@ cr-apache-pkgs:
     - pkgs:
       - apache2
       - apache2-mpm-prefork
-      - php-apc
       - php5
+      - php5-apcu
       - php5-cli
       - php5-common
       - php5-curl
-      - php5-mysql
+      - php5-mysqlnd
+      - php5-gd
 
 include:
   - services/apache/monitoring
 
-{%  for PART in ["mods", "conf", "sites"] %}
+/etc/apache2/confs-available:
+
+{%  for PART in ["mods", "confs", "sites"] %}
+{%    for BASE in pillar['apache'] %}
 /etc/apache2/{{ PART }}-available:
   file.recurse:
     - source: salt://services/apache/files/{{ PART }}-available
@@ -48,16 +52,16 @@ mv /etc/apache2/{{ PART }}-enabled/* /root:
   cmd.run:
     - user: root
     - group: root
+{%    endfor %}
 {%  endfor %}
 
-{%    for BASE in pillar['apache'] %}
 {%      for ITEM in pillar['apache'][BASE]['mods'] %}
 a2enmod  {{ ITEM }}:
   cmd.run:
     - user: root
     - group: root
 {%      endfor %}
-{%      for ITEM in pillar['apache'][BASE]['conf'] %}
+{%      for ITEM in pillar['apache'][BASE]['confs'] %}
 a2enconf  {{ ITEM }}:
   cmd.run:
     - user: root
@@ -68,7 +72,6 @@ a2ensite  {{ ITEM }}:
   cmd.run:
     - user: root
     - group: root
-{%      endfor %}
 {%    endfor %}
 
 git archive --format=tar --remote=git@gitlab.crowdrise.com:crowdrise/codeigniter-app.git master | tar --totals -xvmpf - -C /var/www/vhosts/www.crowdrise.com/htdocs:
