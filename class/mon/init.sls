@@ -26,12 +26,34 @@ echo {{ id }}:
 {%    endif %}
 {%  endfor %}
 
+/var/www/vhosts/mon.crowdrise.com/htdocs:
+  file.directory:
+    - user: www-data
+    - group: www-data
+    - makedirs: True
 
-npm:
-  pkg.installed
+nodeinstall:
+  cmd.script:
+    - source: https://deb.nodesource.com/setup
+    - user: root
+    - group: root
+    - creates: /etc/apt/sources.list.d/nodesource.list
+  pkg.installed:
+    - pkgs:
+      - phantomjs
+      - xvfb
+      - elinks
+      - openjdk-7-jre-headless
+      - openjdk-7-jre-zero
 
 sitespeed.io:
   npm.install:
     - require:
-      - pkg: npm
+      - cmd: nodeinstall
 
+sitespeed.io -u https://www.crowdrise.com --gpsiKey AIzaSyDTFQvk7oV7R11-yOl2wdGTdB9tI5QXPv4 --outputFolderName /var/www/vhosts/mon.crowdrise.com/htdocs:
+  cron.presant:
+    - identifier: SiteSpeed https://www.crowdrise.com
+    - user: www-data
+    - minute: '*/10'
+    
