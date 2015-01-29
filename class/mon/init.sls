@@ -52,7 +52,7 @@ sitespeed.io:
       - cmd: nodeinstall
 
 sitespeed.io -u https://www.crowdrise.com --gpsiKey AIzaSyDTFQvk7oV7R11-yOl2wdGTdB9tI5QXPv4 --outputFolderName /var/www/vhosts/mon.crowdrise.com/htdocs:
-  cron.presant:
+  cron.present:
     - identifier: SiteSpeed https://www.crowdrise.com
     - user: www-data
     - minute: '*/10'
