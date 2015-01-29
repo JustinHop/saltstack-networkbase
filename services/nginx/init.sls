@@ -6,6 +6,34 @@
 include:
   - nginx/ng
 
+/etc/nginx/htpasswd-showcase:
+  file.managed:
+    - user: root
+    - group: root
+    - makedirs: True
+    - contents: |
+        crowdrise:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
+        monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
+
+/etc/nginx/htpasswd-dev:
+  file.managed:
+    - user: root
+    - group: root
+    - makedirs: True
+    - contents: |
+        crowdrise:$apr1$bGpmtRQ2$Z1x21c8f.QTCSMSD.vvBb1
+        monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
+
+/etc/nginx/htpasswd-square:
+  file.managed:
+    - user: root
+    - group: root
+    - makedirs: True
+    - contents: |
+        square:$apr1$wviczMvi$Mj.pXVKpJQxULQHMpc3qY0
+        crowdrise:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
+        monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
+
 nginx-config:
 {% if salt['pillar.get']('nginx:repo:crowdrise') %}
   pkgrepo.managed:

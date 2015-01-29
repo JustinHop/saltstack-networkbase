@@ -9,22 +9,6 @@ include:
   - services/nginx
   - nginx/ng
 
-/etc/nginx/htpasswd-showcase:
-  file.managed:
-    - user: root
-    - group: root
-    - contents: |
-        crowdrise:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
-        monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
-
-/etc/nginx/htpasswd-dev:
-  file.managed:
-    - user: root
-    - group: root
-    - contents: |
-        crowdrise:$apr1$bGpmtRQ2$Z1x21c8f.QTCSMSD.vvBb1
-        monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
-
 # Sysctl Tuning, Work on this more!
 #
 
