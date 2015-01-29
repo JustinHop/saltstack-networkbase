@@ -3,6 +3,9 @@
 #   base config for nginx, rest handled with github formula
 #
 
+include:
+  - nginx
+
 nginx-config:
 {% if salt['pillar.get']('nginx:repo:crowdrise') %}
   pkgrepo.managed:
@@ -48,7 +51,7 @@ openssl dhparam -out /etc/nginx/dhparam.pem 4096:
     - group: syslog
     - mode: 775
 
-/etc/logrotate.d/nginx:
+/etc/logrotate.d/100-nginx:
   file.managed:
     - user: root
     - group: root
