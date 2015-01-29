@@ -34,11 +34,34 @@ cr-apache-pkgs:
       - php5-mysql
 
 include:
-  - services/apache/{{ grains['oscodename'] }}
   - services/apache/monitoring
-{%- if grains['cluster'] == "prod" %}
-  - services/apache/cron
-{% endif %}
+
+{%  for PART in ["mods", "conf", "sites"] %}
+/etc/apache2/{{ PART }}-available:
+  file.recurse:
+    - source: salt://services/apache/files/{{ PART }}-available
+    - clean: True
+    - user: root
+    - group: root
+    - template: jinja
+mv /etc/apache2/{{ PART }}-enabled/* /root:
+  cmd.run:
+    - user: root
+    - group: root
+{%  endfor %}
+
+{%  for PART in ["mod", "conf", "site"] %}
+{%    for BASE in pillar['apache'] %}
+{%      for ITEM in pillar['apache'][BASE][PART] %}
+a2en{{ PART }} {{ ITEM }}:
+  cmd.run:
+    - user: root
+    - group: root
+
+{%      endfor %}
+{%    endfor %}
+{%  endfor %}
+
 
 /etc/rsyslog.d/apache-crowdrise.conf:
   file.managed:
