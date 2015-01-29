@@ -50,17 +50,26 @@ mv /etc/apache2/{{ PART }}-enabled/* /root:
     - group: root
 {%  endfor %}
 
-{%  for PART in ["mod", "conf", "site"] %}
 {%    for BASE in pillar['apache'] %}
-{%      for ITEM in pillar['apache'][BASE][PART] %}
-a2en{{ PART }} {{ ITEM }}:
+{%      for ITEM in pillar['apache'][BASE]['mods'] %}
+a2enmod  {{ ITEM }}:
   cmd.run:
     - user: root
     - group: root
-
+{%      endfor %}
+{%      for ITEM in pillar['apache'][BASE]['conf'] %}
+a2enconf  {{ ITEM }}:
+  cmd.run:
+    - user: root
+    - group: root
+{%      endfor %}
+{%      for ITEM in pillar['apache'][BASE]['sites'] %}
+a2ensite  {{ ITEM }}:
+  cmd.run:
+    - user: root
+    - group: root
 {%      endfor %}
 {%    endfor %}
-{%  endfor %}
 
 git archive --format=tar --remote=git@gitlab.crowdrise.com:crowdrise/codeigniter-app.git master | tar --totals -xvmpf - -C /var/www/vhosts/www.crowdrise.com/htdocs:
   cmd.run:
