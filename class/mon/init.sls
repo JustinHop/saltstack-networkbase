@@ -47,7 +47,7 @@ nodeinstall:
       - openjdk-7-jre-zero
 
 sitespeed.io:
-  npm.install:
+  npm.installed:
     - require:
       - cmd: nodeinstall
 
