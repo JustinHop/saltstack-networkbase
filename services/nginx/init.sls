@@ -4,7 +4,7 @@
 #
 
 include:
-  - nginx
+  - nginx/ng
 
 nginx-config:
 {% if salt['pillar.get']('nginx:repo:crowdrise') %}
