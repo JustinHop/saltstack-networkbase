@@ -62,6 +62,13 @@ a2en{{ PART }} {{ ITEM }}:
 {%    endfor %}
 {%  endfor %}
 
+git archive --format=tar --remote=git@gitlab.crowdrise.com:crowdrise/codeigniter-app.git master | tar --totals -xvmpf - -C /var/www/vhosts/www.crowdrise.com/htdocs:
+  cmd.run:
+    - user: crowdrise
+    - group: crowdrise
+    - require:
+      - file: /var/www/vhosts/www.crowdrise.com/htdocs
+    - creates: /var/www/vhosts/www.crowdrise.com/htdocs/application
 
 /etc/rsyslog.d/apache-crowdrise.conf:
   file.managed:
@@ -83,6 +90,13 @@ a2en{{ PART }} {{ ITEM }}:
     - group: root
     - makedirs: true
     - mode: 755
+
+/var/www/vhosts/www.crowdrise.com/htdocs:
+  file.directory:
+    - user: crowdrise
+    - group: crowdrise
+    - makedirs: true
+    - mode: 775
 
 /var/www/vhosts/www.crowdrise.com/htdocs/content/photos/bin1/original:
   file.directory:
