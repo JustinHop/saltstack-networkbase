@@ -7,6 +7,7 @@ include:
   - services/newrelic
   - services/apache
   - services/apache/key
+  - crowdrise/ssl
 
 frontend-webserver:
   pkg.installed:
@@ -21,7 +22,6 @@ frontend-webserver:
       - php5-cli
       - php5-common
       - php5-curl
-      - php5-mysql
 
 net.core.somaxconn:
   sysctl.present:
