@@ -40,7 +40,7 @@ include:
 /etc/apache2/confs-available:
 
 {%  for PART in ["mods", "confs", "sites"] %}
-{%    for BASE in pillar['apache'] %}
+{%    for BASE in salt['pillar.get']('apache', []) %}
 /etc/apache2/{{ PART }}-available:
   file.recurse:
     - source: salt://services/apache/files/{{ PART }}-available
@@ -55,19 +55,19 @@ mv /etc/apache2/{{ PART }}-enabled/* /root:
 {%    endfor %}
 {%  endfor %}
 
-{%      for ITEM in pillar['apache'][BASE]['mods'] %}
+{%      for ITEM in salt['pillar.get']('apache:' ~ BASE ~ ':mods', "" ) %}
 a2enmod  {{ ITEM }}:
   cmd.run:
     - user: root
     - group: root
 {%      endfor %}
-{%      for ITEM in pillar['apache'][BASE]['confs'] %}
+{%      for ITEM in salt['pillar.get']('apache:' ~ BASE ~ ':confs', "" ) %}
 a2enconf  {{ ITEM }}:
   cmd.run:
     - user: root
     - group: root
 {%      endfor %}
-{%      for ITEM in pillar['apache'][BASE]['sites'] %}
+{%      for ITEM in salt['pillar.get']('apache:' ~ BASE ~ ':sites', "" ) %}
 a2ensite  {{ ITEM }}:
   cmd.run:
     - user: root
