@@ -22,7 +22,7 @@ echo "status ok connected"
 for TABLE in $(echo "show tables;" | $MYSQL); do
   ROWS=$(printf 'SELECT COUNT(*) FROM `%s`;\n' "$TABLE" | $MYSQL | tail -n 1 )
   if eval $CHECK1 $CHECK2 ; then
-    echo "metric crowdrisedb_${TABLE}_rows uint64 $ROWS"
+    echo "metric crowdrisedb.${TABLE}.rows uint64 $ROWS"
   fi
 done
 
