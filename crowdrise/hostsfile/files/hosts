@@ -1,3 +1,4 @@
+#!jinja|yamlex
 {{ grains.get("crowdrise_hash_head", "# etc hosts" ) }}
 ::1             ip6-localhost           ip6-loopback
 fe00::0         ip6-localnet
@@ -5,17 +6,20 @@ ff00::0         ip6-mcastprefix
 ff02::1         ip6-allnodes
 ff02::2         ip6-allrouters
 127.0.0.1       localhost
-{% if grains['fqdn_ip4'] is string %}
-{{ grains['fqdn_ip4'] }}    {{ grains['fqdn'] }}
-{%- else %}
-{{ grains['fqdn_ip4']|string }}    {{ grains['fqdn'] }}
-{%- endif -%}
 
-{% if grains['fqdn_ip6'] is string %}
-{{ grains['fqdn_ip6'] }}    {{ grains['fqdn'] }}
-{%- else %}
-{{ grains['fqdn_ip6']|string }}    {{ grains['fqdn'] }}
-{%- endif -%}
+{%- if grains['fqdn'] is defined and grains['fqdn'] is string -%}
+{%-     for ipv in ['4', '6'] %}
+{%-         if grains['fqdn_ip' ~ ipv] is defined %}
+{%-             if grains['fqdn_ip' ~ ipv] is string %}
+{{ grains['fqdn_ip' ~ ipv] }}   {{ grains['fqdn'] }}
+{%-             else %}
+{%-                 if grains['fqdn_ip' + ipv] is sequence %}
+{{ grains['fqdn_ip' ~ ipv][0] }}    {{ grains['fqdn'] }}
+{%-                 endif %}
+{%-             endif %}
+{%-         endif %}
+{%-     endfor %}
+{%- endif %}
 
 {% for server in pillar.get("nova", {}) %}
 # {{ pillar["nova"][server]["created"] }} {{ pillar["nova"][server]["id"] }}
