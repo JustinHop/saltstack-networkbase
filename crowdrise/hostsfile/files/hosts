@@ -10,12 +10,16 @@ ff02::2         ip6-allrouters
 {%-     for ipv in ['4', '6'] %}
 {%-         if grains['fqdn_ip' ~ ipv] is defined %}
 {%-             if grains['fqdn_ip' ~ ipv] is string %}
-# string
-{{ grains['fqdn_ip' ~ ipv] }}   {{ grains['fqdn'] }}
+#                   string
+{{                  grains['fqdn_ip' ~ ipv] }}   {{ grains['fqdn'] }}
 {%-             else %}
-{%-                 if grains['fqdn_ip' + ipv] is sequence %}
-# List
-{{ grains['fqdn_ip' ~ ipv] ~ " " ~ grains['fqdn'] }}
+{%-                 if grains['fqdn_ip' ~ ipv] is sequence %}
+{%-                     for ip in grains['fqdn_ip' ~ ipv] %}
+{%-                         if ip is string %}
+#                               List
+{{                              grains['fqdn_ip' ~ ipv] ~ " " ~ grains['fqdn'] }}
+{%-                         endif %}
+{%-                     endfor %}
 {%-                 endif %}
 {%-             endif %}
 {%-         endif %}
