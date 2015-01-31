@@ -8,13 +8,13 @@ ff02::2         ip6-allrouters
 {% if grains['fqdn_ip4'] is string %}
 {{ grains['fqdn_ip4'] }}    {{ grains['fqdn'] }}
 {%- else %}
-{{ grains['fqdn_ip4']|first() }}    {{ grains['fqdn'] }}
+{{ grains['fqdn_ip4']|string }}    {{ grains['fqdn'] }}
 {%- endif -%}
 
 {% if grains['fqdn_ip6'] is string %}
 {{ grains['fqdn_ip6'] }}    {{ grains['fqdn'] }}
 {%- else %}
-{{ grains['fqdn_ip6']|first() }}    {{ grains['fqdn'] }}
+{{ grains['fqdn_ip6']|string }}    {{ grains['fqdn'] }}
 {%- endif -%}
 
 {% for server in pillar.get("nova", {}) %}
