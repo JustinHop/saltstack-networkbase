@@ -7,8 +7,8 @@ ff02::2         ip6-allrouters
 {{ grains['fqdn_ip4'] }}    {{ grains['fqdn'] }}
 {{ grains['fqdn_ip6'] }}    {{ grains['fqdn'] }}
 {% for server in pillar.get("nova", {}) %}
-{{ pillar[server]|pprint() }}
-{{ pillar[server]["name"]|pprint() }}
+{{ pillar["nova"][server]|pprint() }}
+{{ pillar["nova"][server]["name"]|pprint() }}
 {% endfor %}
 
 
