@@ -14,7 +14,7 @@ ff02::2         ip6-allrouters
 {{ grains['fqdn_ip' ~ ipv] }}   {{ grains['fqdn'] }}
 {%-             else %}
 {%-                 if grains['fqdn_ip' + ipv] is sequence %}
-{{ grains['fqdn_ip' ~ ipv][0] }}    {{ grains['fqdn'] }}
+{{ grains['fqdn_ip' ~ ipv] ~ " " ~ grains['fqdn'] }}
 {%-                 endif %}
 {%-             endif %}
 {%-         endif %}
