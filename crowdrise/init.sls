@@ -87,6 +87,27 @@ get-pip-latest:
       - pkg: build-essential
       - pkg: git
 
+/etc/etckeeper/etckeeper.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://crowdrise/files/etckeeper.conf
+
+etckeeper init && etckeeper vcs commit -a -m initial:
+  cmd.run:
+    - user: root
+    - group: root
+    - creates: /etc/.git
+    - requires:
+      - pkg: etckeeper
+      - file: /etc/etckeeper/etckeeper.conf
+
+etckeeper vcs add -A && etckeeper vcs commit -a -m saltstack:
+  cmd.run:
+    - requires:
+      - pkg: etckeeper
+      - file: /etc/etckeeper/etckeeper.conf
+
 userdel ubuntu || echo hello:
   cmd.run:
     - user: root
