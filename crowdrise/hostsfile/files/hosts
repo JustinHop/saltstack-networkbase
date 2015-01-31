@@ -1,4 +1,4 @@
-{{ grains.get("crowdrise_hash_head", "# etc hosts" }}
+{{ grains.get("crowdrise_hash_head", "# etc hosts" ) }}
 ::1             ip6-localhost           ip6-loopback
 fe00::0         ip6-localnet
 ff00::0         ip6-mcastprefix
@@ -11,3 +11,4 @@ ff02::2         ip6-allrouters
 # {{ pillar["nova"][server]["created"] }} {{ pillar["nova"][server]["id"] }}
 {{ pillar["nova"][server]["addresses"]["private"][0]["addr"] }}   {{ pillar["nova"][server]["name"] }}
 {% endfor %}
+{# vim: set ft=jinja ts=4 sw=4 tw=80 et : #}
