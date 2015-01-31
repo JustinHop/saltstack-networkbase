@@ -34,11 +34,11 @@ cr-apache-pkgs:
       - php5-mysqlnd
       - php5-gd
 
+{% if pillar['apache'] is defined %}
 include:
   - services/apache/monitoring
 
 /etc/apache2/confs-available:
-
 {%  for PART in ["mods", "confs", "sites"] %}
 {%    for BASE in salt['pillar.get']('apache', []) %}
 /etc/apache2/{{ PART }}-available:
@@ -55,24 +55,25 @@ mv /etc/apache2/{{ PART }}-enabled/* /root:
 {%    endfor %}
 {%  endfor %}
 
-{%      for ITEM in salt['pillar.get']('apache:' ~ BASE ~ ':mods', "" ) %}
+{%  for ITEM in salt['pillar.get']('apache:' ~ BASE ~ ':mods', "" ) %}
 a2enmod  {{ ITEM }}:
   cmd.run:
     - user: root
     - group: root
-{%      endfor %}
-{%      for ITEM in salt['pillar.get']('apache:' ~ BASE ~ ':confs', "" ) %}
+{%  endfor %}
+{%  for ITEM in salt['pillar.get']('apache:' ~ BASE ~ ':confs', "" ) %}
 a2enconf  {{ ITEM }}:
   cmd.run:
     - user: root
     - group: root
-{%      endfor %}
-{%      for ITEM in salt['pillar.get']('apache:' ~ BASE ~ ':sites', "" ) %}
+{%  endfor %}
+{%  for ITEM in salt['pillar.get']('apache:' ~ BASE ~ ':sites', "" ) %}
 a2ensite  {{ ITEM }}:
   cmd.run:
     - user: root
     - group: root
-{%    endfor %}
+{%  endfor %}
+{% endif %}
 
 git archive --format=tar --remote=git@gitlab.crowdrise.com:crowdrise/codeigniter-app.git master | tar --totals -xvmpf - -C /var/www/vhosts/www.crowdrise.com/htdocs:
   cmd.run:
