@@ -4,11 +4,11 @@ ff00::0         ip6-mcastprefix
 ff02::1         ip6-allnodes
 ff02::2         ip6-allrouters
 127.0.0.1       localhost
-{{ grains['fqdn_ip4'] }}    {{ grains['fqdn'] }}
-{{ grains['fqdn_ip6'] }}    {{ grains['fqdn'] }}
-{% for server in pillar.get("nova", {}) %}
-{{ pillar["nova"][server]|pprint() }}
-{{ pillar["nova"][server]["name"]|pprint() }}
+{{ grains['fqdn_ip4']|first() }}    {{ grains['fqdn'] }}
+{{ grains['fqdn_ip6']|first() }}    {{ grains['fqdn'] }}
+{% for server in pillar.get("nova", {}) -%}
+# {{ pillar["nova"][server]["created"] }} {{ pillar["nova"][server]["id"] }}
+{{ pillar["nova"][server]["addresses"]["private"][0]["addr"] }}   {{ pillar["nova"][server]["name"] }}
 {% endfor %}
 
 
