@@ -3,5 +3,7 @@
 #   for testinmg
 #
 
-'*':
-  - crowdrise/hostsfile/hosts
+base:
+
+  '*':
+    - crowdrise/hostsfile/hosts
