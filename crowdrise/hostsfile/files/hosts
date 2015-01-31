@@ -1,4 +1,3 @@
-#!jinja|yamlex
 {{ grains.get("crowdrise_hash_head", "# etc hosts" ) }}
 ::1             ip6-localhost           ip6-loopback
 fe00::0         ip6-localnet
@@ -11,9 +10,11 @@ ff02::2         ip6-allrouters
 {%-     for ipv in ['4', '6'] %}
 {%-         if grains['fqdn_ip' ~ ipv] is defined %}
 {%-             if grains['fqdn_ip' ~ ipv] is string %}
+# string
 {{ grains['fqdn_ip' ~ ipv] }}   {{ grains['fqdn'] }}
 {%-             else %}
 {%-                 if grains['fqdn_ip' + ipv] is sequence %}
+# List
 {{ grains['fqdn_ip' ~ ipv] ~ " " ~ grains['fqdn'] }}
 {%-                 endif %}
 {%-             endif %}
