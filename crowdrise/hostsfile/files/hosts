@@ -17,7 +17,7 @@ ff02::2         ip6-allrouters
 {%-                     for ip in grains['fqdn_ip' ~ ipv] %}
 {%-                         if ip is string %}
 #                               List
-{{                              grains['fqdn_ip' ~ ipv] ~ " " ~ grains['fqdn'] }}
+{{                              grains['fqdn_ip' ~ ipv]|first }} {{ grains['fqdn'] }}
 {%-                         endif %}
 {%-                     endfor %}
 {%-                 endif %}
