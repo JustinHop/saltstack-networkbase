@@ -1,5 +1,5 @@
 type        : agent.plugin
-label       : CrowdriseDatabase{%- if extension -%}{{ extension }}{%- endif -%}
+label       : CrowdriseDatabase{%- if extension is defined -%}{{ extension }}{%- endif -%}
 disabled    : false
 period      : 60
 timeout     : 50
