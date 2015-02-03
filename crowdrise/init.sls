@@ -11,6 +11,7 @@ include:
   - crowdrise/rackconnect
   - crowdrise/rclocal
   - services/chkrootkit
+  - ntp/ng
 
 python-pip:
   pkg.removed:
