@@ -116,7 +116,7 @@ kernel.exec-shield:
     - value: 1
 kernel.randomize_va_space:
   sysctl.present:
-    - value: 1
+    - value: 2
  
 # Tuen IPv6
 net.ipv6.conf.default.router_solicitations:
