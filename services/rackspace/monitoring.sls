@@ -60,6 +60,13 @@ https://gitlab.crowdrise.com/devops/rackspace-monitoring-agent-plugins-contrib.g
     - require:
       - pkg: git
 
+mv /usr/lib/rackspace-monitoring-agent/plugins /root/plugins:
+  cmd.run:
+    - user: root
+    - group: root
+    - onfail:
+      - git https://gitlab.crowdrise.com/devops/rackspace-monitoring-agent-plugins-contrib.git
+
 chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
   cmd.run:
     - user: root
