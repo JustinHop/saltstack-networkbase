@@ -65,7 +65,7 @@ mv /usr/lib/rackspace-monitoring-agent/plugins /root/plugins:
     - user: root
     - group: root
     - onfail:
-      - git https://gitlab.crowdrise.com/devops/rackspace-monitoring-agent-plugins-contrib.git
+      - git: https://gitlab.crowdrise.com/devops/rackspace-monitoring-agent-plugins-contrib.git
 
 chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
   cmd.run:
