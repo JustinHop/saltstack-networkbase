@@ -113,4 +113,25 @@ echo > /etc/nginx/naxsi_core.rules:
               label                 : Nginx
               notification_plan_id  : npYJv7dn5N
 
+{% for site in salt['pillar.get']('monitoring:remote:http', [])|dictsort %}
+/etc/rackspace-monitoring-agent.conf.d/remote-http-{{ site }}.yaml:
+  file.managed:
+    - user: root
+    - group: root
+    - makedirs: True
+    - contents: |
+      type        : remote.http
+      label       : Remote HTTP {{ site }}
+      disabled    : false
+      period      : 60
+      timeout     : 30
+      details     :
+          url     : {{ site }}
+          {%- if salt['pillar.get'](['monitoring']['remote']['http'][site]['important']) %}
+      alarms      :
+          nginx:
+              label                 : Remote HTTP {{ site }}
+              notification_plan_id  : npYJv7dn5N
+          {%- endif %}
+{% endfor %}
 
