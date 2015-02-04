@@ -54,7 +54,7 @@ rackspace-monitoring-agent:
     - group: root
     - makedirs: true
 
-https://github.com/racker/rackspace-monitoring-agent-plugins-contrib.git:
+https://gitlab.crowdrise.com/devops/rackspace-monitoring-agent-plugins-contrib.git:
   git.latest:
     - target: /usr/lib/rackspace-monitoring-agent/plugins
     - require:
