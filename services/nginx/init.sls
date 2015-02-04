@@ -67,8 +67,8 @@ echo > /etc/nginx/naxsi_core.rules:
   file.managed:
     - user: root
     - group: root
-    - contents: |
-      ip_hash;
+    - contents: ip_hash;
+
 
 /etc/nginx/include:
   file.managed:
