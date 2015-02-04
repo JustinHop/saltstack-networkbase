@@ -63,11 +63,12 @@ echo > /etc/nginx/naxsi_core.rules:
     - group: root
 {% endif %}
 
-openssl dhparam -out /etc/nginx/dhparam.pem 4096:
-  cmd.run:
+/etc/nginx/ip_hash:
+  file.managed:
     - user: root
     - group: root
-    - creates: /etc/nginx/dhparam.pem
+    - contents: |
+      ip_hash;
 
 /etc/nginx/include:
   file.managed:
