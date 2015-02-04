@@ -113,7 +113,7 @@ echo > /etc/nginx/naxsi_core.rules:
               label                 : Nginx
               notification_plan_id  : npYJv7dn5N
 
-{% for site in salt['pillar.get']('monitoring:remote:http', []).items() %}
+{% for site in salt['pillar.get']('monitoring:remote:http', []).iteritems() %}
 /etc/rackspace-monitoring-agent.conf.d/remote-http-{{ site }}.yaml:
   file.managed:
     - user: root
