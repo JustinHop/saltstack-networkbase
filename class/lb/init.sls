@@ -99,6 +99,11 @@ net.ipv4.conf.default.secure_redirects:
   sysctl.present:
     - value: 0
  
+net.ipv4.tcp_fin_timeout:
+  sysctl.present:
+    - value: 15
+
+
 # Don't act as a router
 net.ipv4.ip_forward:
   sysctl.present:
