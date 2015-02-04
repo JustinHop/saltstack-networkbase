@@ -131,6 +131,27 @@ echo > /etc/nginx/naxsi_core.rules:
           nginx:
               label                 : Remote HTTP {{ site }}
               notification_plan_id  : npYJv7dn5N
-          {%- endif %}
+{% endfor %}
+
+{% for site in salt['pillar.get']('monitoring:httpremotehtaccess') %}
+/etc/rackspace-monitoring-agent.conf.d/remote-http-{{ site }}.yaml:
+  file.managed:
+    - user: root
+    - group: root
+    - makedirs: True
+    - contents: |
+      type        : remote.http
+      label       : Remote HTTP Auth {{ site }}
+      disabled    : false
+      period      : 60
+      timeout     : 30
+      details     :
+          url     : {{ site }}
+         auth_user: {{ salt['pillar.get']('monitoring:monuser') }} 
+     auth_password: {{ salt['pillar.get']('monitoring:monpassword') }} 
+      alarms      :
+          nginx:
+              label                 : Remote HTTP Auth {{ site }}
+              notification_plan_id  : npYJv7dn5N
 {% endfor %}
 
