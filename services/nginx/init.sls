@@ -63,13 +63,6 @@ echo > /etc/nginx/naxsi_core.rules:
     - group: root
 {% endif %}
 
-/etc/nginx/ip_hash:
-  file.managed:
-    - user: root
-    - group: root
-    - contents: ip_hash;
-
-
 /etc/nginx/include:
   file.managed:
     - user: root
