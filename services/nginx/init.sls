@@ -147,8 +147,8 @@ echo > /etc/nginx/naxsi_core.rules:
       timeout     : 30
       details     :
           url     : {{ site }}
-         auth_user: {{ salt['pillar.get']('monitoring:monuser') }} 
-     auth_password: {{ salt['pillar.get']('monitoring:monpassword') }} 
+          auth_user: {{ salt['pillar.get']('monitoring:monuser') }} 
+          auth_password: {{ salt['pillar.get']('monitoring:monpassword') }} 
       alarms      :
           nginx:
               label                 : Remote HTTP Auth {{ site }}
