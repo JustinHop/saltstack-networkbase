@@ -1,0 +1,8 @@
+type        : agent.plugin
+label       : Stat Check {{ target_cpu }}
+disabled    : false
+period      : 60
+timeout     : 30
+details     :
+    file    : /usr/lib/rackspace-monitoring-agent/plugins/process_mon.sh
+    args    : [{{ target_cpu }}]
