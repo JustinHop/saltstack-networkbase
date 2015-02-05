@@ -113,8 +113,9 @@ echo > /etc/nginx/naxsi_core.rules:
               label                 : Nginx
               notification_plan_id  : npYJv7dn5N
 
-{% for site in salt['pillar.get']('monitoring:httpremote') %}
-/etc/rackspace-monitoring-agent.conf.d/remote-http-{{ site }}.yaml:
+{% for proto in salt['pillar.get']('monitoring:remote') %}
+{% for site in salt['pillar.get']('monitoring:remote')[proto] %}
+/etc/rackspace-monitoring-agent.conf.d/remote-{{ proto }}-{{ site }}.yaml:
   file.managed:
     - user: root
     - group: root
@@ -126,32 +127,33 @@ echo > /etc/nginx/naxsi_core.rules:
       period      : 60
       timeout     : 30
       details     :
-          url     : {{ site }}
+          url     : {{ proto }}://{{ site }}
       alarms      :
           nginx:
-              label                 : Remote HTTP {{ site }}
+              label                 : Remote {{ proto }} {{ site }}
               notification_plan_id  : npYJv7dn5N
 {% endfor %}
 
-{% for site in salt['pillar.get']('monitoring:httpremotehtaccess') %}
-/etc/rackspace-monitoring-agent.conf.d/remote-http-{{ site }}.yaml:
+{% for proto in salt['pillar.get']('monitoring:remotepw') %}
+{% for site in salt['pillar.get']('monitoring:remotepw')[proto] %}
+/etc/rackspace-monitoring-agent.conf.d/remotepw-{{ proto }}-{{ site }}.yaml:
   file.managed:
     - user: root
     - group: root
     - makedirs: True
     - contents: |
       type        : remote.http
-      label       : Remote HTTP Auth {{ site }}
+      label       : Remote {{ proto }} Auth {{ site }}
       disabled    : false
       period      : 60
       timeout     : 30
       details     :
-          url     : {{ site }}
+          url     : {{ proto }}://{{ site }}
           auth_user: {{ salt['pillar.get']('monitoring:monuser') }} 
           auth_password: {{ salt['pillar.get']('monitoring:monpassword') }} 
       alarms      :
           nginx:
-              label                 : Remote HTTP Auth {{ site }}
+              label                 : Remote {{ proto }} Auth {{ site }}
               notification_plan_id  : npYJv7dn5N
 {% endfor %}
 
