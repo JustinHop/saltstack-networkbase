@@ -73,7 +73,7 @@ chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
     - user: root
     - group: root
     - require:
-      - git: https://github.com/racker/rackspace-monitoring-agent-plugins-contrib.git
+      - git: https://gitlab.crowdrise.com/devops/rackspace-monitoring-agent-plugins-contrib.git
 
 /etc/rsyslog.d/rackspace-monitoring-daemon.conf:
   file.managed:
