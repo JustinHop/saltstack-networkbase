@@ -47,6 +47,7 @@ rackspace-monitoring-agent:
       target_interface: lo
       target_proc: init
       target_proc_level: 'CRITICAL'
+      target_cpu: ''
 
 /usr/lib/rackspace-monitoring-agent/plugins:
   file.directory:
