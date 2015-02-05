@@ -32,6 +32,7 @@ cr-apache-pkgs:
       - php5-common
       - php5-curl
       - php5-mysqlnd
+      - php5-imap
       - php5-gd
 
 {% if pillar['apache'] is defined %}
