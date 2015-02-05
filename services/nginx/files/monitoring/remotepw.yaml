@@ -1,0 +1,13 @@
+type        : remote.http
+label       : Remote {{ proto }} Auth {{ site }}
+disabled    : false
+period      : 60
+timeout     : 30
+details     :
+  url     : {{ proto }}://{{ site }}
+  auth_user: {{ salt['pillar.get']('monitoring:monuser') }} 
+  auth_password: {{ salt['pillar.get']('monitoring:monpassword') }} 
+alarms      :
+  nginx:
+      label                 : Remote {{ proto }} Auth {{ site }}
+      notification_plan_id  : npYJv7dn5N

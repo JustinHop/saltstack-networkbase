@@ -97,41 +97,24 @@ echo > /etc/nginx/naxsi_core.rules:
 
 /etc/rackspace-monitoring-agent.conf.d/nginx.yaml:
   file.managed:
+    - source: salt://services/nginx/files/monitoring/nginx.yaml
     - user: root
     - group: root
     - makedirs: True
-    - contents: |
-      type        : agent.plugin
-      label       : Nginx
-      disabled    : false
-      period      : 60
-      timeout     : 30
-      details     :
-          file    : /usr/lib/rackspace-monitoring-agent/plugins/nginx_status_check.py
-      alarms      :
-          nginx:
-              label                 : Nginx
-              notification_plan_id  : npYJv7dn5N
+    - template: jinja
 
 {%  for proto in salt['pillar.get']('monitoring:remote') %}
 {%    for site in salt['pillar.get']('monitoring:remote')[proto] %}
 /etc/rackspace-monitoring-agent.conf.d/remote-{{ proto }}-{{ site }}.yaml:
   file.managed:
+    - source: salt://services/nginx/files/monitoring/remote.yaml
     - user: root
     - group: root
     - makedirs: True
-    - contents: |
-      type        : remote.http
-      label       : Remote HTTP {{ site }}
-      disabled    : false
-      period      : 60
-      timeout     : 30
-      details     :
-          url     : {{ proto }}://{{ site }}
-      alarms      :
-          nginx:
-              label                 : Remote {{ proto }} {{ site }}
-              notification_plan_id  : npYJv7dn5N
+    - template: jinja
+    - defaults:
+      proto: {{ proto }}
+      site: {{ site }}
 {%    endfor %}
 {%  endfor %}
 
@@ -139,23 +122,14 @@ echo > /etc/nginx/naxsi_core.rules:
 {%    for site in salt['pillar.get']('monitoring:remotepw')[proto] %}
 /etc/rackspace-monitoring-agent.conf.d/remotepw-{{ proto }}-{{ site }}.yaml:
   file.managed:
+    - source: salt://services/nginx/files/monitoring/remotepw.yaml
     - user: root
     - group: root
     - makedirs: True
-    - contents: |
-      type        : remote.http
-      label       : Remote {{ proto }} Auth {{ site }}
-      disabled    : false
-      period      : 60
-      timeout     : 30
-      details     :
-          url     : {{ proto }}://{{ site }}
-          auth_user: {{ salt['pillar.get']('monitoring:monuser') }} 
-          auth_password: {{ salt['pillar.get']('monitoring:monpassword') }} 
-      alarms      :
-          nginx:
-              label                 : Remote {{ proto }} Auth {{ site }}
-              notification_plan_id  : npYJv7dn5N
+    - template: jinja
+    - defaults:
+      proto: {{ proto }}
+      site: {{ site }}
 {%    endfor %}
 {%  endfor %}
 

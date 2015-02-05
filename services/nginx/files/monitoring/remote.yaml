@@ -1,0 +1,11 @@
+type        : remote.http
+label       : Remote HTTP {{ site }}
+disabled    : false
+period      : 60
+timeout     : 30
+details     :
+  url       : {{ proto }}://{{ site }}
+alarms      :
+  nginx:
+      label                 : Remote {{ proto }} {{ site }}
+      notification_plan_id  : npYJv7dn5N

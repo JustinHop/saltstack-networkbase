@@ -1,0 +1,11 @@
+type        : agent.plugin
+label       : Nginx
+disabled    : false
+period      : 60
+timeout     : 30
+details     :
+    file    : /usr/lib/rackspace-monitoring-agent/plugins/nginx_status_check.py
+alarms      :
+    nginx:
+        label                 : Nginx
+        notification_plan_id  : npYJv7dn5N
