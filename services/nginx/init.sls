@@ -113,8 +113,8 @@ echo > /etc/nginx/naxsi_core.rules:
               label                 : Nginx
               notification_plan_id  : npYJv7dn5N
 
-{% for proto in salt['pillar.get']('monitoring:remote') %}
-{% for site in salt['pillar.get']('monitoring:remote')[proto] %}
+{%  for proto in salt['pillar.get']('monitoring:remote') %}
+{%    for site in salt['pillar.get']('monitoring:remote')[proto] %}
 /etc/rackspace-monitoring-agent.conf.d/remote-{{ proto }}-{{ site }}.yaml:
   file.managed:
     - user: root
@@ -132,10 +132,11 @@ echo > /etc/nginx/naxsi_core.rules:
           nginx:
               label                 : Remote {{ proto }} {{ site }}
               notification_plan_id  : npYJv7dn5N
-{% endfor %}
+{%    endfor %}
+{%  endfor %}
 
-{% for proto in salt['pillar.get']('monitoring:remotepw') %}
-{% for site in salt['pillar.get']('monitoring:remotepw')[proto] %}
+{%  for proto in salt['pillar.get']('monitoring:remotepw') %}
+{%    for site in salt['pillar.get']('monitoring:remotepw')[proto] %}
 /etc/rackspace-monitoring-agent.conf.d/remotepw-{{ proto }}-{{ site }}.yaml:
   file.managed:
     - user: root
@@ -155,5 +156,6 @@ echo > /etc/nginx/naxsi_core.rules:
           nginx:
               label                 : Remote {{ proto }} Auth {{ site }}
               notification_plan_id  : npYJv7dn5N
-{% endfor %}
+{%    endfor %}
+{%  endfor %}
 
