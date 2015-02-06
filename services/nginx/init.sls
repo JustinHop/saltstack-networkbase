@@ -35,6 +35,16 @@ include:
         crowdrise:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
         monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
 
+/etc/nginx/htpasswd-hp2015:
+  file.managed:
+    - user: root
+    - group: root
+    - makedirs: True
+    - contents: |
+        huffpost:$apr1$L7uYgSRj$.aLFkt5gKGGi1hFAHGwjv/
+        crowdrise:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
+        monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
+
 nginx-config:
 {% if salt['pillar.get']('nginx:repo:crowdrise') %}
   pkgrepo.managed:
