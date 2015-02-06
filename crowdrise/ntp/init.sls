@@ -6,6 +6,3 @@
 include:
   - ntp/ng
 
-xen.independent_wallclock:
-  sysctl.present:
-    - value: 1
