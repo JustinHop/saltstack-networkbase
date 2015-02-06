@@ -82,6 +82,18 @@ chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
     - makedirs: True
     - source: salt://services/rackspace/files/rsyslog.conf
 
+{% for cpu in range(1, grains['num_cpus']) %}
+/etc/rackspace-monitoring-agent.conf.d/stat-cpu{{ loop.index0 }}.yaml:
+  file.managed:
+    - source: salt://services/rackspace/files/monitoring/stat.yaml
+    - template: jinja
+    - makedirs: true
+    - user: root
+    - group: root
+    - defaults:
+      target_cpu: {{ loop.index0 }}
+{% endfor %}
+
 {% for interface in grains['ip_interfaces'] %}
 {% if interface != 'lo' %}
 /etc/rackspace-monitoring-agent.conf.d/network-{{ interface }}.yaml:
