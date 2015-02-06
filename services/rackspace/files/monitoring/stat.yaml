@@ -4,5 +4,10 @@ disabled    : false
 period      : 60
 timeout     : 30
 details     :
-    file    : /usr/lib/rackspace-monitoring-agent/plugins/process_mon.sh
+    file    : /usr/lib/rackspace-monitoring-agent/plugins/stat_metric.sh
     args    : [{{ target_cpu }}]
+alarms      :
+    stat:
+        label                 : Stat Metric {{ target_cpu }}
+        notification_plan_id  : npYJv7dn5N
+
