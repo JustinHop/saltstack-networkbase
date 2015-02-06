@@ -18,7 +18,7 @@ init-rackspace-monitoring:
     - require:
       - pkg: rackspace-monitoring-agent
 
-/etc/init/rackspace-monitoring-agent:
+/etc/init/rackspace-monitoring-agent.conf:
   file.replace:
     - pattern: exit-on-upgrade
     - repl: restart-sysv-on-upgrade

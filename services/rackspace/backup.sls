@@ -15,7 +15,7 @@ cloudbackup-updater:
 
 /usr/local/bin/driveclient:
   cmd.run:
-    - name: rm /etc/driveclient/bootstrap.json; /usr/local/bin/driveclient --configure --username {{ salt['pillar.get']('rackspace:username', 'user') }} --apikey {{ salt['pillar.get']('rackspace:apikey', 'api') }}
+    - name: rm /etc/driveclient/bootstrap.json; pkill -9 driveclient; /usr/local/bin/driveclient --configure --username {{ salt['pillar.get']('rackspace:username', 'user') }} --apikey {{ salt['pillar.get']('rackspace:apikey', 'api') }}
     - unless: |
         grep '"IsRegistered" : true' /etc/driveclient/bootstrap.json
     - requires:
@@ -32,3 +32,9 @@ driveclient:
       - pkg: cloudbackup-updater
       - onfail:
         - cmd: /usr/local/bin/driveclient
+
+
+/etc/init.d/driveclient.conf:
+  file.replace:
+    - pattern: start_daemon
+    - repl: ionice -c 3 nice -n 19 start_daemon nice=19
