@@ -5,5 +5,4 @@
 base:
 
   '*':
-    - services/rackspace
-    - last
+    - services/rackspace/monitoring
