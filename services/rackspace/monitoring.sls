@@ -3,6 +3,10 @@
 #   Yaml template files for rackspace monitoring
 #
 
+rackspacemonitoringggit:
+  pkg.installed:
+    - name: git
+
 rackspace-monitoring-repo:
   pkgrepo.managed:
     - name: deb http://stable.packages.cloudmonitoring.rackspace.com/ubuntu-{{ grains['lsb_distrib_release'] }}-x86_64 cloudmonitoring main
