@@ -45,6 +45,15 @@ include:
         crowdrise:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
         monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
 
+/etc/nginx/robots.txt:
+  file.managed:
+    - user: root
+    - group: root
+    - makedirs: True
+    - contents: |
+        User-agent: *
+        Disallow: /
+
 nginx-config:
 {% if salt['pillar.get']('nginx:repo:crowdrise') %}
   pkgrepo.managed:
