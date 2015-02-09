@@ -1,4 +1,4 @@
-{{ salt['grains.get']('crowdrise_hash_head', "# crontab") }}
+{{ salt['pillar.get']('crowdrise_hash_head', "# crontab") }}
 
 MAILTO=devops@crowdrise.com
 
@@ -6,12 +6,10 @@ MAILTO=devops@crowdrise.com
 # that are reported from within the applications themseleves.
 TZ=America/New_York
 
-
 * * * * * www-data php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php prod /cron/wepay_tips 2>&1 | logger -p cron.info -t WePayTipsProd
 * * * * * www-data php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php dev /cron/wepay_tips 2>&1 | logger -p cron.info -t WePayTipsDev
 * * * * * www-data php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php prod /cron/wepay_pings 2>&1 | logger -p cron.info -t WePayPingsProd
 * * * * * www-data php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php dev /cron/wepay_pings 2>&1 | logger -p cron.info -t WePayPingsDev
-
 
 # CONVERTING ALL TIMES TO UTC
 
@@ -34,9 +32,4 @@ TZ=America/New_York
 @daily             www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_weddingRegistriesDonations.php 2>&1 | logger -p cron.info -t WedRegDonProd
 @daily             www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_babyRegistries.php 2>&1 | logger -p cron.info -t BabyProd
 @daily             www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_babyRegistriesDonations.php 2>&1 | logger -p cron.info -t BabyDonProd
-
 @hourly            www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php prod /cron/archive_emails 2>&1 | logger -p cron.info -t ArchiveEmails
-
-#####* * * * * chown apache:apache /var/www/vhosts/www.crowdrise.com/htdocs/application/logs/*
-#####* * * * * chown apache:apache /var/www/vhosts/dev.crowdrise.com/htdocs/application/logs/*
-# 30 3 * * * www-data php /var/www/vhosts/dev.crowdrise.com/htdocs/application/cron/dev_fundraising_minimums.php
