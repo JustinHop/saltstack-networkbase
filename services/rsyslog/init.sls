@@ -9,6 +9,13 @@ rsyslog-relp:
   pkg:
     - installed
 
+/var/log/upstart:
+  file.directory:
+    - user: syslog
+    - group: adm
+    - mode: 775
+    - makedirs: True
+
 /home/syslog:
   file.symlink:
     - target: /var/log
