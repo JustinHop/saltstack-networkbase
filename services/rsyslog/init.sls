@@ -9,6 +9,11 @@ rsyslog-relp:
   pkg:
     - installed
 
+/home/syslog:
+  file.symlink:
+    - target: /var/log
+    - force_symlinks: true
+    - force: true
 
 service_{{ rsyslog.service }}:
   service.running:
