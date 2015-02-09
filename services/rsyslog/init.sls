@@ -22,6 +22,11 @@ rsyslog-relp:
     - force_symlinks: true
     - force: true
 
+chown -R syslog /var/log:
+  cmd.run:
+    - user: root
+    - group: root
+
 service_{{ rsyslog.service }}:
   service.running:
     - name: {{ rsyslog.service }}
