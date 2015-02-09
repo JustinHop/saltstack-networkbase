@@ -1,21 +1,15 @@
-#
-#   THIS FILE IS MAINTAINED BY SALT
-#
-#   CONFIG CHANGES WILL BE OVERWRITTEN
-#
+{{ salt['grains.get']('crowdrise_hash_head', "# crontab") }}
 
 MAILTO=devops@crowdrise.com
 
 # Setting this variable for timezone will not change the times at which the cronjobs are run, only the time
 # that are reported from within the applications themseleves.
 TZ=America/New_York
-# SALT_CRON_IDENTIFIER:Process Queued Wepay Donation Tips Every 2 Minutes Prod
+
+
 * * * * * www-data php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php prod /cron/wepay_tips 2>&1 | logger -p cron.info -t WePayTipsProd
-# SALT_CRON_IDENTIFIER:Process Queued Wepay Donation Tips Every 2 Minutes Dev
 * * * * * www-data php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php dev /cron/wepay_tips 2>&1 | logger -p cron.info -t WePayTipsDev
-# SALT_CRON_IDENTIFIER:Process Queued Wepay Prod Pings
 * * * * * www-data php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php prod /cron/wepay_pings 2>&1 | logger -p cron.info -t WePayPingsProd
-# SALT_CRON_IDENTIFIER:Process Queued Wepay Dev Pings
 * * * * * www-data php /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php dev /cron/wepay_pings 2>&1 | logger -p cron.info -t WePayPingsDev
 
 
@@ -40,6 +34,8 @@ TZ=America/New_York
 @daily             www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_weddingRegistriesDonations.php 2>&1 | logger -p cron.info -t WedRegDonProd
 @daily             www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_babyRegistries.php 2>&1 | logger -p cron.info -t BabyProd
 @daily             www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/prod_babyRegistriesDonations.php 2>&1 | logger -p cron.info -t BabyDonProd
+
+@hourly            www-data  php  /var/www/vhosts/www.crowdrise.com/htdocs/application/cron/cron_generic.php prod /cron/archive_emails 2>&1 | logger -p cron.info -t ArchiveEmails
 
 #####* * * * * chown apache:apache /var/www/vhosts/www.crowdrise.com/htdocs/application/logs/*
 #####* * * * * chown apache:apache /var/www/vhosts/dev.crowdrise.com/htdocs/application/logs/*
