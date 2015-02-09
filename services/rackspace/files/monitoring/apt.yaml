@@ -1,0 +1,23 @@
+type        : agent.plugin
+label       : Package Updates
+disabled    : false
+period      : 60
+timeout     : 30
+details     :
+    file    : /usr/lib/rackspace-monitoring-agent/plugins/ubuntu_updates_check.sh
+alarms      :
+    proc:
+        label                 : Package Updates
+        notification_plan_id  : npYJv7dn5N
+        criteria              : |
+            :set consecutiveCount=3
+            if (metric['pending_security'] > 1) {
+                return new AlarmStatus(WARNING, 'Pending Security Updates not Installed > 1');
+            }
+            if (metric['pending_security'] > 10) {
+                return new AlarmStatus(CRITICAL, 'Pending Security Updates not Installed > 10');
+            }
+            if (metric['reboot_required'] > 0) {
+                return new AlarmStatus(WARNING, 'Reboot required');
+            }
+            return new AlarmStatus(OK, "Up to date on security patches");

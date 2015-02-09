@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+require 'curb'
+require 'json'
+
+require "net/http"
+require "uri"
+
+# This file was placed here by GitLab. It makes sure that your pushed commits
+# will be processed properly.
+# You can add your own hooks to this file, but be careful when updating gitlab-shell!
+
+refname = ARGV[0]
+key_id  = ENV['GL_ID']
+repo_path = `pwd`
+diff = `git show`
+
+url = "https://hooks.slack.com/services/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"
+
+fields = {
+    :channel => '#gitlab',
+    :username => 'webhookbot',
+    :text => "Update:\nRef: #{refname}\nKey ID: #{key_id}\nRepo Path: #{repo_path}\nDiff: \n#{diff}",
+    :icon_emoji => ":gitlab:"
+}
+
+payload = JSON.generate(fields)
+
+c = Curl::Easy.http_post(url, *payload) do |curl|
+    curl.headers["User-Agent"] = "Curl/Ruby"
+    curl.verbose = false
+end
+
