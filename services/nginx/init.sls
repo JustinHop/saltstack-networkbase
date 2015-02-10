@@ -7,6 +7,14 @@ include:
   - nginx/ng
   - crowdrise/ssl
 
+/etc/nginx/google9c25d838cb2b84a3.html:
+  file.managed:
+    - user: root
+    - group: root
+    - makedirs: True
+    - contents: |
+        google-site-verification: google9c25d838cb2b84a3.html
+
 /etc/nginx/htpasswd-showcase:
   file.managed:
     - user: root
