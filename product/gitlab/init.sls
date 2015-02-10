@@ -5,9 +5,3 @@
 
 include:
   - crowdrise/ssl
-
-exclude:
-  - users
-  - services/openssh
-  - services/openssh/server
-
