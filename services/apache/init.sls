@@ -39,7 +39,6 @@ cr-apache-pkgs:
 include:
   - services/apache/monitoring
 
-/etc/apache2/confs-available:
 {%  for PART in ["mods", "confs", "sites"] %}
 {%    for BASE in salt['pillar.get']('apache', []) %}
 /etc/apache2/{{ PART }}-available:
