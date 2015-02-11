@@ -39,11 +39,20 @@ export LANG
 ## following line (default is 8192):
 APACHE_ULIMIT_MAX_FILES='ulimit -n 65536'
 
-## If you would like to pass arguments to the web server, add them below
-## to the APACHE_ARGUMENTS environment.
-#export APACHE_ARGUMENTS=''
+export CROWDRISE_DEFAULT_HOSTNAME={{ salt['pillar.get']('mysql:master', 'db-write.crowdrise.io') }}
+export CROWDRISE_DEFAULT_USERNAME={{ salt['pillar.get']('mysql:username') }}
+export CROWDRISE_DEFAULT_PASSWORD={{ salt['pillar.get']('mysql:password') }}
+export CROWDRISE_DEFAULT_DATABASE={{ salt['pillar.get']('mysql:password') }}
+export CROWDRISE_DEFAULT_DRIVER={{ salt['pillar.get']('mysql:driver') }}
 
-## Enable the debug mode for maintainer scripts.
-## This will produce a verbose output on package installations of web server modules and web application
-## installations which interact with Apache
-#export APACHE2_MAINTSCRIPT_DEBUG=1
+export CROWDRISE_WRITE_HOSTNAME={{ salt['pillar.get']('mysql:master', 'db-write.crowdrise.io') }}
+export CROWDRISE_WRITE_USERNAME={{ salt['pillar.get']('mysql:username') }}
+export CROWDRISE_WRITE_PASSWORD={{ salt['pillar.get']('mysql:password') }}
+export CROWDRISE_WRITE_DATABASE={{ salt['pillar.get']('mysql:password') }}
+export CROWDRISE_WRITE_DRIVER={{ salt['pillar.get']('mysql:driver') }}
+
+export CROWDRISE_READ_HOSTNAME={{ salt['pillar.get']('mysql:master', 'db-write.crowdrise.io') }}
+export CROWDRISE_READ_USERNAME={{ salt['pillar.get']('mysql:username') }}
+export CROWDRISE_READ_PASSWORD={{ salt['pillar.get']('mysql:password') }}
+export CROWDRISE_READ_DATABASE={{ salt['pillar.get']('mysql:password') }}
+export CROWDRISE_READ_DRIVER={{ salt['pillar.get']('mysql:driver') }}
