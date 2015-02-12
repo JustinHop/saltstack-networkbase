@@ -9,6 +9,15 @@ rsyslog-relp:
   pkg:
     - installed
 
+/etc/logrotate.d/rsyslog:
+  file.managed:
+    - user: syslog
+    - group: adm
+    - mode: 775
+    - makedirs: True
+    - template: jinja
+    - source: salt://services/rsyslog/files/logrotate.conf
+
 /var/log/upstart:
   file.directory:
     - user: syslog
