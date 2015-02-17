@@ -12,7 +12,6 @@ include:
   - services/newrelic/npi
   - services/mysql/newrelic
 
-
 /etc/rackspace-monitoring-agent.conf.d/mysql.yaml:
   file.managed:
     - source: salt://services/mysql/files/monitoring/mysql-slave.yaml
@@ -22,3 +21,10 @@ include:
     - defaults:
         target_username: {{ salt['pillar.get']('mysqlmon:user', 'user') }}
         target_password: {{ salt['pillar.get']('mysqlmon:pass', 'pass') }}
+
+/etc/logrotate.d/mysql:
+  file.managed:
+    - source: salt://services/mysql/files/logrotate.conf
+    - user: root
+    - group: root
+    - template: jinja
