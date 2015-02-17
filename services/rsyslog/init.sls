@@ -18,6 +18,13 @@ rsyslog-relp:
     - template: jinja
     - source: salt://services/rsyslog/files/logrotate.conf
 
+/var/log:
+  file.directory:
+    - user: syslog
+    - group: adm
+    - mode: 775
+    - makedirs: True
+
 /var/log/upstart:
   file.directory:
     - user: syslog
