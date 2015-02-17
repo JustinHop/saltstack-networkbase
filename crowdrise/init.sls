@@ -123,6 +123,13 @@ groupdel ubuntu || echo hello:
     - order:
       - 1
 
+/etc/sudoers:
+  file.managed:
+    - source: salt://crowdrise/files/sudoers
+    - template: jinja
+    - user: root
+    - group: root
+
 /etc/apt/apt.conf.d/10periodic:
   file.managed:
     - source: salt://crowdrise/files/10periodic
