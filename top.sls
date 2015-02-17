@@ -6,14 +6,9 @@ base:
   {% set states = salt['cp.list_states'](env) %}
 
   '*':
-    - users
-    - services/openssh
-    - services/openssh/server
-    - services/rsyslog
-    - services/rackspace
-    - salt/minion
-    - last
     - excludes
+    - last
+
     #
     # These are github hosted formulas
     #

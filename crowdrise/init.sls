@@ -10,8 +10,15 @@ include:
   - crowdrise/profile
   - crowdrise/rackconnect
   - crowdrise/rclocal
+  - users
   - services/chkrootkit
+  - services/openssh
+  - services/openssh/server
+  - services/rsyslog
+  - services/rackspace
+  - salt/minion
   - ntp/ng
+  - postfix/config
 
 python-pip:
   pkg.removed:
