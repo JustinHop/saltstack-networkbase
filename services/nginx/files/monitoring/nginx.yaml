@@ -4,7 +4,7 @@ disabled    : false
 period      : 60
 timeout     : 30
 details     :
-    file    : /usr/lib/rackspace-monitoring-agent/plugins/nginx_status_check.py
+    file    : /usr/lib/rackspace-monitoring-agent/plugins/nginx_status_check.sh
 alarms      :
     nginx:
         label                 : Nginx
