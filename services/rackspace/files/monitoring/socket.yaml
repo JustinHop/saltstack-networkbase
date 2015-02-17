@@ -1,0 +1,12 @@
+type        : agent.plugin
+label       : Socket Stats
+disabled    : false
+period      : 30
+timeout     : 10
+details     :
+    file    : /usr/lib/rackspace-monitoring-agent/plugins/socket.sh
+alarms      :
+    stat:
+        label                 : Socket Metric Alert
+        notification_plan_id  : npYJv7dn5N
+
