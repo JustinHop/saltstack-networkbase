@@ -6,7 +6,6 @@
 include:
   - services/newrelic
   - services/apache
-  - services/apache/key
   - crowdrise/ssl
 
 frontend-webserver:
@@ -15,8 +14,8 @@ frontend-webserver:
       - apache2
       - apache2-mpm-prefork
       - mysql-client
-      - mysql-client-5.5
-      - mysql-client-core-5.5
+      - mysql-client-5.6
+      - mysql-client-core-5.6
       - php-apc
       - php5
       - php5-cli
