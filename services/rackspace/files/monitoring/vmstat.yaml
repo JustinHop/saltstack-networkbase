@@ -1,0 +1,12 @@
+type        : agent.plugin
+label       : Virtual Memory Stat
+disabled    : false
+period      : 60
+timeout     : 30
+details     :
+    file    : /usr/lib/rackspace-monitoring-agent/plugins/vmstat_metric.sh
+alarms      :
+    stat:
+        label                 : Virtual Memory Stat Metric
+        notification_plan_id  : npYJv7dn5N
+
