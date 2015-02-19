@@ -3,27 +3,6 @@
 {% if 'apache' in pillar and 'register-site' in pillar['apache'] %} #BEGIN: ['apache']['register-site']
 {% for site in pillar['apache']['register-site'] %}
 
-#BEGIN: Add users to htpasswd files
-{% if 'authfile' in  pillar['apache']['register-site'][site] %}
-apacheauth:
-  module.run:
-    - name: file.chown
-    - path: {{ pillar['apache']['register-site'][site]['authfile'] }}
-    - user: root
-    - group: root
-
-
-{% for user in pillar['apache']['register-site'][site]['users'].iteritems() %}
-apacheauth-{{ user[1]['name'] }}:
-  module.run:
-    - name: webutil.useradd
-    - pwfile: {{ pillar['apache']['register-site'][site]['authfile'] }}
-    - user: {{ user[1]['name'] }}
-    - password: {{ user[1]['password'] }}
-{% endfor %}
-{% endif %}
-##########################################
-
 #BEGIN: Call apache a2ensite
 ##########################################
 {% if 'name' in pillar['apache']['register-site'][site] and 'state' in pillar['apache']['register-site'][site] %}
@@ -35,9 +14,9 @@ a2dissite {{ pillar['apache']['register-site'][site]['name'] }}:
 {% endif %}
   cmd.run:
 {% if pillar['apache']['register-site'][site]['state'] == 'enabled' %}
-    - unless: ls /etc/apache2/sites-enabled/{{ pillar['apache']['register-site'][site]['name'] }}
+    - unless: test -f /etc/apache2/sites-enabled/{{ pillar['apache']['register-site'][site]['name'] }}
 {% else %}
-    - onlyif: ls /etc/apache2/sites-enabled/{{ pillar['apache']['register-site'][site]['name'] }}
+    - onlyif: test -f /etc/apache2/sites-enabled/{{ pillar['apache']['register-site'][site]['name'] }}
 {% endif %}
     - order: 230
     - require:
