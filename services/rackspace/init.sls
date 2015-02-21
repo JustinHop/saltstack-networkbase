@@ -30,7 +30,9 @@ rackspace-tools:
 
 
 include:
-  - services/rackspace/autodns
   - services/rackspace/backup
   - services/rackspace/pyrax
   - services/rackspace/monitoring
+
+exclude:
+  - sls: services/rackspace/autodns
