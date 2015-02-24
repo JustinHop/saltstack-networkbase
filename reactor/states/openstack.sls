@@ -11,6 +11,7 @@ logthis-openstack-reactor:
 
 {%  if postdata.secretkey == "1f938f7c-2744-4dd3-ae66-b26e295baac0" %}
 {%    for top in tops %}
+{%      if top in postdata %}
 highhosts-{{ top }}:
   local.state.top:
     - tgt: 'master*.salt.*'
@@ -19,5 +20,6 @@ highhosts-{{ top }}:
     - kwarg:
       pillar:
         openstack: {{ data.get(['postdata'][top]) }}
+{%      endif %}
 {%    endfor %}
 {%  endif %}
