@@ -14,7 +14,7 @@ logthis-openstack-reactor:
         post: {{ postdata }}
 
 {%  if postdata.secretkey == "1f938f7c-2744-4dd3-ae66-b26e295baac0" %}
-highhosts-{{ top }}:
+handoff-openstack:
   local.state.top:
     - tgt: 'master*.salt.*'
     - arg:
