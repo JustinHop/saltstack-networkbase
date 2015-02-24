@@ -16,7 +16,7 @@ rackspace-monitoring-repo:
 
 init-rackspace-monitoring:
   cmd.run:
-    - name: /usr/bin/rackspace-monitoring-agent --setup --username {{ salt['pillar.get']('rackspace:username', 'justin.hoppensteadt') }} --apikey {{ salt['pillar.get']('rackspace:apikey', '993ee403ca934d5cbed5f79e4de5b8c6') }}
+    - name: /usr/bin/rackspace-monitoring-agent --setup --username {{ salt['pillar.get']('rackspace:username', 'username') }} --apikey {{ salt['pillar.get']('rackspace:apikey', 'apikey') }}
     - timeout: 15
     - creates: /etc/rackspace-monitoring-agent.cfg
     - require:
