@@ -19,5 +19,5 @@ highhosts-{{ top }}:
     - kwarg:
       pillar:
         openstack: {{ postdata[top] }}
-{%    endif %}
+{%    endfor %}
 {%  endif %}
