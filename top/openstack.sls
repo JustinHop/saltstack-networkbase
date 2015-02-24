@@ -3,10 +3,7 @@
 #   Finally get to do work on openstack data
 #
 
-/var/log/salt/pillar.log:
-  file.managed:
-    - name: /var/log/salt/pillar.log
+date >> /var/log/salt/test.log:
+  cmd.run:
     - user: syslog
     - group: syslog
-    - contents: |
-      {{ salt['pillar.get']('openstack')|indent(8) }}
