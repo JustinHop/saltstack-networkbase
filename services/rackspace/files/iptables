@@ -1,4 +1,4 @@
-{{ salt['pillar.get']('crowdrise_hash_head') }}
+{{ salt['pillar.get']('crowdrise_hash_head') -}}
 *filter
 :INPUT DROP [0:0]
 :FORWARD DROP [0:0]

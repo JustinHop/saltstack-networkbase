@@ -37,4 +37,4 @@ gen_file
         ;;
     esac
   done; iptables-save | sed -e "0,/$CRENDLINE/d" ) \
-  | tee ${STATEFILE}.test
+  | tee ${STATEFILE}

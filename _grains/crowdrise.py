@@ -17,7 +17,7 @@ log = logging.getLogger(__name__)
 def host_based_info_show(grains={'test': 'value'}):
     for grain in grains:
         ginfo = "grain %s : %s" % (grain, grains[grain])
-        log.info(ginfo)
+        log.debug(ginfo)
 
 
 def host_based_info():
@@ -48,7 +48,7 @@ def host_based_info():
         grains['cluster_instance'] = hostparts.group(5)
         grains['business'] = hostparts.group(6)
         grains['tld'] = hostparts.group(7)
-        host_based_info_show(grains)
+        #host_based_info_show(grains)
         return grains
     except:
         pass

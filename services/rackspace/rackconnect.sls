@@ -23,3 +23,12 @@ run-iptables-stuffs:
     - group: root
     - order: last
     - template: jinja
+
+reload-ip-tables:
+  cmd.run:
+    - name: |
+      iptables-restore < /etc/network/iptables
+    - user: root
+    - group: root
+    - requires:
+      - cmd: run-iptables-stuffs

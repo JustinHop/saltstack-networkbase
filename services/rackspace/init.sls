@@ -33,6 +33,7 @@ include:
   - services/rackspace/backup
   - services/rackspace/pyrax
   - services/rackspace/monitoring
+  - services/rackspace/rackconnect
 
 exclude:
   - sls: services/rackspace/autodns
