@@ -3,11 +3,13 @@
 STATEFILE=/etc/network/iptables
 STATEDIR=/etc/network/iptables.d
 CRSTATEFILE=/etc/network/iptables-crowdrise
-FILELINE="# File Line"
+FILEUUID=20557911-7a00-40e4-a3d5-f75679d71855
+FILELINE="# FILES 20557911-7a00-40e4-a3d5-f75679d71855"
+FILELINES=""
 CRENDLINE="Local-Loopback"
 
 if [ "$(ls -A $STATEDIR)" ]; then
-  FILELINE=$(find $STATEDIR -type f -exec cat {} \;)
+  FILELINES=$(find $STATEDIR -type f -exec cat {} \;)
 fi
 
 function gen_file(){
@@ -21,8 +23,16 @@ function gen_file(){
 
 gen_file
 
+
+
 cat $CRSTATEFILE
 iptables-save | sed -e "0,/$CRENDLINE/d" \
-  | awk '/-A FORWARD -m comment --comment RackConnectChain-FORWARD/{ print "'${FILELINE}'"}1' \
-  | tee ${STATEFILE}-test
-
+  | while read LINE ; do
+    case "$LINE" in
+      $FILELINE)
+        echo $FILELINES
+        ;;
+      *)
+        echo "$LINE"
+        ;;
+    esac
