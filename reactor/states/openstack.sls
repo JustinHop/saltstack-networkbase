@@ -1,3 +1,7 @@
+#
+#   reactor/states/openstack.sls
+#   kick off openstack cleanup jobs on changes
+#
 {% set postdata = data.get('post', {}) %}
 {% set tops = ['nova', 'lb', 'domain'] %}
 {% set acts = ['added', 'changed', 'removed'] %}
@@ -17,16 +21,6 @@ highhosts-{{ top }}:
     - tgt: 'master*.salt.*'
     - arg:
       'top/openstack-{{ top }}.sls'
-    - kwarg:
-      pillar:
-        openstack:
-          {{ top }}:
-            youcantbeempty: true
-{%        for act in acts %}
-{%          if act in postdata[top] %}
-            {{ act }}: {{ data.get(['postdata'][top][act]) }}
-{%          endif %}
-{%        endfor %}
 {%      endif %}
 {%    endfor %}
 {%  endif %}
