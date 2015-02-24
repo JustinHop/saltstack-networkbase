@@ -27,7 +27,7 @@ run-iptables-stuffs:
 reload-ip-tables:
   cmd.run:
     - name: |
-      iptables-restore < /etc/network/iptables
+        iptables-restore < /etc/network/iptables
     - user: root
     - group: root
     - requires:
