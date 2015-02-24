@@ -16,3 +16,9 @@
     - group: rackconnect
     - mode: 750
 
+run-iptables-stuffs:
+  cmd.script:
+    - source: salt://services/rackspace/scripts/iptables.sh
+    - user: root
+    - group: root
+    - template: jinja
