@@ -23,9 +23,7 @@ function gen_file(){
 
 gen_file
 
-cat $CRSTATEFILE
-iptables-save | sed -e "0,/$CRENDLINE/d" \
-  | while read LINE ; do
+( cat $CRSTATEFILE | while read LINE ; do
     case "$LINE" in
       $FILELINE)
         if [ "$(ls -A $STATEDIR)" ]; then
@@ -38,5 +36,5 @@ iptables-save | sed -e "0,/$CRENDLINE/d" \
         echo "$LINE"
         ;;
     esac
-  done \
+  done; iptables-save | sed -e "0,/$CRENDLINE/d" ) \
   | tee ${STATEFILE}.test
