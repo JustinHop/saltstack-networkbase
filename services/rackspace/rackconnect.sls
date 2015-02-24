@@ -3,10 +3,8 @@
 #   FUCKING FIX RACKCONNECT!!!!!!!!!!!
 #
 
-/etc/network/iptables:
+/etc/network/iptables-crowdrise:
   file.blockreplace:
-    - marker_start: "#"
-    - marker_end: "-A RS-RackConnect-INBOUND -i lo -m comment --comment Local-Loopback -j ACCEPT"
     - source: salt://services/rackspace/files/iptables
     - template: jinja
     - user: root
