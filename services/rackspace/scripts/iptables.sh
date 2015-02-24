@@ -23,16 +23,20 @@ function gen_file(){
 
 gen_file
 
-
-
 cat $CRSTATEFILE
 iptables-save | sed -e "0,/$CRENDLINE/d" \
   | while read LINE ; do
     case "$LINE" in
       $FILELINE)
-        echo $FILELINES
+        if [ "$(ls -A $STATEDIR)" ]; then
+          find "$STATEDIR" -type f -exec cat {} \;
+        else
+          echo "$FILELINE"
+        fi
         ;;
       *)
         echo "$LINE"
         ;;
     esac
+  done \
+  | tee ${STATEFILE}.test
