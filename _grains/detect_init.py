@@ -20,10 +20,10 @@ def pid_one_info():
             try:
                 cmd = fp_.read()
                 grains['init_cmd_full'] = cmd
-                log.info(" ".join(['init_cmd_full =',
+                log.debug(" ".join(['init_cmd_full =',
                                    grains['init_cmd_full'], ' .']))
                 grains['init_cmd'] = os.path.basename(cmd)
-                log.info(" ".join(['init_cmd = ', grains['init_cmd'], '.']))
+                log.debug(" ".join(['init_cmd = ', grains['init_cmd'], '.']))
                 if re.match(r'.*/(systemd)', cmd):
                     grains['init'] = 'systemd'
                     grains['systemd'] = True

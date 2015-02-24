@@ -28,7 +28,6 @@ rackspace-tools:
       - pkg: rackspacebase
       - pkg: python-dev
 
-
 include:
   - services/rackspace/backup
   - services/rackspace/pyrax
