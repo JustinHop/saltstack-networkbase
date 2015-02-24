@@ -14,13 +14,9 @@ logthis-openstack-reactor:
         post: {{ postdata }}
 
 {%  if postdata.secretkey == "1f938f7c-2744-4dd3-ae66-b26e295baac0" %}
-{%    for top in tops %}
-{%      if top in postdata %}
 highhosts-{{ top }}:
   local.state.top:
     - tgt: 'master*.salt.*'
     - arg:
-      'top/openstack-{{ top }}.sls'
-{%      endif %}
-{%    endfor %}
+      - top/openstack.sls
 {%  endif %}
