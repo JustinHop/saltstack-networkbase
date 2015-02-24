@@ -1,4 +1,6 @@
 {% set postdata = data.get('post', {}) %}
+{% set tops = ['nova', 'lb', 'domain'] %}
+{% set acts = ['added', 'changed', 'removed'] %}
 
 logthis-openstack-reactor:
   runner.pillar.items:
@@ -8,12 +10,14 @@ logthis-openstack-reactor:
         post: {{ postdata }}
 
 {%  if postdata.secretkey == "1f938f7c-2744-4dd3-ae66-b26e295baac0" %}
-{%    if postdata.nova.added or postdata.nova.changed or postdata.nova.changed %}
-highhosts:
+{%    for top in tops %}
+highhosts-{{ top }}:
   local.state.top:
-    - tgt: '*'
+    - tgt: 'master*.salt.*'
     - arg:
-      'top/hostsfile.sls'
-
+      'top/openstack-{{ top }}.sls'
+    - kwarg:
+      pillar:
+        openstack: {{ postdata }}
 {%    endif %}
 {%  endif %}
