@@ -18,6 +18,6 @@ highhosts-{{ top }}:
       'top/openstack-{{ top }}.sls'
     - kwarg:
       pillar:
-        openstack: {{ postdata[top] }}
+        openstack: {{ data.get(['postdata'][top]) }}
 {%    endfor %}
 {%  endif %}
