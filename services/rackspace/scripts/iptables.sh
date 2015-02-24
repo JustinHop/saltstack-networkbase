@@ -3,7 +3,7 @@
 STATEFILE=/etc/network/iptables
 STATEDIR=/etc/network/iptables.d
 CRSTATEFILE=/etc/network/iptables-crowdrise
-FILELINE=""
+FILELINE="# File Line"
 CRENDLINE="Local-Loopback"
 
 if [ "$(ls -A $STATEDIR)" ]; then

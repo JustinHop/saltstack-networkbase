@@ -21,4 +21,5 @@ run-iptables-stuffs:
     - source: salt://services/rackspace/scripts/iptables.sh
     - user: root
     - group: root
+    - order: last
     - template: jinja
