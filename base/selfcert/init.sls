@@ -25,7 +25,7 @@ gen-privatekey:
 
 gen-certreq:
   cmd.run:
-    - name: openssl req -new -key /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key -out /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.csr -subj "/C=US/ST=California/L=Los Angeles/O=CrowdRise/CN={{ grains['fqdn'] }}"
+    - name: openssl req -new -key /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key -out /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.csr -subj "/C=US/ST=California/L=Los Angeles/O=Base/CN={{ grains['fqdn'] }}"
     - creates: /etc/pki/tls/cert/{{ grains['fqdn'] }}-self.2048.csr
     - requires:
       - file: /etc/pki/tls/private/{{ grains['fqdn'] }}.-2048.key

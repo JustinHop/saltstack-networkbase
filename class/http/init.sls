@@ -1,6 +1,6 @@
 #
 #   class/http/init.sls
-#   Crowdrise Frontend Webservers
+#   Base Frontend Webservers
 #
 
 include:

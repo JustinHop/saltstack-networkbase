@@ -1,5 +1,5 @@
 #####
-# Crowdrise varnish config
+# Base varnish config
 #
 # Notes:  Caching Rules are based on:
 # 1.  Logged in users. - NOT CACHED
