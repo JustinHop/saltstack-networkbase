@@ -1,3 +1,3 @@
 base:
   '*':
-    - crowdrise/bin
+    - base/bin

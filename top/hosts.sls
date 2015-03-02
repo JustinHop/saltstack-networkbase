@@ -6,4 +6,4 @@
 base:
 
   '*':
-    - crowdrise/hostsfile
+    - base/hostsfile

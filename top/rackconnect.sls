@@ -1,3 +1,3 @@
 base:
   '*':
-    - crowdrise/rackconnect
+    - base/rackconnect

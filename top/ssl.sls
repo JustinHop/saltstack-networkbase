@@ -5,4 +5,4 @@
 base:
 
   '*':
-    - crowdrise/ssl
+    - base/ssl

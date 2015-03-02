@@ -6,4 +6,4 @@
 
 base:
   '*':
-    - crowdrise/ntp
+    - base/ntp

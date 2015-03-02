@@ -1,3 +1,3 @@
 base:
   '*':
-    - crowdrise/rclocal
+    - base/rclocal
