@@ -86,8 +86,8 @@ for SITE in /etc/apache2/sites-enabled/* ; do
 done
 
 for SITE in \
-  010-http-crowdrise.com \
-  100-https-crowdrise.com \
+  010-http-base.com \
+  100-https-base.com \
   900-http-localhost-monitoring ; do
   a2ensite $SITE
 done

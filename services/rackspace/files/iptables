@@ -1,4 +1,4 @@
-{{ salt['pillar.get']('crowdrise_hash_head') -}}
+{{ salt['pillar.get']('base_hash_head') -}}
 *filter
 :INPUT DROP [0:0]
 :FORWARD DROP [0:0]
@@ -17,7 +17,7 @@
 -A CrowdRise-INBOUND -s 192.168.221.0/24 -p tcp -m tcp --dport 22 -m comment --comment VPN-SSH -j ACCEPT
 -A CrowdRise-INBOUND -s 99.191.142.235/32 -p udp --match multiport --dports 60000:61000 -m comment --comment HOPHOME-MOSH -j ACCEPT
 -A CrowdRise-INBOUND -s 192.168.221.0/24  -p udp --match multiport --dports 60000:61000 -m comment --comment VPN-MOSH -j ACCEPT
--A CrowdRise-INBOUND -s salt.crowdrise.io -p tcp --match multiport --dports 22,4505,4506 -m comment --comment SALT-MASTER -j ACCEPT
+-A CrowdRise-INBOUND -s salt.base.io -p tcp --match multiport --dports 22,4505,4506 -m comment --comment SALT-MASTER -j ACCEPT
 {{ salt['pillar.get']('iptables', "# No Pillar Data") }}
 {{ salt['grains.get']('iptables', "# No Grain Data") }}
 # FILES 20557911-7a00-40e4-a3d5-f75679d71855

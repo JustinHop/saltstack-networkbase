@@ -59,7 +59,7 @@ rackspace-monitoring-agent:
     - group: root
     - makedirs: true
 
-https://gitlab.crowdrise.com/devops/rackspace-monitoring-agent-plugins-contrib.git:
+https://gitlab.base.com/devops/rackspace-monitoring-agent-plugins-contrib.git:
   git.latest:
     - target: /usr/lib/rackspace-monitoring-agent/plugins
     - require:
@@ -70,14 +70,14 @@ mv /usr/lib/rackspace-monitoring-agent/plugins /root/plugins:
     - user: root
     - group: root
     - onfail:
-      - git: https://gitlab.crowdrise.com/devops/rackspace-monitoring-agent-plugins-contrib.git
+      - git: https://gitlab.base.com/devops/rackspace-monitoring-agent-plugins-contrib.git
 
 chmod +x /usr/lib/rackspace-monitoring-agent/plugins:
   cmd.run:
     - user: root
     - group: root
     - require:
-      - git: https://gitlab.crowdrise.com/devops/rackspace-monitoring-agent-plugins-contrib.git
+      - git: https://gitlab.base.com/devops/rackspace-monitoring-agent-plugins-contrib.git
 
 /etc/rsyslog.d/rackspace-monitoring-daemon.conf:
   file.managed:

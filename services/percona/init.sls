@@ -4,7 +4,7 @@
 #
 
 include:
-  - crowdrise/blockdev
+  - base/blockdev
 
 percona-needed:
   pkg.installed:

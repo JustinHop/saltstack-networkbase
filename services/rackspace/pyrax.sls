@@ -22,8 +22,8 @@ pyrax_setup:
 
 setup_domain:
   rackspace.dns_zone_exists:
-    - name: crowdrise.io
-    - email_address: noreply@crowdrise.com
+    - name: base.io
+    - email_address: noreply@base.com
     - ttl: 300
     - require:
       - pip: pyrax
@@ -31,7 +31,7 @@ setup_domain:
 
 setup_records2:
   rackspace.dns_record_exists:
-    - zone_name: crowdrise.io
+    - zone_name: base.io
     - name: {{ grains['fqdn'] }}
     - record_type: "A"
     - data: {{ grains['fqdn_ip4']|first }}

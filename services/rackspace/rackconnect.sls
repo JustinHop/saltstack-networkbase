@@ -3,7 +3,7 @@
 #   FUCKING FIX RACKCONNECT!!!!!!!!!!!
 #
 
-/etc/network/iptables-crowdrise:
+/etc/network/iptables-base:
   file.managed:
     - source: salt://services/rackspace/files/iptables
     - template: jinja

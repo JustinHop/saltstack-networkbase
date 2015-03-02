@@ -5,7 +5,7 @@
 
 include:
   - nginx/ng
-  - crowdrise/ssl
+  - base/ssl
 
 /etc/nginx/google9c25d838cb2b84a3.html:
   file.managed:
@@ -21,7 +21,7 @@ include:
     - group: root
     - makedirs: True
     - contents: |
-        crowdrise:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
+        base:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
         monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
 
 /etc/nginx/htpasswd-dev:
@@ -30,7 +30,7 @@ include:
     - group: root
     - makedirs: True
     - contents: |
-        crowdrise:$apr1$bGpmtRQ2$Z1x21c8f.QTCSMSD.vvBb1
+        base:$apr1$bGpmtRQ2$Z1x21c8f.QTCSMSD.vvBb1
         monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
 
 /etc/nginx/htpasswd-square:
@@ -40,7 +40,7 @@ include:
     - makedirs: True
     - contents: |
         square:$apr1$wviczMvi$Mj.pXVKpJQxULQHMpc3qY0
-        crowdrise:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
+        base:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
         monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
 
 /etc/nginx/htpasswd-hp2015:
@@ -50,7 +50,7 @@ include:
     - makedirs: True
     - contents: |
         huffpost:$apr1$L7uYgSRj$.aLFkt5gKGGi1hFAHGwjv/
-        crowdrise:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
+        base:$apr1$TgiH7/c9$16SygFXa4gmzsNdHnR/Gq/
         monitoring:$apr1$x.0UL7ik$7/A/p5vIAqPcHsem2/UM.0
 
 /etc/nginx/robots.txt:
@@ -63,9 +63,9 @@ include:
         Disallow: /
 
 nginx-config:
-{% if salt['pillar.get']('nginx:repo:crowdrise') %}
+{% if salt['pillar.get']('nginx:repo:base') %}
   pkgrepo.managed:
-    - ppa: crowdrise/nginx-builds
+    - ppa: base/nginx-builds
     - keyid: 75FC36CE
     - keyserver: keyserver.ubuntu.com
   pkg.latest:
@@ -77,7 +77,7 @@ nginx-config:
     - name: {{ salt['pillar.get']('nginx:package', 'nginx-full') }}
 {% endif %}
 
-{% if salt['pillar.get']('nginx:repo:crowdrise') %}
+{% if salt['pillar.get']('nginx:repo:base') %}
 /etc/nginx/naxsi_core.rules:
   file.managed:
     - user: root

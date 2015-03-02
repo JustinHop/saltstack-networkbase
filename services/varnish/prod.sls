@@ -26,7 +26,7 @@
 
 varnish-git:
   git.latest:
-    - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
+    - name: git@base.git.beanstalkapp.com:/base/varnish.git
     - rev: master
     - target: /etc/varnish
     - identity: /home/beanstalk/.ssh/id_rsa

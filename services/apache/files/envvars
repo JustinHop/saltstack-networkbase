@@ -39,19 +39,19 @@ export LANG
 ## following line (default is 8192):
 APACHE_ULIMIT_MAX_FILES='ulimit -n 65536'
 
-export CROWDRISE_DEFAULT_HOSTNAME={{ salt['pillar.get']('mysql:master', 'db-write.crowdrise.io') }}
+export CROWDRISE_DEFAULT_HOSTNAME={{ salt['pillar.get']('mysql:master', 'db-write.base.io') }}
 export CROWDRISE_DEFAULT_USERNAME={{ salt['pillar.get']('mysql:username') }}
 export CROWDRISE_DEFAULT_PASSWORD={{ salt['pillar.get']('mysql:password') }}
 export CROWDRISE_DEFAULT_DATABASE={{ salt['pillar.get']('mysql:password') }}
 export CROWDRISE_DEFAULT_DRIVER={{ salt['pillar.get']('mysql:driver') }}
 
-export CROWDRISE_WRITE_HOSTNAME={{ salt['pillar.get']('mysql:master', 'db-write.crowdrise.io') }}
+export CROWDRISE_WRITE_HOSTNAME={{ salt['pillar.get']('mysql:master', 'db-write.base.io') }}
 export CROWDRISE_WRITE_USERNAME={{ salt['pillar.get']('mysql:username') }}
 export CROWDRISE_WRITE_PASSWORD={{ salt['pillar.get']('mysql:password') }}
 export CROWDRISE_WRITE_DATABASE={{ salt['pillar.get']('mysql:password') }}
 export CROWDRISE_WRITE_DRIVER={{ salt['pillar.get']('mysql:driver') }}
 
-export CROWDRISE_READ_HOSTNAME={{ salt['pillar.get']('mysql:master', 'db-write.crowdrise.io') }}
+export CROWDRISE_READ_HOSTNAME={{ salt['pillar.get']('mysql:master', 'db-write.base.io') }}
 export CROWDRISE_READ_USERNAME={{ salt['pillar.get']('mysql:username') }}
 export CROWDRISE_READ_PASSWORD={{ salt['pillar.get']('mysql:password') }}
 export CROWDRISE_READ_DATABASE={{ salt['pillar.get']('mysql:password') }}

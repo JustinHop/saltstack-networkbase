@@ -27,7 +27,7 @@
 
 varnish-git:
   git.latest:
-    - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
+    - name: git@base.git.beanstalkapp.com:/base/varnish.git
     - rev: loadtest
     - target: /etc/varnish
     - user: root

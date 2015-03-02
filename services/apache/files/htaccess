@@ -8,8 +8,8 @@ ErrorDocument 403 "Access Forbidden"
 #       RewriteCond %{HTTPS} on
 #       RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [R=301,L]
 
-RewriteCond %{HTTP_HOST} ^crowdrise.com [NC]
-RewriteRule ^(.*)$ http://www.crowdrise.com/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^base.com [NC]
+RewriteRule ^(.*)$ http://www.base.com/$1 [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^(.*)$ /index_prod_secure.php [L]

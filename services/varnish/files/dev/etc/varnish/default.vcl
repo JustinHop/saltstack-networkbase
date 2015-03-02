@@ -33,7 +33,7 @@ acl purge {
 # we can ping)
 ##
 backend webnode1 {
-	.host = "http.front.load1.crowdrise.io";
+	.host = "http.front.load1.base.io";
 	.port = "80";
 #	.probe = healthcheck;
 }
@@ -111,7 +111,7 @@ sub vcl_recv {
   #Pass the logged in users. 
   #Check if the user is going to logged-in specific pages. If so, DONT cache those pages.
   #Pass the request around varnish.
-  if(req.url ~ "/account/?.*" || req.http.cookie ~ "crowdrise"){
+  if(req.url ~ "/account/?.*" || req.http.cookie ~ "base"){
     return (pass);
   }
 
@@ -120,7 +120,7 @@ sub vcl_recv {
   if(req.url == "/" || 
      req.url ~ "/about/?.*" ||
      req.url ~ "/community/?.*" || 
-     req.url ~ "/crowdrise/?.*" ||
+     req.url ~ "/base/?.*" ||
      req.url ~ "/fundraise-and-volunteer/signup-select$" ||
      req.url ~ "/search/projects$" ||
      req.url ~ "/search/charities$" || 
@@ -174,14 +174,14 @@ sub vcl_fetch {
   set beresp.http.Vary = "Accept-Encoding,X-UA";
 
   #Remove all cookies returned by the web nodes.	
-  if(req.url ~ "/account/?.*" || req.http.cookie ~ "crowdrise"){} 
+  if(req.url ~ "/account/?.*" || req.http.cookie ~ "base"){} 
   else {
  
     #Let varnish know to cache everything for X seconds.
     if(req.url == "/" ||
      req.url ~ "/about/?.*" ||
      req.url ~ "/community/?.*" ||
-     req.url ~ "/crowdrise/?.*" ||
+     req.url ~ "/base/?.*" ||
      req.url ~ "/fundraise-and-volunteer/signup-select$" ||
      req.url ~ "/search/projects$" ||
      req.url ~ "/search/charities$" ||

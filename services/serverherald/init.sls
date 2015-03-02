@@ -6,7 +6,7 @@
 #serverherald:
 #  pip.installed:
 
-git+https://gitlab.crowdrise.com/devops/serverherald.git#egg=serverherald:
+git+https://gitlab.base.com/devops/serverherald.git#egg=serverherald:
   pip.installed
 
 

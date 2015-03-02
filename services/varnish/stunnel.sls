@@ -4,7 +4,7 @@
 #
 
 include:
-  - crowdrise/ssl
+  - base/ssl
 
 stunnel4:
   pkg:

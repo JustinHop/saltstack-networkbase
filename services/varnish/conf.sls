@@ -40,7 +40,7 @@ include:
 #      - service: varnish
 ##
 ##  git.latest:
-##    - name: git@crowdrise.git.beanstalkapp.com:/crowdrise/varnish.git
+##    - name: git@base.git.beanstalkapp.com:/base/varnish.git
 ##    - target: loadtest
 ##    - user: beanstalk
 ##    - identity: /home/beanstalk/.ssh/id_rsa
