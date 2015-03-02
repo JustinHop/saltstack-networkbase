@@ -1,15 +1,15 @@
 #
-#   crowdrise/init.sls
-#   base for crowdrise systems
+#   base/init.sls
+#   base for base systems
 #
 
 include:
-  - crowdrise/bin
-  - crowdrise/selfcert
-  - crowdrise/hostsfile
-  - crowdrise/profile
-  - crowdrise/rackconnect
-  - crowdrise/rclocal
+  - base/bin
+  - base/selfcert
+  - base/hostsfile
+  - base/profile
+  - base/rackconnect
+  - base/rclocal
   - users
   - services/chkrootkit
   - services/openssh
@@ -99,7 +99,7 @@ get-pip-latest:
   file.managed:
     - user: root
     - group: root
-    - source: salt://crowdrise/files/etckeeper.conf
+    - source: salt://base/files/etckeeper.conf
 
 etckeeper init && etckeeper vcs commit -a -m initial:
   cmd.run:
@@ -132,19 +132,19 @@ groupdel ubuntu || echo hello:
 
 /etc/sudoers:
   file.managed:
-    - source: salt://crowdrise/files/sudoers
+    - source: salt://base/files/sudoers
     - template: jinja
     - user: root
     - group: root
 
 /etc/apt/apt.conf.d/10periodic:
   file.managed:
-    - source: salt://crowdrise/files/10periodic
+    - source: salt://base/files/10periodic
     - user: root
     - group: root
 
 /etc/apt/apt.conf.d/50unattended-upgrades:
   file.managed:
-    - source: salt://crowdrise/files/50unattended-upgrades
+    - source: salt://base/files/50unattended-upgrades
     - user: root
     - group: root
