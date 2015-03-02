@@ -1,15 +1,15 @@
 #
-#   crowdrise/rclocal/init.sls
-#   Includes for crowdrise
+#   base/rclocal/init.sls
+#   Includes for base
 #
 
 /etc/rc.local:
   file.managed:
-    - source: salt://crowdrise/rclocal/files/rc.local
+    - source: salt://base/rclocal/files/rc.local
     - user: root
     - group: root
 
-crowdrise-nopkg:
+base-nopkg:
   pkg.removed:
     - pkgs: ['nano', 'resolvconf']
 

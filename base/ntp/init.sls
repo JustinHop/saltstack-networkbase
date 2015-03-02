@@ -1,5 +1,5 @@
 #
-#   crowdrise/ntp/init.sls
+#   base/ntp/init.sls
 #   stuff for network time protocol
 #
 

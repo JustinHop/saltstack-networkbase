@@ -2,7 +2,7 @@
 
 /usr/local/bin:
   file.recurse:
-    - source: salt://crowdrise/bin/bin
+    - source: salt://base/bin/bin
     - user: root
     - group: root
     - file_mode: 755

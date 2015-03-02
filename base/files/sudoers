@@ -1,4 +1,4 @@
-{{ salt['pillar.get']('crowdrise_hash_head', '# Sudoers from salt') }}
+{{ salt['pillar.get']('base_hash_head', '# Sudoers from salt') }}
 
 Defaults    env_reset
 Defaults    mail_badpass

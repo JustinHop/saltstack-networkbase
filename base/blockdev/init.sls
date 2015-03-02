@@ -1,5 +1,5 @@
 #
-#   crowdrise/blockdev/init.sls
+#   base/blockdev/init.sls
 #   make sure all presented SSDs are formatted ext4
 #
 

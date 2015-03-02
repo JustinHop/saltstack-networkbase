@@ -18,7 +18,7 @@ DB_UPDATE_EMAIL="false"
 
 # Set this to the email address where reports and run output should be sent
 # (default: root)
-REPORT_EMAIL="devops@crowdrise.com"
+REPORT_EMAIL="devops@base.com"
 
 # Set this to yes to enable automatic database updates
 # (default: false)
