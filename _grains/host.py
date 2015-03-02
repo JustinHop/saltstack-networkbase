@@ -28,8 +28,8 @@ def host_based_info():
     grains['product'] = "sys"
     grains['cluster'] = "prod"
     grains['cluster_instance'] = "1"
-    grains['business'] = "crowdrise"
-    grains['tld'] = "io"
+    grains['business'] = "domain"
+    grains['tld'] = "tld"
 
     try:
         hostparts = re.match(
