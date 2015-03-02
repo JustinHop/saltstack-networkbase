@@ -16,21 +16,21 @@ salt '*' test.ping:
 #    - user: root
 #    - minute: '*'
 
-git@gitlab.crowdrise.io:devops/saltstack-filebase.git:
+git@gitlab.base.io:devops/saltstack-filebase.git:
   git.latest:
     - target: /srv/salt/saltstack-filebase
     - force: true
     - force_checkout: true
     - identity: /srv/salt/.ssh/id_rsa
 
-git@gitlab.crowdrise.io:devops/saltstack-pillar.git:
+git@gitlab.base.io:devops/saltstack-pillar.git:
   git.latest:
     - target: /srv/salt/saltstack-pillar
     - force: true
     - force_checkout: true
     - identity: /srv/salt/.ssh/id_rsa
 
-git@gitlab.crowdrise.io:devops/sphinx.git:
+git@gitlab.base.io:devops/sphinx.git:
   git.latest:
     - target: /srv/salt/formulas/sphinx
     - force: true

@@ -3,7 +3,7 @@
 USER={{ salt['pillar.get']('mysql:user', 'user') }}
 PASS={{ salt['pillar.get']('mysql:password', 'password') }}
 HOST={{ salt['pillar.get']('mysql:slave', 'slave') }}
-DB=crowdrise
+DB=base
 
 PINGS_BAD_SQL='SELECT COUNT(*) FROM `wepay_pings` WHERE dequeued is null;'
 TIPS_BAD_SQL='SELECT COUNT(*) FROM `wepay_donation_tips` WHERE dequeued is null;'

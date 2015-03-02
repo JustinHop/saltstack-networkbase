@@ -6,7 +6,7 @@
 include:
   - services/newrelic
   - services/apache
-  - crowdrise/ssl
+  - base/ssl
 
 frontend-webserver:
   pkg.installed:

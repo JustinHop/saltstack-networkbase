@@ -6,7 +6,7 @@
 include:
   - class/http
 
-/etc/cron.d/crowdrise:
+/etc/cron.d/base:
   file.managed:
     - source: salt://class/batch/files/cron
     - template: jinja
@@ -22,17 +22,17 @@ include:
     - group: root
     - mode: 644
 
-/etc/rackspace-monitoring-agent.conf.d/crowdrisedb.yaml:
+/etc/rackspace-monitoring-agent.conf.d/basedb.yaml:
   file.managed:
-    - source: salt://class/batch/files/crowdrisedb.yaml
+    - source: salt://class/batch/files/basedb.yaml
     - template: jinja
     - user: root
     - group: root
     - mode: 644
 
-/usr/lib/rackspace-monitoring-agent/plugins/crowdrisedb.sh:
+/usr/lib/rackspace-monitoring-agent/plugins/basedb.sh:
   file.managed:
-    - source: salt://class/batch/files/crowdrisedb.sh
+    - source: salt://class/batch/files/basedb.sh
     - template: jinja
     - user: root
     - group: root

@@ -5,7 +5,7 @@ exec 2> /dev/null
 USER={{ salt['pillar.get']('mysql:user', 'user') }}
 PASS={{ salt['pillar.get']('mysql:password', 'password') }}
 HOST={{ salt['pillar.get']('mysql:slave', 'slave') }}
-DB=crowdrise
+DB=base
 MYSQL="mysql -u$USER -p$PASS -h$HOST $DB"
 
 CHECK1='(( $ROWS > 1000000 ))'
@@ -22,7 +22,7 @@ echo "status ok connected"
 for TABLE in $(echo "show tables;" | $MYSQL); do
   ROWS=$(printf 'SELECT COUNT(*) FROM `%s`;\n' "$TABLE" | $MYSQL | tail -n 1 )
   if eval $CHECK1 $CHECK2 ; then
-    echo "metric crowdrisedb.${TABLE}.rows uint64 $ROWS"
+    echo "metric basedb.${TABLE}.rows uint64 $ROWS"
   fi
 done
 

@@ -4,4 +4,4 @@
 #
 
 include:
-  - crowdrise/blockdev
+  - base/blockdev

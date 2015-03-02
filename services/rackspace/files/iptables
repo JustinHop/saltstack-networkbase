@@ -9,7 +9,7 @@
 :LOGGER - [0:0]
 -A INPUT -m comment --comment RackConnectChain-INBOUND -j RS-RackConnect-INBOUND
 -A INPUT -j sshguard
--A INPUT -m comment --comment BaseRules -j CrowdRise-INBOUND
+-A INPUT -m comment --comment BaseRules -j Base-INBOUND
 -A INPUT -m comment --comment Logger -j LOGGER
 -A LOGGER -m limit --limit 60/min -j LOG --log-prefix "IPTables: " --log-level 4
 -A LOGGER -j RETURN

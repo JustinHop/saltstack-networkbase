@@ -4,8 +4,8 @@
 #
 
 include:
-  #- crowdrise/blockdev
-  - crowdrise/lvm
+  #- base/blockdev
+  - base/lvm
   - services/percona
 
 

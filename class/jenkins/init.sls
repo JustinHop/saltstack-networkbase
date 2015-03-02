@@ -6,4 +6,4 @@
 
 include:
   - services/nginx
-  - crowdrise/ssl
+  - base/ssl

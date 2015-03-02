@@ -26,7 +26,7 @@ echo {{ id }}:
 {%    endif %}
 {%  endfor %}
 
-/var/www/vhosts/mon.crowdrise.com/htdocs:
+/var/www/vhosts/mon.base.com/htdocs:
   file.directory:
     - user: www-data
     - group: www-data
@@ -51,10 +51,10 @@ sitespeed.io:
     - require:
       - cmd: nodeinstall
 
-sitespeed.io -u https://www.crowdrise.com --gpsiKey AIzaSyDTFQvk7oV7R11-yOl2wdGTdB9tI5QXPv4:
+sitespeed.io -u https://www.base.com --gpsiKey AIzaSyDTFQvk7oV7R11-yOl2wdGTdB9tI5QXPv4:
   cron.present:
-    - identifier: SiteSpeed https://www.crowdrise.com
-    - cwd: /var/www/vhosts/mon.crowdrise.com
+    - identifier: SiteSpeed https://www.base.com
+    - cwd: /var/www/vhosts/mon.base.com
     - user: www-data
     - minute: '*/10'
     

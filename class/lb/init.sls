@@ -5,7 +5,7 @@
 
 include:
   - services/newrelic
-  - crowdrise/ssl
+  - base/ssl
   - services/nginx
   - nginx/ng
 

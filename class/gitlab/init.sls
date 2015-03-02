@@ -4,7 +4,7 @@
 #
 
 include:
-  - crowdrise/ssl
+  - base/ssl
 
 exclude:
   - users
