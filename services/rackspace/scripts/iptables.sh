@@ -2,11 +2,11 @@
 
 STATEFILE=/etc/network/iptables
 STATEDIR=/etc/network/iptables.d
-CRSTATEFILE=/etc/network/iptables-crowdrise
-FILEUUID=20557911-7a00-40e4-a3d5-f75679d71855
-FILELINE="# FILES 20557911-7a00-40e4-a3d5-f75679d71855"
+STATEFILEHEAD=/etc/network/iptables-head
+FILEUUID=bd735451-8b40-4ab6-99e1-b9848b9418cf
+FILELINE="# FILES $FILEUUID"
 FILELINES=""
-CRENDLINE="Local-Loopback"
+ENDLINE="Local-Loopback"
 
 if [ "$(ls -A $STATEDIR)" ]; then
   FILELINES=$(find $STATEDIR -type f -exec cat {} \;)
@@ -16,14 +16,14 @@ function gen_file(){
   if ! [ -f $STATEFILE ]; then
     exit 1
   fi
-  if ! [ -f $CRSTATEFILE ]; then
+  if ! [ -f $STATEFILEHEAD ]; then
     exit 1
   fi
 }
 
 gen_file
 
-( cat $CRSTATEFILE | while read LINE ; do
+( cat $STATEFILEHEAD | while read LINE ; do
     case "$LINE" in
       $FILELINE)
         if [ "$(ls -A $STATEDIR)" ]; then
@@ -36,5 +36,5 @@ gen_file
         echo "$LINE"
         ;;
     esac
-  done; iptables-save | sed -e "0,/$CRENDLINE/d" ) \
+  done; iptables-save | sed -e "0,/$ENDLINE/d" ) \
   | tee ${STATEFILE}

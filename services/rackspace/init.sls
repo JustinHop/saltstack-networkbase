@@ -34,5 +34,3 @@ include:
   - services/rackspace/monitoring
   - services/rackspace/rackconnect
 
-exclude:
-  - sls: services/rackspace/autodns
