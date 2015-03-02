@@ -22,7 +22,7 @@ pyrax_setup:
 
 setup_domain:
   rackspace.dns_zone_exists:
-    - name: base.io
+    - name: base.com
     - email_address: noreply@base.com
     - ttl: 300
     - require:
@@ -31,7 +31,7 @@ setup_domain:
 
 setup_records2:
   rackspace.dns_record_exists:
-    - zone_name: base.io
+    - zone_name: base.com
     - name: {{ grains['fqdn'] }}
     - record_type: "A"
     - data: {{ grains['fqdn_ip4']|first }}

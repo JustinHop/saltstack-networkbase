@@ -33,7 +33,7 @@ acl purge {
 # we can ping)
 ##
 backend webnode1 {
-	.host = "http.front.load1.base.io";
+	.host = "http.front.load1.base.com";
 	.port = "80";
 #	.probe = healthcheck;
 }
